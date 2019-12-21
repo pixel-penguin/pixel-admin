@@ -1,0 +1,26 @@
+{
+    "name": "pixel-penguin/pixel-admin",
+    "description": "This is the admin used by Pixel penguin to maintain websites",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gerrit Vermeulen",
+            "email": "gerrit@website-genius.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+	"autoload": {
+        "psr-4": {
+            "PixelAdmin\\Admin\\": "src/"
+        }
+    },
+	"extra": {
+		"laravel": {
+			"providers": [
+				"PixelAdmin\\Admin\\PixelAdminServiceProvider"
+			]
+		}
+	}
+}

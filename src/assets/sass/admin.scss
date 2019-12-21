@@ -1,0 +1,149 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+//@import '~bootstrap/scss/bootstrap';
+
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+
+@import '~pretty-checkbox/src/pretty-checkbox.scss';
+
+@import "node_modules/@mdi/font/scss/materialdesignicons.scss"; 
+
+
+//@import "node_modules/vue-nestable/example/assets/vue-nestable.css"; 
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.nestable-group{list-style: none !important}
+.nestable-group li{padding-left:0 !important}
+
+.nestable-list{ list-style: none; padding: 0}
+.nestable-item{  padding: 4px 30px}
+.nestAction{ margin-left:10px; }
+
+.nestText{ display: inline-block; width: 200px}
+
+.nestable-handle{ background: #F8F8F8; border: 1px solid #DFDFDF; border-radius:3px; padding: 4px 10px; display: inline-block }
+
+.nestAction i{ padding: 0 2px; cursor: pointer}
+
+.statusTag{text-align: center; color:#FFF; border-radius:5px}
+
+.pagination-list{ list-style: none !important; margin-right: 50px !important; margin-top:0 !important}
+.pagination-list li{margin: 0 !important}
+
+.tooltip {
+  display: block !important;
+  z-index: 10000;
+
+  .tooltip-inner {
+    background: black;
+    color: white;
+    border-radius: 16px;
+    padding: 5px 10px 4px;
+  }
+
+  .tooltip-arrow {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    position: absolute;
+    margin: 5px;
+    border-color: black;
+  }
+
+  &[x-placement^="top"] {
+    margin-bottom: 5px;
+
+    .tooltip-arrow {
+      border-width: 5px 5px 0 5px;
+      border-left-color: transparent !important;
+      border-right-color: transparent !important;
+      border-bottom-color: transparent !important;
+      bottom: -5px;
+      left: calc(50% - 5px);
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  &[x-placement^="bottom"] {
+    margin-top: 5px;
+
+    .tooltip-arrow {
+      border-width: 0 5px 5px 5px;
+      border-left-color: transparent !important;
+      border-right-color: transparent !important;
+      border-top-color: transparent !important;
+      top: -5px;
+      left: calc(50% - 5px);
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  &[x-placement^="right"] {
+    margin-left: 5px;
+
+    .tooltip-arrow {
+      border-width: 5px 5px 5px 0;
+      border-left-color: transparent !important;
+      border-top-color: transparent !important;
+      border-bottom-color: transparent !important;
+      left: -5px;
+      top: calc(50% - 5px);
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  &[x-placement^="left"] {
+    margin-right: 5px;
+
+    .tooltip-arrow {
+      border-width: 5px 0 5px 5px;
+      border-top-color: transparent !important;
+      border-right-color: transparent !important;
+      border-bottom-color: transparent !important;
+      right: -5px;
+      top: calc(50% - 5px);
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  &[aria-hidden='true'] {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .15s, visibility .15s;
+  }
+
+  &[aria-hidden='false'] {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .15s;
+  }
+}
+
+.pagination-link.is-current{
+	background-color: #f9cb15 !important;
+	border-color:#f9cb15 !important;
+}
+
+.chevron-cell a{color:#333 !important}
+
+ audio{
+        min-width: 400px;
+        height: auto;
+        object-fit: inherit;
+    }
+.ti-selected-item{background-color:rgb(249, 203, 21) !important; color: #333 !important;}
+.ti-tag{background-color:rgb(249, 203, 21) !important; color:#333 !important}

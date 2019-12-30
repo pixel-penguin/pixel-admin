@@ -8,6 +8,6 @@ class PageContent extends Model
 {
     public function gallery()
     {
-        return $this->hasMany('App\PageContentGallery');
+        return $this->hasMany('PixelAdmin\Admin\Models\PageContentGallery');
     }
 }

@@ -20,7 +20,7 @@ Route::get('/', function () {
 //Route::get('/home', 'HomeController@index');
 
 Route::group([
-	//'middleware'=>'checkifmainadmin',
+	'middleware'	=>	'web',
     'prefix'     	=> 	'json',
 	'namespace'		=> 	'PixelAdmin\Admin\Http\Controllers\Json',
 
@@ -57,7 +57,7 @@ Route::group([
 
 //Admin
 Route::group([
-	//'middleware'=>'checkifmainadmin',
+	'middleware'	=>	['web', 'checkifmainadmin'],
     'prefix'     	=> 	'admin/json',
 	'namespace'		=> 	'PixelAdmin\Admin\Http\Controllers\Admin',
 

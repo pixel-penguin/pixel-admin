@@ -21,7 +21,7 @@ class PagesController extends Controller
     public function index()
     {
 		
-        return view('admin.pages.index');
+        return view('pixel-admin::admin.pages.index');
     }
 
     /**
@@ -174,7 +174,7 @@ class PagesController extends Controller
         
 		$page = Page::whereId($id)->first();
 		
-        return view('admin.pages.edit',['page' => $page]);
+        return view('pixel-admin::admin.pages.edit',['page' => $page]);
     }
 	
 	public function pageBuilder($id)
@@ -182,7 +182,7 @@ class PagesController extends Controller
         
 		$page = Page::whereId($id)->first();
 		
-        return view('admin.pages.page_builder',['page' => $page]);
+        return view('pixel-admin::admin.pages.page_builder',['page' => $page]);
     }
 	
     /**
@@ -361,6 +361,8 @@ class PagesController extends Controller
 		$contentTypeId = $input['content_type_id'];
 		
 		$pageContent = new PageContent();
+		
+		//dd(Auth::user());
 		
 		$pageContent->user_id = Auth::user()->id;
 		$pageContent->page_content_type_id = $contentTypeId;

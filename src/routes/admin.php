@@ -28,7 +28,7 @@ Route::get('/tester', function () {
 Route::group([
 	'namespace'		=> 	'PixelAdmin\Admin\Http\Controllers\Admin',
 	//'middleware'	=>	'auth',
-	//'middleware'	=>	'checkifmainadmin',
+	'middleware'	=>	['web', 'checkifmainadmin'],
     'prefix'    	=> 	'admin',
     //'namespace'		=> 	'Admin'
 

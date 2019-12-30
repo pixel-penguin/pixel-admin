@@ -5,17 +5,17 @@ namespace PixelAdmin\Admin\Http\Controllers\Json;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Page;
-use App\PageGallery;
-use App\Testimonial;
-use App\Team;
-use App\Blog;
-use App\BlogGallery;
-use App\BlogCategory;
+use PixelAdmin\Admin\Models\Page;
+use PixelAdmin\Admin\Models\PageGallery;
+use PixelAdmin\Admin\Models\Testimonial;
+use PixelAdmin\Admin\Models\Team;
+use PixelAdmin\Admin\Models\Blog;
+use PixelAdmin\Admin\Models\BlogGallery;
+use PixelAdmin\Admin\Models\BlogCategory;
 
-use App\Calendar;
-use App\CalendarGallery;
-use App\CalendarCategory;
+use PixelAdmin\Admin\Models\Calendar;
+use PixelAdmin\Admin\Models\CalendarGallery;
+use PixelAdmin\Admin\Models\CalendarCategory;
 
 use App\Mail\Contact;
 use Illuminate\Support\Facades\Mail;

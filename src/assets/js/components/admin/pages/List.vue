@@ -2,10 +2,20 @@
     <div>
 		<div class="row">
 			<div class="col-xs-4">
-				<h4 class="page-title">Pages</h4>
+				<h4 class="page-title">Pages </h4>
+                
+                <div class="row">
+
+                    <div class="col-md-12" style="margin-bottom:20px">
+                        <div @click="tutorialVideoModal = true" class="btn btn-small btn-primary rounded" data-toggle="modal" data-target="#add_user"><i class="fa fa-video-camera" aria-hidden="true"></i> Tutorial</div>
+                    </div>
+                
+                </div>
 			</div>
+            
 			<div class="col-xs-8 text-right m-b-30">
-				<div @click="addPage" class="btn btn-primary rounded" data-toggle="modal" data-target="#add_user"><i class="fa fa-plus"></i> Add Page</div>
+				
+                <div @click="addPage" class="btn btn-primary rounded" data-toggle="modal" data-target="#add_user"><i class="fa fa-plus"></i> Add Page</div>
 			</div>
 		</div>
 		
@@ -50,11 +60,20 @@
 		</div>
         
         
-
+        <simple-modal v-model="tutorialVideoModal" title="Tutorial">
+            <template slot="body">                
+                <iframe style="width:1280px; height:400px" width="1280" height="720" src="https://www.youtube.com/embed/c50rmy_h2iU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </template>
+            <template slot="footer">
+                <button>OK</button>
+            </template>
+        </simple-modal>
     </div>
 </template>
 
 <script>
+
+import SimpleModal from 'simple-modal-vue'
     export default {
         name: 'tree-menu',
         data(){
@@ -80,9 +99,12 @@
                     }
                     
                 ],
-                pages:[]
+                pages:[],
+
+                tutorialVideoModal: false
             }
         },
+        components: { SimpleModal },
         mounted() {
             const self = this;
 

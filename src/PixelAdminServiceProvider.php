@@ -14,7 +14,7 @@ class PixelAdminServiceProvider extends ServiceProvider{
 		
 		$this->loadViewsFrom(__DIR__.'/views' , 'pixel-admin');
 				
-		$this->loadMigrationsFrom(__DIR__.'/databse/migrations');
+		$this->loadMigrationsFrom(__DIR__.'/database/migrations');
 		
 		
 		$this->app['router']->aliasMiddleware('checkifmainadmin', \PixelAdmin\Admin\Middleware\CheckIfMainAdmin::class);

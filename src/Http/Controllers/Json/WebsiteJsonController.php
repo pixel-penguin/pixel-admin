@@ -110,7 +110,7 @@ class WebsiteJsonController extends Controller
 	
     public function pageGallery($pageId)
 	{
-		$pageGallery = PageGallery::where('page_id', $pageId)->get();
+		$pageGallery = PageGallery::where('page_id', $pageId)->orderBy('column_order')->get();
 		
 		$response = array();
 		

@@ -225,11 +225,12 @@ class PagesController extends Controller
 			$page->title = $page->name;
 		}
 		
-		
+		/*
 		if(strlen($input['meta_description'] < 1)){
 			
 			$page->meta_description = strip_tags($page->detail);
 		}
+		*/
 		
 		$page->save();		
 		

@@ -9,27 +9,27 @@ class Page extends Model
 	
 	public function pages()
     {
-        return $this->hasMany('App\Page', 'parent_id', 'id');
+        return $this->hasMany('PixelAdmin\Admin\Models\Page', 'parent_id', 'id');
     }
 	
 	public function contents()
     {
-        return $this->hasMany('App\PageContent');
+        return $this->hasMany('PixelAdmin\Admin\Models\PageContent');
     }
 	
     public function gallery()
     {
-        return $this->hasMany('App\PageGallery');
+        return $this->hasMany('PixelAdmin\Admin\Models\PageGallery');
     }
 	
 	public function pageType()
     {
-        return $this->hasOne('App\PageType', 'id', 'page_type_id');
+        return $this->hasOne('PixelAdmin\Admin\Models\PageType', 'id', 'page_type_id');
     }
 	
 	public function parentPage()
 	{
-		return $this->belongsTo('App\Page', 'parent_id');
+		return $this->belongsTo('PixelAdmin\Admin\Models\Page', 'parent_id');
 	}
 	
 	public function getParentsNames() {

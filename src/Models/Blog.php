@@ -8,6 +8,6 @@ class Blog extends Model
 {
     public function categories()
     {
-        return $this->belongsToMany('App\BlogCategory');
+        return $this->belongsToMany('PixelAdmin\Admin\Models\BlogCategory');
     }
 }

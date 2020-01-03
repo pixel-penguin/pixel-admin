@@ -220,17 +220,19 @@ class PagesController extends Controller
 			$page->link_name = $linkName.'-'.$page->id;
 		}
 		
-		if(strlen($input['title'] < 1)){
+		//d($input);
+		
+		if(strlen($input['title']) < 1){
 			
 			$page->title = $page->name;
 		}
 		
-		/*
-		if(strlen($input['meta_description'] < 1)){
+		
+		if(strlen($input['meta_description']) < 1){
 			
-			$page->meta_description = strip_tags($page->detail);
+			$page->meta_description = substr(strip_tags($page->detail), 0, 255);
 		}
-		*/
+		
 		
 		$page->save();		
 		
@@ -290,9 +292,9 @@ class PagesController extends Controller
            'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
        	]);
 
-       	$image_name = $request->file('image_name')->getRealPath();
+       	$image_name = $request->file('image_name');
 
-       	Cloudder::upload($image_name,  env('CLOUDINARY_BASE_FOLDER_PATH').'app_page_images/'.str_slug($image_name->getClientOriginalName()).time());
+       	Cloudder::upload($image_name->getRealPath(),  env('CLOUDINARY_BASE_FOLDER_PATH').'app_page_images/'.str_slug($image_name->getClientOriginalName()).time());
 		
 		$result = Cloudder::getResult();
 		

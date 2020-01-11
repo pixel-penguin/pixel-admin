@@ -40,4 +40,9 @@ class Page extends Model
 			return $this->id;
 		}
 	}
+	
+	public function children()
+	{
+		return $this->hasMany('PixelAdmin\Admin\Models\Page', 'id', 'parent_id')->with('children');
+	}
 }

@@ -43,6 +43,6 @@ class Page extends Model
 	
 	public function children()
 	{
-		return $this->hasMany('PixelAdmin\Admin\Models\Page', 'id', 'parent_id')->with('children');
+		return $this->hasMany('PixelAdmin\Admin\Models\Page', 'parent_id', 'id')->with('children');
 	}
 }

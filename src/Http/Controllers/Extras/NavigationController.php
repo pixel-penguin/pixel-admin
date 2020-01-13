@@ -74,9 +74,18 @@ class NavigationController extends Controller
 				$encodedName = $collectionEntry['name'];
 				$encodedName = str_replace("&", "and", $encodedName); 
 				$encodedName = str_replace(" ", "-", $encodedName); 
+				
+				if($collectionEntry){
+					if($collectionEntry->website_link != null && strlen($collectionEntry->website_link) > 0){
+						$link = $collectionEntry->website_link;
+					}
+					else{
+						$link = '/page/'.$collectionEntry->link_name;
+					}
+				}
 
 				
-				$menu .= view('navigation.'.$template, ['id' => $collectionEntry->id, 'name' => $collectionEntry->name, 'sub' => $sub]);
+				$menu .= view('navigation.'.$template, ['id' => $collectionEntry->id, 'name' => $collectionEntry->name, 'link' => $link, 'sub' => $sub]);
 				
 			}             
 

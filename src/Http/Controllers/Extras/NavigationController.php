@@ -83,9 +83,21 @@ class NavigationController extends Controller
 						$link = '/page/'.$collectionEntry->link_name;
 					}
 				}
-
 				
-				$menu .= view('navigation.'.$template, ['id' => $collectionEntry->id, 'name' => $collectionEntry->name, 'link' => $link, 'sub' => $sub]);
+				$parent = false;
+				$hasChildren = false;
+				
+				if($collectionEntry->parent_id == 0){
+					$parent = true;	
+				}
+				
+				if($sub != null){
+					$hasChildren = true;
+				}
+				
+				$currentPage = false;
+				
+				$menu .= view('navigation.'.$template, ['currentPage' => $currentPage, 'hasChildren' => $hasChildren, 'parent' => $parent, 'id' => $collectionEntry->id, 'name' => $collectionEntry->name, 'link' => $link, 'sub' => $sub]);
 				
 			}             
 

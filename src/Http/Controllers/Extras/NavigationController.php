@@ -84,11 +84,11 @@ class NavigationController extends Controller
 					}
 				}
 				
-				$parent = false;
+				$isParent = false;
 				$hasChildren = false;
 				
 				if($collectionEntry->parent_id == 0){
-					$parent = true;	
+					$isParent = true;	
 				}
 				
 				if($sub != null){
@@ -97,7 +97,7 @@ class NavigationController extends Controller
 				
 				$currentPage = false;
 				
-				$menu .= view('navigation.'.$template, ['currentPage' => $currentPage, 'hasChildren' => $hasChildren, 'parent' => $parent, 'id' => $collectionEntry->id, 'name' => $collectionEntry->name, 'link' => $link, 'sub' => $sub]);
+				$menu .= view('navigation.'.$template, ['currentPage' => $currentPage, 'hasChildren' => $hasChildren, 'isParent' => $isParent, 'id' => $collectionEntry->id, 'name' => $collectionEntry->name, 'link' => $link, 'sub' => $sub]);
 				
 			}             
 

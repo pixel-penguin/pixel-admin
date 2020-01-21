@@ -84,4 +84,11 @@ Route::group([
 	Route::delete('calendars/gallery/delete/{galleryId}','CalendarsController@deleteGallery');
 	Route::post('calendars/gallery/upload', 'CalendarsController@uploadGallery');
 	Route::post('calendars/gallery/order/{id}', 'CalendarsController@galleryOrder');
+	
+	
+	Route::resource('projects', 'ProjectsController');
+	Route::post('projects/activate',  'ProjectsController@activate');	
+	Route::delete('projects/gallery/delete/{galleryId}','ProjectsController@deleteGallery');
+	Route::post('projects/gallery/upload', 'ProjectsController@uploadGallery');
+	Route::post('projects/gallery/order/{id}', 'ProjectsController@galleryOrder'); 
 });

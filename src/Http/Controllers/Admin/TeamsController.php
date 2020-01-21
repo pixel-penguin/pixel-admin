@@ -16,19 +16,19 @@ class TeamsController extends Controller
     public function index(){
 		
 		
-		return view('admin.teams.index');
+		return view('pixel-admin::admin.teams.index');
 	}
 	
 	public function edit($id){
 		
 		
-		return view('admin.teams.edit', ['teamId' => $id]);
+		return view('pixel-admin::admin.teams.edit', ['teamId' => $id]);
 	}
 	
 	public function create(){
 		
 		
-		return view('admin.teams.create');
+		return view('pixel-admin::admin.teams.create');
 	}
 	
 	public function destroy($id)

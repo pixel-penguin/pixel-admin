@@ -17,19 +17,19 @@ class BlogsController extends Controller
     public function index(){
 		
 		
-		return view('admin.blogs.index');
+		return view('pixel-admin::admin.blogs.index');
 	}
 	
 	public function edit($id){
 		
 		
-		return view('admin.blogs.edit', ['blogId' => $id]);
+		return view('pixel-admin::admin.blogs.edit', ['blogId' => $id]);
 	}
 	
 	public function create(){
 		
 		
-		return view('admin.blogs.create');
+		return view('pixel-admin::admin.blogs.create');
 	}
 	
 	public function destroy($id)

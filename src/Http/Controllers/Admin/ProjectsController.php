@@ -17,19 +17,19 @@ class ProjectsController extends Controller
     public function index(){
 		
 		
-		return view('admin.projects.index');
+		return view('pixel-admin::admin.projects.index');
 	}
 	
 	public function edit($id){
 		
 		
-		return view('admin.projects.edit', ['projectId' => $id]);
+		return view('pixel-admin::admin.projects.edit', ['projectId' => $id]);
 	}
 	
 	public function create(){
 		
 		
-		return view('admin.projects.create');
+		return view('pixel-admin::admin.projects.create');
 	}
 	
 	public function destroy($id)

@@ -11,8 +11,8 @@ class Blog extends Model
         return $this->belongsToMany('PixelAdmin\Admin\Models\BlogCategory');
     }
 	
-	public function galleries()
+	public function gallery()
     {
-        return $this->belongsToMany('PixelAdmin\Admin\Models\BlogGallery');
+        return $this->hasMany('PixelAdmin\Admin\Models\BlogGallery');
     }
 }

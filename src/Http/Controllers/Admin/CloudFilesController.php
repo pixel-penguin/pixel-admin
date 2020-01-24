@@ -11,7 +11,7 @@ use Auth;
 
 use Cloudder;
 
-class TeamsController extends Controller
+class CloudFilesController extends Controller
 {
     public function index(){
 		

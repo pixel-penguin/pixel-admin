@@ -174,8 +174,9 @@
                     images_upload_url: '/admin/mcefileupload',
                     height: screenHeight - 200,        
                     
-                    link_assume_external_targets: true,                               
-                }"></editor>
+                }">
+                    <textarea></textarea>
+                </editor>
 
                 <div style="margin-top:10px; text-align:right">
                     <div @click="editContent = false" class="btn btn-primary">Apply</div>

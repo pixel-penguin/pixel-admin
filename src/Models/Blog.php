@@ -10,4 +10,9 @@ class Blog extends Model
     {
         return $this->belongsToMany('PixelAdmin\Admin\Models\BlogCategory');
     }
+	
+	public function galleries()
+    {
+        return $this->belongsToMany('PixelAdmin\Admin\Models\BlogGallery');
+    }
 }

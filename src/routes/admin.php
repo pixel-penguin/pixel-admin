@@ -91,4 +91,8 @@ Route::group([
 	Route::delete('projects/gallery/delete/{galleryId}','ProjectsController@deleteGallery');
 	Route::post('projects/gallery/upload', 'ProjectsController@uploadGallery');
 	Route::post('projects/gallery/order/{id}', 'ProjectsController@galleryOrder'); 
+	
+	
+	Route::get('cloudfiles', 'CloudFilesController@index'); 
+	
 });

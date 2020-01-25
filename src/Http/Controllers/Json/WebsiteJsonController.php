@@ -231,6 +231,66 @@ class WebsiteJsonController extends Controller
 		
 	}
 	
+	public function blogsFilter(Request $request, $pageNumber, $resultsPerPage, $categoryIds = 'all'){
+		
+		$input = $request->all();
+		
+		
+		$skip = ($pageNumber - 1) * $resultsPerPage;
+		
+		
+		$search = false;
+		if(isset($input['search'])){
+			$search = $input['search'];
+		}
+		
+		$blogs = Blog::select('blogs.*')
+		->leftJoin('blog_blog_category', 'blog_blog_category.blog_id', 'blogs.id')
+		
+		->where('blogs.active', true);
+		
+		if($categoryIds != 'all'){
+			$blogs->whereIn('blog_blog_category.blog_category_id', $categoryIds);	
+		}
+		
+		if($search != false){
+			$blogs->where(function ($q) use ($search){
+				$q->where('name', 'LIKE', "%$search%")
+				->orWhere('detail', 'LIKE', "%$search%");
+			});
+		}
+		
+		$blogs->skip($skip);
+		$blogs->limit($resultsPerPage);
+		
+		
+		$filteredBlogs = $blogs->get();
+		
+		
+		foreach($filteredBlogs as $blog){
+			if($blog->author == null || strlen($blog->author) < 1){
+				$blog->author = $blog->user->name;
+			}
+			
+			if(count($blog->gallery) > 0){
+				$blog->image_name = $blog->gallery()->orderBy('column_order')->first()->image_name;	
+			}
+			else{
+				$blog->image_name = false;
+			}
+			
+			$blog->detail_summary = substr(strip_tags($blog->detail), 0, 200);
+		}
+		
+		$response = array();
+		
+		$response['success'] = true;
+		$response['obj'] = $filteredBlogs;
+		
+		return $response;
+		
+	}
+	
 	public function getBlogDetail($id)
 	{
 		//die('hi');

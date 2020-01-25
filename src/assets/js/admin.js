@@ -84,6 +84,7 @@ Vue.component('admin-team-edit', require('./components/admin/teams/Edit.vue').de
 Vue.component('admin-calendar-list', require('./components/admin/calendars/List.vue').default);
 Vue.component('admin-calendar-edit', require('./components/admin/calendars/Edit.vue').default);
 
+Vue.component('admin-cloudfiles-index', require('./components/admin/cloudfiles/Index.vue').default);
 //Vue.component('concierge-settings-logo', require('./components/ConciergeSettingsLogo.vue')); move
 
 const app = new Vue({

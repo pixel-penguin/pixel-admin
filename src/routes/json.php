@@ -38,11 +38,12 @@ Route::group([
 	Route::get('testimonials/{unpublished}',  'WebsiteJsonController@testimonials');			//Get list of tesimonials published and unpublished ('Y' for parameter)
 	Route::get('testimonial/detail/{pageId}', 'WebsiteJsonController@getTestimonialDetail');	//Get get detail of testimonial
 	
-	Route::get('blogs',  'WebsiteJsonController@blogs');							//Get list of blogs
-	Route::get('blogs/{unpublished}',  'WebsiteJsonController@blogs');				//Get list of blogs published and unpublished (Y for parameter)
-	Route::get('blog/detail/{pageId}', 'WebsiteJsonController@getBlogDetail');	 	//Get blog detail
-	Route::get('blog/gallery/{id}',  'WebsiteJsonController@blogGallery');			//Get list of blog galleries	
-	Route::get('blogcategories/get',  'WebsiteJsonController@blogCategories'); 			//Get list of blog categories
+	//Route::get('blogs',  'WebsiteJsonController@blogs');																//Get list of blogs
+	Route::get('blogs/{unpublished?}',  'WebsiteJsonController@blogs');													//Get list of blogs published and unpublished (Y for parameter)
+	Route::get('blog/detail/{pageId}', 'WebsiteJsonController@getBlogDetail');	 										//Get blog detail
+	Route::get('blog/gallery/{id}',  'WebsiteJsonController@blogGallery');												//Get list of blog galleries	
+	Route::get('blogcategories/get',  'WebsiteJsonController@blogCategories'); 											//Get list of blog categories	
+	Route::post('blogs/filter/{pageNumber}/{resultsPerPage}/{categoryIds?}',  'WebsiteJsonController@blogsFilter'); 	//Get filtered list of blogs. Also use param "search" in order to filter it blogs (in name and detail)
 
 	Route::get('teams',  'WebsiteJsonController@teams');							//Get list of teams
 	Route::get('teams/{unpublished}',  'WebsiteJsonController@teams');			//Get list of tesimonials published and unpublished ('Y' for parameter)

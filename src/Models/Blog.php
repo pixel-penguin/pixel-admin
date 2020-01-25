@@ -15,4 +15,9 @@ class Blog extends Model
     {
         return $this->hasMany('PixelAdmin\Admin\Models\BlogGallery');
     }
+	
+	public function user()
+    {
+        return $this->hasOne('App\User','id','user_id');
+    }
 }

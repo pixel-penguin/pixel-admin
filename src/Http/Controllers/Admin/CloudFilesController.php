@@ -16,7 +16,7 @@ class CloudFilesController extends Controller
     public function index(){
 		
 		
-		return view('pixel-admin::admin.teams.index');
+		return view('pixel-admin::admin.cloudfiles.index');
 	}
 	
 	

@@ -2,7 +2,7 @@
 @section('content')
 	
 	<div class="content container-fluid">
-		<admin-team-list></admin-team-list>		
+		<admin-cloudfiles-index></admin-cloudfiles-index>		
 		
 	</div>
 	

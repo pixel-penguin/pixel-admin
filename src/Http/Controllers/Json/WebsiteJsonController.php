@@ -261,8 +261,9 @@ class WebsiteJsonController extends Controller
 			});
 		}
 		
-		$blogs->skip($skip);
-		$blogs->limit($resultsPerPage);
+		$blogs->orderBy('created_at', 'DESC')
+		->skip($skip)
+		->limit($resultsPerPage);
 		
 		
 		$filteredBlogs = $blogs->get();
@@ -281,6 +282,8 @@ class WebsiteJsonController extends Controller
 			}
 			
 			$blog->detail_summary = substr(strip_tags($blog->detail), 0, 200);
+			
+			$blog->blog_date = $blog->created_at->format('j F Y');
 		}
 		
 		$response = array();

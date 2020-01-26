@@ -16,6 +16,7 @@ use PixelAdmin\Admin\Models\BlogCategory;
 use PixelAdmin\Admin\Models\Calendar;
 use PixelAdmin\Admin\Models\CalendarGallery;
 use PixelAdmin\Admin\Models\CalendarCategory;
+use PixelAdmin\Admin\Models\CloudFile;
 
 use App\Mail\Contact;
 use Illuminate\Support\Facades\Mail;
@@ -453,7 +454,34 @@ class WebsiteJsonController extends Controller
 		//dd($netibleUsersMenu);
 	}
 	
+	public function cloudFiles($showUnPublished = false)
+	{
+		$cloudFiles = CloudFile::All();	
+		
+		$response = array();
+		
+		$response['success'] = true;
+		$response['obj'] = $cloudFiles;
+		
+		return $response;
+		
+	}
 	
+	
+	
+	public function downloadCloudFile($id){
+		
+		$cloudFile = CloudFile::whereId($id)->first();
+		
+		$urlToFile = 'https://res.cloudinary.com/'.env('CLOUDINARY_CLOUD_NAME').'/raw/upload/'.$cloudFile->file_name;
+		//echo $cloudFile->name.'.'.$cloudFile->file_extension;
+		
+		return response()->streamDownload(function() use ($urlToFile){
+			readfile($urlToFile);
+		}, $cloudFile->name.'.'.$cloudFile->file_extension);
+		
+		
+	}
 	
 	
 }

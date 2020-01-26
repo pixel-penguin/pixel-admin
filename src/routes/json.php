@@ -43,7 +43,7 @@ Route::group([
 	Route::get('blog/detail/{pageId}', 'WebsiteJsonController@getBlogDetail');	 										//Get blog detail
 	Route::get('blog/gallery/{id}',  'WebsiteJsonController@blogGallery');												//Get list of blog galleries	
 	Route::get('blogcategories/get',  'WebsiteJsonController@blogCategories'); 											//Get list of blog categories	
-	Route::post('blogs/filter/{pageNumber}/{resultsPerPage}/{categoryIds?}',  'WebsiteJsonController@blogsFilter'); 	//Get filtered list of blogs. Also use param "search" in order to filter it blogs (in name and detail)
+	Route::post('blogs/filter/{pageNumber}/{resultsPerPage}/{categoryIds?}',  'WebsiteJsonController@blogsFilter'); 	//Get filtered list of blogs. Also use param "search" in order to filter it in  blogs (in name and detail)
 
 	Route::get('teams',  'WebsiteJsonController@teams');							//Get list of teams
 	Route::get('teams/{unpublished}',  'WebsiteJsonController@teams');			//Get list of tesimonials published and unpublished ('Y' for parameter)
@@ -54,6 +54,9 @@ Route::group([
 	Route::get('calendar/detail/{pageId}', 'WebsiteJsonController@getCalendarDetail');	 	//Get calendar detail
 	Route::get('calendar/gallery/{id}',  'WebsiteJsonController@calendarGallery');			//Get list of calendar galleries	
 	Route::get('calendarcategories/get',  'WebsiteJsonController@calendarCategories'); 			//Get list of calendar categories
+	
+	Route::get('cloudfiles',  'WebsiteJsonController@cloudFiles'); 			//Get list of cloud files
+	
 });
 
 //Admin
@@ -79,3 +82,6 @@ Route::group([
 	
 	
 });
+
+
+Route::get('cloudfiles/download/{id}',  'PixelAdmin\Admin\Http\Controllers\Json\WebsiteJsonController@downloadCloudFile');	

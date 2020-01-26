@@ -43,6 +43,9 @@ Vue.use(Buefy) // for all
 //Vue.use(Table) // for buefy
 //Vue.use(Input)
 
+import VueClipboard from 'vue-clipboard2' 
+Vue.use(VueClipboard)
+
 
 import VueApexCharts from 'vue-apexcharts'
 Vue.use(VueApexCharts)

@@ -17,7 +17,7 @@ class CreateBlogsTable extends Migration
             $table->bigIncrements('id');
 			$table->integer('user_id');
 			$table->string('name', 100)->nullable();	
-			$table->string('tags', 100)->nullable();	
+			$table->longText('tags')->nullable();	
 			$table->longText('detail')->nullable();
 			$table->boolean('active')->default(false);
             $table->timestamps();

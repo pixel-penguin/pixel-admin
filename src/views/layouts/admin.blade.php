@@ -42,8 +42,8 @@
 			<div class="main-wrapper">
 				<div class="header">
 					<div class="header-left">
-						<a href="index.html" class="logo">
-							<img src="https://res.cloudinary.com/dhmwdhirs/image/upload/c_scale,h_100/v1548860524/logos/pixel-penguin/pixel_penguin_without_creative_solutions_dark-01.png" height="40" alt="">
+						<a href="/admin" class="logo">
+							<img style="max-height: 50px" src="https://res.cloudinary.com/dhmwdhirs/image/upload/c_scale,h_100/v1548860524/logos/pixel-penguin/pixel_penguin_without_creative_solutions_dark-01.png" height="40" alt="">
 						</a>
 					</div>
 					<div class="page-title-box pull-left">

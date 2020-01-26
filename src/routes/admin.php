@@ -94,5 +94,7 @@ Route::group([
 	
 	
 	Route::get('cloudfiles', 'CloudFilesController@index'); 
+	Route::post('cloudfiles/file/upload', 'CloudFilesController@uploadFile');
+	Route::delete('cloudfiles/{id}', 'CloudFilesController@destroy');
 	
 });

@@ -251,6 +251,7 @@ class WebsiteJsonController extends Controller
 		->where('blogs.active', true);
 		
 		if($categoryIds != 'all'){
+			$categoryIds = explode(",", $categoryIds);
 			$blogs->whereIn('blog_blog_category.blog_category_id', $categoryIds);	
 		}
 		

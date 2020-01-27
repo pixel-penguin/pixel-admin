@@ -29,6 +29,7 @@
                                             }"></editor>
                                 <div style="margin-top:10px" @click="pageContent.edit = false; saveContent(pageContent.id, pageContent.detail)" v-if="pageContent.edit" class="btn btn-primary">Save</div>                        
                                 <div @click="pageContent.edit = true" v-if="pageContent.edit == false" v-html="pageContent.detail"></div>
+                                <small v-if="pageContent.edit" style="float:right; margin-top:15px">If you wish to upload a file and attach it to the page <a target="_blank" href="/admin/cloudfiles">click here</a> to upload the file and link it here</small>
                             </div>
 
                             <div class="col-xs-2 col-sm-2 col-md-2">

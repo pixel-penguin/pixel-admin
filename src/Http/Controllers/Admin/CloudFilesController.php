@@ -57,12 +57,5 @@ class CloudFilesController extends Controller
 		return $response;
     }
 	
-	public function downloadCloudFile($id){
-		
-		$cloudFile = CloudFile::whereId($id)->first();
-		
-		
-		//return response()->download('https://res.cloudinary.com/pixel-penguin/image/upload/v1/websites/pixel-penguin/cloud-files/5d3-6018-lr-2-5jfif1580034478.jpg', $name, $headers);
-	}
 	
 }

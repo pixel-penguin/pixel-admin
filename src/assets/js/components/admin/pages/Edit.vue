@@ -179,6 +179,7 @@
                 </editor>
 
                 <div style="margin-top:10px; text-align:right">
+                    <small style="float:left">If you wish to upload a file and attach it to the page <a target="_blank" href="/admin/cloudfiles">click here</a> to upload the file and link it here</small>
                     <div @click="editContent = false" class="btn btn-primary">Apply</div>
                 </div>
             </template>

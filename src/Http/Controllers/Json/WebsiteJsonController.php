@@ -264,7 +264,8 @@ class WebsiteJsonController extends Controller
 		
 		$blogs->orderBy('created_at', 'DESC')
 		->skip($skip)
-		->limit($resultsPerPage);
+		->limit($resultsPerPage)
+		->groupBy('id');
 		
 		
 		$filteredBlogs = $blogs->get();
@@ -279,7 +280,7 @@ class WebsiteJsonController extends Controller
 				$blog->image_name = $blog->gallery()->orderBy('column_order')->first()->image_name;	
 			}
 			else{
-				$blog->image_name = false;
+				$blog->image_name = 'placeholders/placeholder-image';
 			}
 			
 			$blog->detail_summary = substr(strip_tags($blog->detail), 0, 200);

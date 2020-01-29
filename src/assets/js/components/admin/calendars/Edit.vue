@@ -11,8 +11,26 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Author (leave blank for your own name)</label>
-                        <input required class="form-control" type="text" v-model="calendar.author">
+                        <label>One Whole Day</label>
+                        <select required class="form-control" v-model="calendar.whole_day">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date and Time From</label>
+
+                        <date-time-picker v-model="calendar.date_from"></date-time-picker>
+
+                        <!--<input required class="form-control" type="text" v-model="calendar.date_from">-->
+                    </div>
+
+                    <div v-if="calendar.whole_day == false" class="form-group">
+                        <label>Date and Time To</label>
+                        
+                        <date-time-picker v-model="calendar.date_to"></date-time-picker>
+                        <!--<input required class="form-control" type="text" v-model="calendar.date_to">-->
                     </div>
 
                     <div class="form-group">
@@ -26,12 +44,14 @@
                         </multiselect>
                     </div>
 
+                    <!--
                     <div class="form-group">
                         <label>Tags</label>
 
                         <tags-input element-id="tags"
                         v-model="calendar.tags"></tags-input>
                     </div>
+                    -->
 
                     <div class="form-group">
                         <label>Content</label>
@@ -117,6 +137,10 @@
 </template>
 
 <script>
+    Date.prototype.addHours= function(h){
+        this.setHours(this.getHours()+h);
+        return this;
+    }
     
     import Multiselect from 'vue-multiselect'
     import Editor from '@tinymce/tinymce-vue';
@@ -142,7 +166,7 @@
                     date_from: null,
                     date_to: null,
                     multiple_days: null,
-                    whole_day: null
+                    whole_day: 1
                 },
                 successSound:new Audio('https://res.cloudinary.com/dhmwdhirs/video/upload/v1558165617/audio/admin-sounds/bigbox.mp3'),
 
@@ -239,11 +263,13 @@
         
                 axios.patch('/admin/calendars/'+self.calendar_id,{
                     name: self.calendar.name,
-                    tags: self.calendar.tags,
+                    //tags: self.calendar.tags,
                     active: self.calendar.active,
                     detail: self.calendar.detail,
                     calendar_category: self.calendarCategories,
-                    author: self.calendar.author
+                    whole_day: self.calendar.whole_day,
+                    date_from: new Date(self.calendar.date_from).addHours(2).toISOString().slice(0, 19).replace('T', ' '),
+                    date_to: new Date(self.calendar.date_to).addHours(2).toISOString().slice(0, 19).replace('T', ' ')
                 })
                 .then(response => {
                     
@@ -430,3 +456,4 @@
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style src="@voerro/vue-tagsinput/dist/style.css"></style>
+<style src="vue-vanilla-datetime-picker/dist/DateTimePicker.css"></style>

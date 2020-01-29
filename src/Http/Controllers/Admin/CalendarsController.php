@@ -17,19 +17,19 @@ class CalendarsController extends Controller
     public function index(){
 		
 		
-		return view('admin.calendars.index');
+		return view('pixel-admin::admin.calendars.index');
 	}
 	
 	public function edit($id){
 		
 		
-		return view('admin.calendars.edit', ['calendarId' => $id]);
+		return view('pixel-admin::admin.calendars.edit', ['calendarId' => $id]);
 	}
 	
 	public function create(){
 		
 		
-		return view('admin.calendars.create');
+		return view('pixel-admin::admin.calendars.create');
 	}
 	
 	public function destroy($id)
@@ -60,21 +60,28 @@ class CalendarsController extends Controller
 		//$calendar->position = $input['position'];
 		$calendar->detail = $input['detail'];
 		$calendar->active = $input['active'];
-		$calendar->author = $input['author'];
+		$calendar->whole_day = $input['whole_day'];
+		$calendar->date_from = $input['date_from'];
+		$calendar->date_to = $input['date_to'];
 		$calendar->user_id = Auth::user()->id;
 		
 		$cleanTags = array();
 		
-		foreach($input['tags'] as $tag){
-			$cleanTags[] = $tag['value'];
+		/*
+		if(isset($input['tags'])){
+			foreach($input['tags'] as $tag){
+				$cleanTags[] = $tag['value'];
+			}	
 		}
+		*/
 		
-		$calendar->tags = implode(',', $cleanTags);
+		//$calendar->tags = implode(',', $cleanTags);
 		
 		
 		$calendar->save();
 		
 		$calendar->categories()->detach();
+		
 		foreach($input['calendar_category'] as $category){
 			$calendar->categories()->attach($category['id']);
 		}
@@ -147,9 +154,9 @@ class CalendarsController extends Controller
            'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
        	]);
 
-       	$image_name = $request->file('image_name')->getRealPath();
+       	$image_name = $request->file('image_name');
 
-       	Cloudder::upload($image_name,  env('CLOUDINARY_BASE_FOLDER_PATH').'app_calendar_images/'.str_slug($image_name->getClientOriginalName()).time());
+       	Cloudder::upload($image_name->getRealPath(),  env('CLOUDINARY_BASE_FOLDER_PATH').'app_calendar_images/'.str_slug($image_name->getClientOriginalName()).time());
 		
 		$result = Cloudder::getResult();
 		
@@ -190,7 +197,7 @@ class CalendarsController extends Controller
 		$count = 0;
 		
 		foreach($input['calendarGallery'] as $gallery){
-			$galleryEntry = calendarGallery::whereId($gallery['id'])->first();
+			$galleryEntry = CalendarGallery::whereId($gallery['id'])->first();
 			$galleryEntry->column_order = $count;
 			$galleryEntry->save();
 			

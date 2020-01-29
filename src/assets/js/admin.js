@@ -46,6 +46,8 @@ Vue.use(Buefy) // for all
 import VueClipboard from 'vue-clipboard2' 
 Vue.use(VueClipboard)
 
+import DateTimePicker from 'vue-vanilla-datetime-picker';
+Vue.component('date-time-picker', DateTimePicker);
 
 import VueApexCharts from 'vue-apexcharts'
 Vue.use(VueApexCharts)

@@ -208,8 +208,14 @@ class PagesController extends Controller
 		$page->title = $input['title'];
 		$page->meta_description = $input['meta_description'];
 		$page->detail = $input['detail'];
-		$page->detail_summary = $input['detail_summary'];
-		$page->price = $input['price'];
+		
+		if(isset($input['detail_summary'])){
+			$page->detail_summary = $input['detail_summary'];	
+		}
+		if(isset($input['price'])){
+			$page->price = $input['price'];
+		}
+		
 		$page->no_link = $input['no_link'];
 		$page->active = $input['active'];
 		$page->hidden = $input['hidden'];

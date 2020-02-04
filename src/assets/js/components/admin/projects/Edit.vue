@@ -11,8 +11,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Author (leave blank for your own name)</label>
-                        <input class="form-control" type="text" v-model="project.author">
+                        <label>Small Summary</label>
+                        <input class="form-control" type="text" v-model="project.detail_summary">
                     </div>
 
                     <div class="form-group">
@@ -245,7 +245,7 @@
                     active: self.project.active,
                     detail: self.project.detail,
                     project_category: self.projectCategories,
-                    author: self.project.author
+                    detail_summary: self.project.detail_summary
                 })
                 .then(response => {
                     

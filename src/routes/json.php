@@ -57,6 +57,10 @@ Route::group([
 	
 	Route::get('cloudfiles',  'WebsiteJsonController@cloudFiles'); 			//Get list of cloud files
 	
+	Route::get('projects/{unpublished?}',  'WebsiteJsonController@projects');													//Get list of projects published and unpublished (Y for parameter)
+	Route::get('project/detail/{pageId}', 'WebsiteJsonController@getProjectDetail');	 										//Get project detail
+	Route::get('project/gallery/{id}',  'WebsiteJsonController@projectGallery');												//Get list of project galleries	
+	Route::get('projectcategories/get',  'WebsiteJsonController@projectCategories'); 											//Get list of project categories	
 });
 
 //Admin

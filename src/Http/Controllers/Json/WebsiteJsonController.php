@@ -13,6 +13,11 @@ use PixelAdmin\Admin\Models\Blog;
 use PixelAdmin\Admin\Models\BlogGallery;
 use PixelAdmin\Admin\Models\BlogCategory;
 
+
+use PixelAdmin\Admin\Models\Project;
+use PixelAdmin\Admin\Models\ProjectGallery;
+use PixelAdmin\Admin\Models\ProjectCategory;
+
 use PixelAdmin\Admin\Models\Calendar;
 use PixelAdmin\Admin\Models\CalendarGallery;
 use PixelAdmin\Admin\Models\CalendarCategory;
@@ -50,6 +55,16 @@ class WebsiteJsonController extends Controller
 		return $response;
 	}
 	
+	
+	/*
+	|--------------------------------------------------------------------------
+	| Page
+	|--------------------------------------------------------------------------
+	|
+	| Pages JSON
+	|
+	|--------------------------------------------------------------------------
+	*/
     public function pages($showUnPublished = 'N')
 	{
 		if($showUnPublished == 'Y'){
@@ -162,6 +177,16 @@ class WebsiteJsonController extends Controller
         return $tree;
 	}
 	
+	
+	/*
+	|--------------------------------------------------------------------------
+	| Testimonials
+	|--------------------------------------------------------------------------
+	|
+	| Testimonial JSON
+	|
+	|--------------------------------------------------------------------------
+	*/
 	public function testimonials($showUnPublished = false)
 	{
 		if($showUnPublished == true){
@@ -194,6 +219,16 @@ class WebsiteJsonController extends Controller
 		
         return $response;
 	}
+	
+	/*
+	|--------------------------------------------------------------------------
+	| Blogs
+	|--------------------------------------------------------------------------
+	|
+	| Blog JSON
+	|
+	|--------------------------------------------------------------------------
+	*/
 	
 	public function blogCategories()
 	{
@@ -339,6 +374,16 @@ class WebsiteJsonController extends Controller
 		//dd($netibleUsersMenu);
 	}
 	
+	
+	/*
+	|--------------------------------------------------------------------------
+	| Teams
+	|--------------------------------------------------------------------------
+	|
+	| Team JSON
+	|
+	|--------------------------------------------------------------------------
+	*/
 	public function teams($showUnPublished = false)
 	{
 		if($showUnPublished == true){
@@ -373,11 +418,15 @@ class WebsiteJsonController extends Controller
 	}
 	
 	
-	/*+++++++++++++++++++++++++++++++++++++++
-		
-		Calendars
-		
-	++++++++++++++++++++++++++++++++++++++++*/
+	/*
+	|--------------------------------------------------------------------------
+	| Calendars
+	|--------------------------------------------------------------------------
+	|
+	| Calendar JSON
+	|
+	|--------------------------------------------------------------------------
+	*/
 	
 	
 	public function calendarCategories()
@@ -459,6 +508,17 @@ class WebsiteJsonController extends Controller
 		//dd($netibleUsersMenu);
 	}
 	
+	
+	/*
+	|--------------------------------------------------------------------------
+	| Cloud Files
+	|--------------------------------------------------------------------------
+	|
+	| Cloud File JSON
+	|
+	|--------------------------------------------------------------------------
+	*/
+	
 	public function cloudFiles($showUnPublished = false)
 	{
 		$cloudFiles = CloudFile::All();	
@@ -488,5 +548,93 @@ class WebsiteJsonController extends Controller
 		
 	}
 	
+	/*
+	|--------------------------------------------------------------------------
+	| Projects
+	|--------------------------------------------------------------------------
+	|
+	| Project JSON
+	|
+	|--------------------------------------------------------------------------
+	*/
 	
+	public function projectCategories()
+	{
+		
+		$projectCategories = ProjectCategory::All();	
+		
+		
+		
+		
+		$response = array();
+		
+		$response['success'] = true;
+		$response['obj'] = $projectCategories;
+		
+		return $response;
+		
+	}
+	
+	public function projects($showUnPublished = false)
+	{
+		if($showUnPublished == true){
+			$projects = Project::All();	
+		}
+		else{
+			$projects = Project::where('active', true)->get();	
+		}
+		
+		
+		
+		$response = array();
+		
+		$response['success'] = true;
+		$response['obj'] = $projects;
+		
+		return $response;
+		
+	}
+	
+	
+	public function getProjectDetail($id)
+	{
+		//die('hi');
+		$projectDetail = Project::whereId($id)->with('categories')->first();
+				
+			
+		$projectDetail->simple_tags = explode(',', $projectDetail->tags);
+		
+		
+		$complicatedTags = array();
+		foreach($projectDetail->simple_tags as $key => $tag){
+			$complicatedTags[$key]['key'] = $key;
+			$complicatedTags[$key]['value'] = $tag;
+		}
+		
+		$projectDetail->tags = $complicatedTags;
+			
+		
+		$response = array();
+		
+		$response['success'] = true;
+		$response['obj'] = $projectDetail;
+		
+        return $response;
+	}
+	
+	
+	
+    public function projectGallery($id)
+	{
+		$gallery = ProjectGallery::where('project_id', $id)->orderBy('column_order')->get();
+		
+		$response = array();
+		
+		$response['success'] = true;
+		$response['obj'] = $gallery;
+		
+		return $response;
+		
+		//dd($netibleUsersMenu);
+	}
 }

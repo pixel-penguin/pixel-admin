@@ -86,6 +86,9 @@ Vue.component('admin-blog-edit', require('./components/admin/blogs/Edit.vue').de
 Vue.component('admin-team-list', require('./components/admin/teams/List.vue').default);
 Vue.component('admin-team-edit', require('./components/admin/teams/Edit.vue').default);
 
+Vue.component('admin-project-list', require('./components/admin/projects/List.vue').default);
+Vue.component('admin-project-edit', require('./components/admin/projects/Edit.vue').default);
+
 Vue.component('admin-calendar-list', require('./components/admin/calendars/List.vue').default);
 Vue.component('admin-calendar-edit', require('./components/admin/calendars/Edit.vue').default);
 

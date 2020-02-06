@@ -46,7 +46,7 @@
                                     <div v-for="galleryEntery in pageContent.gallery" v-bind:key="galleryEntery.id" class="col-xs-3 col-sm-3 col-md-3" style="text-align:center"> 
                                         <div style="background:#f7f7f7; padding-bottom:20px; margin-bottom:10px; border-radius:10px">
                                             <span @click="destroyGalleryFile(galleryEntery.id)" class="product-remove" title="remove" style="right:20px; top:0"><i class="fa fa-close"></i></span>
-                                            <img style="max-width:90%; margin-top:20px; border-radius:10px;" :src="'https://res.cloudinary.com/'+cloudinaryCloudName+'/image/upload/c_fill,h_'+pageContent.height+',w_'+pageContent.width+'/v1/'+galleryEntery.image_name+'.jpg'" />
+                                            <img style="max-width:90%; margin-top:20px; border-radius:10px;" :src="'https://res.cloudinary.com/'+cloudinaryCloudName+'/image/upload/c_fill,h_240,w_360/v1/'+galleryEntery.image_name+'.jpg'" />
                                         </div>
                                     </div>   
                                     <div class="col-xs-12 col-sm-12 col-md-12"> 

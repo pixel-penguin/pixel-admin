@@ -16,6 +16,16 @@
                     </div>
 
                     <div class="form-group">
+                        <label>Date Created</label>
+                        <datepicker :format="format" class="filterStatsProperty" v-model="project.date_created"></datepicker>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Url (include http://)</label>
+                        <input class="form-control" type="text" v-model="project.url">
+                    </div>
+
+                    <div class="form-group">
                         <label>Categories</label>
                         <multiselect
                             v-model="projectCategories"
@@ -121,6 +131,7 @@
     import Multiselect from 'vue-multiselect'
     import Editor from '@tinymce/tinymce-vue';
     import SimpleModal from 'simple-modal-vue'
+    import Datepicker from 'vuejs-datepicker';
 
     export default {
         name: 'Edit-Project',
@@ -150,14 +161,17 @@
                 tags: [],
 
                 screenHeight: null,
-                editContent: false
+                editContent: false,
+
+                format: 'yyyy-MM-dd',
             }
         },
         props: ['project_id_link'],
         components: { 
             Multiselect,
             'editor': Editor ,
-            SimpleModal 
+            SimpleModal, 
+            Datepicker 
         },
         mounted() {
             const self = this;
@@ -224,6 +238,8 @@
                     
                     self.project = data.obj;
 
+                    self.project.date_created = new Date(self.project.date_created);
+
                     self.project_id = self.project.id;
 
                     self.projectCategories = data.obj.categories;
@@ -244,6 +260,8 @@
                     tags: self.project.tags,
                     active: self.project.active,
                     detail: self.project.detail,
+                    date_created: self.project.date_created.toISOString().slice(0, 19).replace('T', ' '),
+                    url: self.project.url,
                     project_category: self.projectCategories,
                     detail_summary: self.project.detail_summary
                 })
@@ -432,3 +450,4 @@
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style src="@voerro/vue-tagsinput/dist/style.css"></style>
+

@@ -13,3 +13,11 @@
 
 
   @stop
+
+@section('style')
+<style>
+
+.filterStatsProperty input{ padding: 10px 20px;  border: 1px solid #CCC; border-radius:5px; width: 100% }
+
+</style>
+@endsection

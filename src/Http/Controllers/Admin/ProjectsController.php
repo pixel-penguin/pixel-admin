@@ -60,6 +60,8 @@ class ProjectsController extends Controller
 		//$project->position = $input['position'];
 		$project->detail = $input['detail'];
 		$project->active = $input['active'];
+		$project->date_created = $input['date_created'];
+		$project->url = $input['url'];
 		
 		if(isset($input['detail_summary'])){
 			$project->detail_summary = $input['detail_summary'];	

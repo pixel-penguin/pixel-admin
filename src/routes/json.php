@@ -61,6 +61,10 @@ Route::group([
 	Route::get('project/detail/{pageId}', 'WebsiteJsonController@getProjectDetail');	 										//Get project detail
 	Route::get('project/gallery/{id}',  'WebsiteJsonController@projectGallery');												//Get list of project galleries	
 	Route::get('projectcategories/get',  'WebsiteJsonController@projectCategories'); 											//Get list of project categories	
+	
+	Route::get('specials',  'WebsiteJsonController@specials');	
+	Route::get('specials/{unpublished}',  'WebsiteJsonController@specials');	
+	Route::get('special/detail/{pageId}', 'WebsiteJsonController@getSpecialDetail');	
 });
 
 //Admin

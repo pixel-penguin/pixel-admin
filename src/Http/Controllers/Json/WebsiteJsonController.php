@@ -23,6 +23,8 @@ use PixelAdmin\Admin\Models\CalendarGallery;
 use PixelAdmin\Admin\Models\CalendarCategory;
 use PixelAdmin\Admin\Models\CloudFile;
 
+use PixelAdmin\Admin\Models\Special;
+
 use App\Mail\Contact;
 use Illuminate\Support\Facades\Mail;
 
@@ -34,21 +36,26 @@ class WebsiteJsonController extends Controller
 		
 		$response = array();
 		
+		if(isset($input['telephone'])){
+			$telephoneMessage = 'My telephone number is '.$input['telephone'];
+		}
+		else{
+			$telephoneMessage = '';
+		}
+		
 		if($input['security1'] != $input['security2']){
 			$response['success'] = false;
 			$response['message'] = 'The security question you answered is wrong';
 		}
 		else{
-			$message = $input['message']. '<br><br> My email is '.$input['email'].'<br><br> Regards, <br><br> '.$input['name'];
+			$message = $input['message']. '<br><br>
+			My email is '.$input['email'].'<br><br>
+			'.$telephoneMessage.'<br><br>
+			Regards, <br><br> '.$input['name'];
 			$subject = $input['subject'];
 
-			//Mail::to('seabreeze@seabreeze.com.na')->send(new Contact($message, $subject));
 			Mail::to('gerrit@website-genius.com')->send(new Contact($message, $subject));
-			//Mail::to('maja@swakopmund.life')->send(new Contact($message, $subject));
-			//Mail::to('gerrit@website-genius.com')->send(new Contact($mail, $subject));
-
-
-
+			
 			$response['success'] = true;	
 		}		
 		
@@ -636,5 +643,38 @@ class WebsiteJsonController extends Controller
 		return $response;
 		
 		//dd($netibleUsersMenu);
+	}
+	
+	public function specials($showUnPublished = false)
+	{
+		if($showUnPublished == true){
+			$specials = Special::All();	
+		}
+		else{
+			$specials = Special::where('active', true)->get();	
+		}
+		
+		
+		
+		$response = array();
+		
+		$response['success'] = true;
+		$response['obj'] = $specials;
+		
+		return $response;
+		
+	}
+	
+	public function getSpecialDetail($specialId)
+	{
+		//die('hi');
+		$specialDetail = Special::whereId($specialId)->first();
+		
+		$response = array();
+		
+		$response['success'] = true;
+		$response['obj'] = $specialDetail;
+		
+        return $response;
 	}
 }

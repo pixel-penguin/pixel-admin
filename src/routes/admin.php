@@ -97,4 +97,9 @@ Route::group([
 	Route::post('cloudfiles/file/upload', 'CloudFilesController@uploadFile');
 	Route::delete('cloudfiles/{id}', 'CloudFilesController@destroy');
 	
+	
+	Route::resource('specials', 'SpecialsController');
+	Route::post('specials/activate',  'SpecialsController@activate');	
+	Route::post('specials/updateimage', 'SpecialsController@updateImage');
+	
 });

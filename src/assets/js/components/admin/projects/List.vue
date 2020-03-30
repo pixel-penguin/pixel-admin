@@ -13,91 +13,25 @@
             <div class="ui container">
                 <section>
                     <!--<input style="border:1px solid #CCC; padding:3px 10px; border-radius:10px; margin-bottom:10px" type="text" v-model="searchKey" placeholder="Filter Grab Voucher Here" />-->
-                    <b-table
-                        :data="projects"
-                        :paginated="isPaginated"
-                        :per-page="perPage"
-                        :current-page.sync="currentPage"
-                        :pagination-simple="isPaginationSimple"
-                        :default-sort-direction="defaultSortDirection"
-                        default-sort="name"
-                        detailed
-                        detail-key="id"
+                    <v-client-table :columns="columns" v-model="projects" :options="options">
                         
-                        :show-detail-icon="showDetailIcon"					
-                        >
+                        <!--<a slot="name" slot-scope="props" target="_blank" :href="props.row.name" class="glyphicon glyphicon-eye-open"></a>-->
 
-                        <template slot-scope="props" visible="props.row.name.includes(searchKey) == true">
-                            <b-table-column field="id" label="ID" width="40" sortable numeric>
-                                {{ props.row.id }}
-                            </b-table-column>
+                        <div slot="name" slot-scope="props">
+                            <p>{{props.row.name}}</p>
+                        </div>
 
-                            <b-table-column field="name" label="Name" sortable>
-                                <strong style="font-weight:normal">{{ props.row.name }}</strong>
-                            </b-table-column>
+                        <div slot="actions" slot-scope="props">
+                            <a :href="'/admin/projects/'+props.row.id+'/edit'" data-original-title="null" class=" has-tooltip">
+                                <i v-tooltip.top-center="'Edit this Calendar'" aria-hidden="true" class="fa fa-pencil-square-o" style="color: rgb(45, 150, 60);"></i>
+                            </a> 
+                            
+                            <i @click="destroyBlog(props.row.id)" v-tooltip.top-center="'Delete this Calendar'" style="color:#CB2225; cursor:pointer" class="fa fa-trash-o" aria-hidden="true"></i>
+                        </div>
 
-                            <b-table-column field="date" label="Created At" sortable centered>							
-                                {{ new Date(props.row.created_at).toLocaleDateString() }}							
-                            </b-table-column>
-
-                            <b-table-column label="Status">
-                                <div v-if="props.row.active == false" class="statusTag" style="background:#CB2225">inActive</div>
-                                <div v-if="props.row.active == true" class="statusTag" style="background:#2D963C">Active</div>
-                            </b-table-column>
-
-                            <b-table-column label="Action">
-                                <!--<a target="_blank" :href="'https://buddy.na/page/'+props.row.id"><i v-tooltip.top-center="'View Page'" style="color:#2D963C" class="fa fa-eye" aria-hidden="true"></i></a>-->
-                                <a v-tooltip.top-center="'Edit Project Content'" :href="'/admin/projects/'+props.row.id+'/edit'"><i style="color:#2D963C" class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                <!--<a :href="'/grabvoucher/addons/'+props.row.id" v-tooltip.top-center="'Edit Add-Ons like Audio Files and Keywords'"><i style="color:#2D963C" class="fa fa-plus-circle" aria-hidden="true"></i></a>-->
-
-                                <i @click="activate(props.row.id)" v-tooltip="'Published'" v-if="props.row.active == true" style="color:#2FC937; cursor:pointer" class="fa fa-check-square-o" aria-hidden="true"></i>
-                                <i @click="activate(props.row.id)" v-tooltip="'Not Published'" v-if="props.row.active == false" style="color: #C51515; cursor:pointer" class="fa fa-square-o" aria-hidden="true"></i>
                         
 
-                                <i @click="destroyProject(props.row.id)" v-tooltip.top-center="'Delete this Project'" style="color:#CB2225; cursor:pointer" class="fa fa-trash-o" aria-hidden="true"></i>
-                            </b-table-column>
-                        </template>
-
-                        <template slot="detail" slot-scope="props" visible="props.row.name.includes(searchKey) == true" >
-                            <article class="media">
-                                <div class="media-content">
-                                   
-                                    <div class="content">
-                                        <div style="float:left; margin-right:20px">
-                                            <img v-if="props.row.image_name != null && props.row.image_name.length > 3" :src="'https://res.cloudinary.com/'+cloudinaryCloudName+'/image/upload/c_fill,h_200,w_200/v1551874928/'+props.row.image_name+'.jpg'" />
-                                            <img v-else :src="'https://res.cloudinary.com/buddy-industries-cc/image/upload/c_fill,h_200,w_200/v1551874928/placeholder/placeholder.jpg'" />
-                                        </div>
-                                        <div style="float:left; line-height:200px" >
-
-                                            
-                                            <p-check  v-model="props.row.active" v-on:change="activate(props.row.id)" class="p-icon p-plain" toggle>
-                                                <i class="icon mdi mdi-eye" slot="extra"></i>
-                                                Published
-                                                <i class="icon mdi mdi-eye-off" slot="off-extra"></i>
-                                                <label slot="off-label">Unpublished</label>
-                                            </p-check>
-                                        </div>
-
-                                        <!--
-                                        <div style="float:right; line-height:200px">
-                                            <div @click="showQrCode(props.row.id)" class="btn btn-default"><i class="fa fa-qrcode"></i> View QR Code</div>
-                                            <div @click="showLinkCode(props.row.id)" class="btn btn-default"><i class="fa fa-link"></i> View Direct Link</div>
-
-                                            <div v-clipboard:copy="'https://buddy.na/page/'+props.row.id"
-                                                v-clipboard:success="linkCopied"											
-                                                class="btn btn-default"><i class="fa fa-link"></i> Copy Direct Link
-
-                                            </div>
-                                            
-                                        </div>
-                                        -->
-
-                                    </div>
-                                   
-                                </div>
-                            </article>
-                        </template>
-                    </b-table>
+                    </v-client-table>
                 </section>
             </div>
         </div>
@@ -113,6 +47,20 @@
         data(){
             return{
                 cloudinaryCloudName: null,
+
+                //table
+                columns:['name', 'actions'],
+                options: {
+                    headings: {
+                        name: 'Name',
+                        actions: 'Actions'
+                    },
+                    //editableColumns:['name'],
+                    sortable: ['name'],
+                    filterable: ['name']
+                },
+                projects:[],	
+                //end table
 
                 linkCopied:null,
 

@@ -34,17 +34,11 @@ Vue.use(VTooltip)
 import PrettyCheckbox from 'pretty-checkbox-vue';
 Vue.use(PrettyCheckbox);
 
-import Buefy from 'buefy' // to import all plugins
-//import Table from 'buefy/dist/components/table'
-//import Input from 'buefy/dist/components/input'
-import 'buefy/dist/buefy.css'
-
-Vue.use(Buefy) // for all
-//Vue.use(Table) // for buefy
-//Vue.use(Input)
-
 import VueClipboard from 'vue-clipboard2' 
 Vue.use(VueClipboard)
+
+import {ServerTable, ClientTable, Event} from 'vue-tables-2';
+Vue.use(ClientTable, {}, false, 'bootstrap3');
 
 import DateTimePicker from 'vue-vanilla-datetime-picker';
 Vue.component('date-time-picker', DateTimePicker);

@@ -16,19 +16,19 @@ class TestimonialsController extends Controller
     public function index(){
 		
 		
-		return view('admin.testimonials.index');
+		return view('pixel-admin::admin.testimonials.index');
 	}
 	
 	public function edit($id){
 		
 		
-		return view('admin.testimonials.edit', ['testimonialId' => $id]);
+		return view('pixel-admin::admin.testimonials.edit', ['testimonialId' => $id]);
 	}
 	
 	public function create(){
 		
 		
-		return view('admin.testimonials.create');
+		return view('pixel-admin::admin.testimonials.create');
 	}
 	
 	public function destroy($id)

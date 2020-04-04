@@ -1,6 +1,6 @@
 <?php
 
-namespace PixelAdmin\Admin\Models;
+namespace PixelPenguin\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,12 +8,12 @@ class Blog extends Model
 {
     public function categories()
     {
-        return $this->belongsToMany('PixelAdmin\Admin\Models\BlogCategory');
+        return $this->belongsToMany('PixelPenguin\Admin\Models\BlogCategory');
     }
 	
 	public function gallery()
     {
-        return $this->hasMany('PixelAdmin\Admin\Models\BlogGallery');
+        return $this->hasMany('PixelPenguin\Admin\Models\BlogGallery');
     }
 	
 	public function user()

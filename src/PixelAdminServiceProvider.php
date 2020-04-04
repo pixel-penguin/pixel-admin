@@ -1,6 +1,6 @@
 <?php
 
-namespace PixelAdmin\Admin;
+namespace PixelPenguin\Admin;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -17,7 +17,7 @@ class PixelAdminServiceProvider extends ServiceProvider{
 		$this->loadMigrationsFrom(__DIR__.'/database/migrations');
 		
 		
-		$this->app['router']->aliasMiddleware('checkifmainadmin', \PixelAdmin\Admin\Middleware\CheckIfMainAdmin::class);
+		$this->app['router']->aliasMiddleware('checkifmainadmin', \PixelPenguin\Admin\Middleware\CheckIfMainAdmin::class);
 		
 	}
 	

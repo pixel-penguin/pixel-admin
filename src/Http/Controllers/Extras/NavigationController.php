@@ -1,13 +1,13 @@
 <?php
 
-namespace PixelAdmin\Admin\Http\Controllers\Extras;
+namespace PixelPenguin\Admin\Http\Controllers\Extras;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Auth;
 
-use PixelAdmin\Admin\Models\Page;
+use PixelPenguin\Admin\Models\Page;
 
 use Cloudder;
 
@@ -16,13 +16,13 @@ class NavigationController extends Controller
 	/*
 		In order to call this funciton, you need to call something similar to this inside your template:<br>
 		
-		{!! PixelAdmin\Admin\Http\Controllers\Extras\NavigationController::initiate('website.mobile') !!} // website.mobile being the template. It is automatically inserted inside your navigation folder inside your views folder.
+		{!! PixelPenguin\Admin\Http\Controllers\Extras\NavigationController::initiate('website.mobile') !!} // website.mobile being the template. It is automatically inserted inside your navigation folder inside your views folder.
 
 	*/
 	public static function initiate ($template = 'navigation.website.layout1')
 	{
 		
-		$websiteJsonController = new \PixelAdmin\Admin\Http\Controllers\Json\WebsiteJsonController();
+		$websiteJsonController = new \PixelPenguin\Admin\Http\Controllers\Json\WebsiteJsonController();
 		
 		$pages = Page::where('active', true)->where('parent_id', 0)->with('children')->orderBy('column_order', 'ASC')->get();
 		

@@ -9,14 +9,14 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Hash;
 
 
-use PixelAdmin\Admin\Models\WebsiteDetail;
-use PixelAdmin\Admin\Models\HelperClasses\AdminFeatures;
+use PixelPenguin\Admin\Models\WebsiteDetail;
+use PixelPenguin\Admin\Models\HelperClasses\AdminFeatures;
 use Illuminate\Support\Facades\Route;
 
 //models
-use PixelAdmin\Admin\Models\UserMenu;
-use PixelAdmin\Admin\Models\User;
-use PixelAdmin\Admin\Models\UserRole;
+use PixelPenguin\Admin\Models\UserMenu;
+use PixelPenguin\Admin\Models\User;
+use PixelPenguin\Admin\Models\UserRole;
 
 class UsersController extends Controller
 {

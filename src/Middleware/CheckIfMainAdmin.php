@@ -1,6 +1,6 @@
 <?php
 
-namespace PixelAdmin\Admin\Middleware;
+namespace PixelPenguin\Admin\Middleware;
 
 use Illuminate\Support\Facades\Auth;
 

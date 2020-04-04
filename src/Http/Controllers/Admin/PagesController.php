@@ -1,16 +1,16 @@
 <?php
 
-namespace PixelAdmin\Admin\Http\Controllers\Admin;
+namespace PixelPenguin\Admin\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Auth;
 
-use PixelAdmin\Admin\Models\Page;
-use PixelAdmin\Admin\Models\PageGallery;
-use PixelAdmin\Admin\Models\PageContent;
-use PixelAdmin\Admin\Models\PageContentGallery;
+use PixelPenguin\Admin\Models\Page;
+use PixelPenguin\Admin\Models\PageGallery;
+use PixelPenguin\Admin\Models\PageContent;
+use PixelPenguin\Admin\Models\PageContentGallery;
 
 use Cloudder;
 

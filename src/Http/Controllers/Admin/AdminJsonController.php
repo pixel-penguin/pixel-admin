@@ -1,6 +1,6 @@
 <?php
 
-namespace PixelAdmin\Admin\Http\Controllers\Admin;
+namespace PixelPenguin\Admin\Http\Controllers\Admin;
 
 use Auth;
 
@@ -8,11 +8,11 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-use PixelAdmin\Admin\Models\AdminNavigation;
+use PixelPenguin\Admin\Models\AdminNavigation;
 
-use PixelAdmin\Admin\Models\PageType;
-use PixelAdmin\Admin\Models\PageContent;
-use PixelAdmin\Admin\Models\PageContentType;
+use PixelPenguin\Admin\Models\PageType;
+use PixelPenguin\Admin\Models\PageContent;
+use PixelPenguin\Admin\Models\PageContentType;
 
 class AdminJsonController extends Controller
 {

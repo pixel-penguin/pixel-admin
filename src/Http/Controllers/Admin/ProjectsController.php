@@ -1,12 +1,12 @@
 <?php
 
-namespace PixelAdmin\Admin\Http\Controllers\Admin;
+namespace PixelPenguin\Admin\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use PixelAdmin\Admin\Models\Project;
-use PixelAdmin\Admin\Models\ProjectGallery;
+use PixelPenguin\Admin\Models\Project;
+use PixelPenguin\Admin\Models\ProjectGallery;
 
 use Auth;
 
@@ -47,6 +47,8 @@ class ProjectsController extends Controller
 		
 		$input = $request->all();
 		
+		$redirect = false;
+		
 		//dd($input);
 		
 		if($id > 0){
@@ -54,6 +56,7 @@ class ProjectsController extends Controller
 		}
 		else{
 			$project = new Project();
+			$redirect = true;
 		}
 		
 		$project->name = $input['name'];
@@ -89,6 +92,7 @@ class ProjectsController extends Controller
 		
 		$response['success'] =  true;
 		$response['obj'] = $project;
+		$response['redirect'] = $redirect;
 		
 		return $response;
 	}

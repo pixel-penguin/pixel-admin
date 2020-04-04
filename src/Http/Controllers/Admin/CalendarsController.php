@@ -1,12 +1,12 @@
 <?php
 
-namespace PixelAdmin\Admin\Http\Controllers\Admin;
+namespace PixelPenguin\Admin\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use PixelAdmin\Admin\Models\Calendar;
-use PixelAdmin\Admin\Models\CalendarGallery;
+use PixelPenguin\Admin\Models\Calendar;
+use PixelPenguin\Admin\Models\CalendarGallery;
 
 use Auth;
 

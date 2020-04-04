@@ -22,7 +22,7 @@ Route::get('/', function () {
 Route::group([
 	'middleware'	=>	'web',
     'prefix'     	=> 	'json',
-	'namespace'		=> 	'PixelAdmin\Admin\Http\Controllers\Json',
+	'namespace'		=> 	'PixelPenguin\Admin\Http\Controllers\Json',
 
 	], function () {
 
@@ -65,13 +65,26 @@ Route::group([
 	Route::get('specials',  'WebsiteJsonController@specials');	
 	Route::get('specials/{unpublished}',  'WebsiteJsonController@specials');	
 	Route::get('special/detail/{pageId}', 'WebsiteJsonController@getSpecialDetail');	
+	
+	
+	Route::get('productcategories/{unpublished?}', 'WebsiteJsonController@productCategories');			//Get list of pages published and unpublished ('Y' for parameter)
+	Route::get('productcategories/detail/{pageId}', 'WebsiteJsonController@productCategoryDetail');		//Get Page Detail	
+
+	Route::get('products/{unpublished?}',  'WebsiteJsonController@products');													//Get list of products published and unpublished (Y for parameter)
+	Route::get('product/detail/{pageId}', 'WebsiteJsonController@getProductDetail');	 										//Get product detail
+	Route::get('product/gallery/{id}',  'WebsiteJsonController@productGallery');												//Get list of product galleries	
+	Route::get('productcategories/get',  'WebsiteJsonController@productCategories'); 											//Get list of product categories	
+	
+	Route::get('productcolors/get',  'WebsiteJsonController@ProductColors'); 											//Get list of product categories	
+	Route::get('productattributes/get',  'WebsiteJsonController@ProductAttributes'); 											//Get list of product categories	
+	
 });
 
 //Admin
 Route::group([
 	'middleware'	=>	['web', 'checkifmainadmin'],
     'prefix'     	=> 	'admin/json',
-	'namespace'		=> 	'PixelAdmin\Admin\Http\Controllers\Admin',
+	'namespace'		=> 	'PixelPenguin\Admin\Http\Controllers\Admin',
 
 	], function () {
 
@@ -92,4 +105,4 @@ Route::group([
 });
 
 
-Route::get('cloudfiles/download/{id}',  'PixelAdmin\Admin\Http\Controllers\Json\WebsiteJsonController@downloadCloudFile');	
+Route::get('cloudfiles/download/{id}',  'PixelPenguin\Admin\Http\Controllers\Json\WebsiteJsonController@downloadCloudFile');	

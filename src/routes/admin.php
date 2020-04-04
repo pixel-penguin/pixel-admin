@@ -26,7 +26,7 @@ Route::get('/tester', function () {
 */
 
 Route::group([
-	'namespace'		=> 	'PixelAdmin\Admin\Http\Controllers\Admin',
+	'namespace'		=> 	'PixelPenguin\Admin\Http\Controllers\Admin',
 	//'middleware'	=>	'auth',
 	'middleware'	=>	['web', 'checkifmainadmin'],
     'prefix'    	=> 	'admin',
@@ -101,5 +101,19 @@ Route::group([
 	Route::resource('specials', 'SpecialsController');
 	Route::post('specials/activate',  'SpecialsController@activate');	
 	Route::post('specials/updateimage', 'SpecialsController@updateImage');
+	
+	
+	Route::resource('productcategories', 'ProductCategoriesController');
+	Route::post('productcategories/activate',  'ProductCategoriesController@activate');	
+	Route::post('productcategories/order', 'ProductCategoriesController@orderProductCategories');
+	
+	Route::resource('products', 'ProductsController');
+	Route::post('products/activate',  'ProductsController@activate');	
+	Route::delete('products/gallery/delete/{galleryId}','ProductsController@deleteGallery');
+	Route::post('products/gallery/upload', 'ProductsController@uploadGallery');
+	Route::post('products/gallery/order/{id}', 'ProductsController@galleryOrder'); 
+	
+	Route::post('products/price/update', 'ProductsController@updatePrices'); 
+	
 	
 });

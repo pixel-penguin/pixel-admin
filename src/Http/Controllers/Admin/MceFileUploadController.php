@@ -1,6 +1,6 @@
 <?php
 
-namespace PixelAdmin\Admin\Http\Controllers\Admin;
+namespace PixelPenguin\Admin\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

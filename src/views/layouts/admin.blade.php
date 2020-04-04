@@ -63,7 +63,18 @@
 				</div>
 
 				<div>
-					<admin-navigation></admin-navigation>
+					<div class="sidebar" id="sidebar">
+						<div class="sidebar-inner slimscroll">
+							<div id="sidebar-menu" class="sidebar-menu">
+								<ul>
+
+									{!! PixelPenguin\Admin\Http\Controllers\Extras\AdminNavigationController::initiate() !!}
+
+								</ul>
+
+							</div>
+						</div>
+					</div>
 				</div>
 
 				<div class="page-wrapper">

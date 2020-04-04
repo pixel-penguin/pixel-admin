@@ -65,8 +65,8 @@ Vue.component('tags-input', VoerroTagsInput);
 Vue.component('admin-dashboard-analytics', require('./components/admin/dashboard/Analytics.vue').default);
 
 Vue.component('admin-navigation', require('./components/admin/layout/AdminNavigation.vue').default);
-Vue.component('admin-pages-list', require('./components/admin/pages/List.vue').default);
 
+Vue.component('admin-pages-list', require('./components/admin/pages/List.vue').default);
 Vue.component('admin-page-edit', require('./components/admin/pages/Edit.vue').default);
 Vue.component('admin-page-builder', require('./components/admin/pages/PageBuilder.vue').default);
 
@@ -91,6 +91,14 @@ Vue.component('admin-cloudfiles-index', require('./components/admin/cloudfiles/I
 
 Vue.component('admin-special-list', require('./components/admin/specials/List.vue').default);
 Vue.component('admin-special-edit', require('./components/admin/specials/Edit.vue').default);
+
+Vue.component('admin-product-categories-list', require('./components/admin/productcategories/List.vue').default);
+Vue.component('admin-product-categories-edit', require('./components/admin/productcategories/Edit.vue').default);
+
+
+Vue.component('admin-products-list', require('./components/admin/products/List.vue').default);
+Vue.component('admin-products-edit', require('./components/admin/products/Edit.vue').default);
+
 
 const app = new Vue({
     el: '#app'

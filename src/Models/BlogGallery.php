@@ -1,6 +1,6 @@
 <?php
 
-namespace PixelAdmin\Admin\Models;
+namespace PixelPenguin\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

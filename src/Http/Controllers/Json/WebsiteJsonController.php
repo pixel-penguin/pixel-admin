@@ -1,29 +1,37 @@
 <?php
 
-namespace PixelAdmin\Admin\Http\Controllers\Json;
+namespace PixelPenguin\Admin\Http\Controllers\Json;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use PixelAdmin\Admin\Models\Page;
-use PixelAdmin\Admin\Models\PageGallery;
-use PixelAdmin\Admin\Models\Testimonial;
-use PixelAdmin\Admin\Models\Team;
-use PixelAdmin\Admin\Models\Blog;
-use PixelAdmin\Admin\Models\BlogGallery;
-use PixelAdmin\Admin\Models\BlogCategory;
+use PixelPenguin\Admin\Models\Page;
+use PixelPenguin\Admin\Models\PageGallery;
+use PixelPenguin\Admin\Models\Testimonial;
+use PixelPenguin\Admin\Models\Team;
+use PixelPenguin\Admin\Models\Blog;
+use PixelPenguin\Admin\Models\BlogGallery;
+use PixelPenguin\Admin\Models\BlogCategory;
 
 
-use PixelAdmin\Admin\Models\Project;
-use PixelAdmin\Admin\Models\ProjectGallery;
-use PixelAdmin\Admin\Models\ProjectCategory;
+use PixelPenguin\Admin\Models\Project;
+use PixelPenguin\Admin\Models\ProjectGallery;
+use PixelPenguin\Admin\Models\ProjectCategory;
 
-use PixelAdmin\Admin\Models\Calendar;
-use PixelAdmin\Admin\Models\CalendarGallery;
-use PixelAdmin\Admin\Models\CalendarCategory;
-use PixelAdmin\Admin\Models\CloudFile;
+use PixelPenguin\Admin\Models\Calendar;
+use PixelPenguin\Admin\Models\CalendarGallery;
+use PixelPenguin\Admin\Models\CalendarCategory;
+use PixelPenguin\Admin\Models\CloudFile;
 
-use PixelAdmin\Admin\Models\Special;
+use PixelPenguin\Admin\Models\Special;
+
+use PixelPenguin\Admin\Models\Product;
+use PixelPenguin\Admin\Models\ProducttGallery;
+use PixelPenguin\Admin\Models\ProductCategory;
+
+use PixelPenguin\Admin\Models\ProductColor;
+use PixelPenguin\Admin\Models\ProductAttribute;
+use PixelPenguin\Admin\Models\ProductGallery;
 
 use App\Mail\Contact;
 use Illuminate\Support\Facades\Mail;
@@ -157,9 +165,13 @@ class WebsiteJsonController extends Controller
 			}
 			$childs[$item['parent_id']][] = &$item;
 			
+			/*
 			if(!isset($item['children'])){
 				 $item['children'] = array();
 			}
+			*/
+			
+			$item['label'] = $item['name'];
 		}
 		unset($item);
 
@@ -169,6 +181,7 @@ class WebsiteJsonController extends Controller
 		foreach($tableArray as &$item) if (isset($childs[$item['id']]))
 		{ 
 			//dd($childs);
+			
 			$item['children'] = $childs[$item['id']];
 			$item['has_children'] = true;
 			unset($item);
@@ -676,5 +689,182 @@ class WebsiteJsonController extends Controller
 		$response['obj'] = $specialDetail;
 		
         return $response;
+	}
+	
+	
+	/*
+	|--------------------------------------------------------------------------
+	| Product Categories
+	|--------------------------------------------------------------------------
+	|
+	| Product Categories JSON
+	|
+	|--------------------------------------------------------------------------
+	*/
+    public function productCategories($showUnPublished = 'N')
+	{
+		if($showUnPublished == 'Y'){
+			$productCategories = ProductCategory::All();	
+		}
+		else{
+			$productCategories = ProductCategory::All();	
+		}
+		
+		$netibleUsersMenu = $this->createArrayOfNestible($productCategories->toArray());
+		
+		foreach($netibleUsersMenu as $key => $menu)
+		{
+			//$netibleUsersMenu[$key]['has_children'] = false;
+			
+			if(isset($menu['children'][0]))
+			{
+				//$netibleUsersMenu[$key]['has_children'] = true;
+			}
+			
+			
+		}
+		
+		$response = array();
+		
+		$response['success'] = true;
+		$response['obj'] = $netibleUsersMenu;
+		
+		return $response;
+		
+		//dd($netibleUsersMenu);
+	}
+    public function productCategoryDetail($productCategoryId)
+	{
+		$productCategory = ProductCategory::whereId($productCategoryId)->first();
+		
+		$response = array();
+		
+		$response['success'] = true;
+		$response['obj'] = $productCategory;
+		
+		return $response;
+		
+		//dd($netibleUsersMenu);
+	}
+	
+	/*
+	|--------------------------------------------------------------------------
+	| Products
+	|--------------------------------------------------------------------------
+	|
+	| Product JSON
+	|
+	|--------------------------------------------------------------------------
+	*/
+	public function getProductDetail($id)
+	{
+		//die('hi');
+		$productDetail = Product::whereId($id)->with('category')->with('colors')->with('attributes')->first();
+				
+		$productDetail->prices = $productDetail->prices()->where('active', true)->get();
+		
+		foreach($productDetail->attributes()->withPivot('value')->get() as $keyOne => $attribute ){
+			
+			
+			$attribute->attribute_expanded = explode(',', $attribute->pivot->value);
+			//dd($attribute->toArray());
+			$complicatedValue = array();
+			foreach($attribute->attribute_expanded as $key => $attributeExpandedEntries){
+				
+				$complicatedValue[$key]['key'] = $key;
+				$complicatedValue[$key]['value'] = $attributeExpandedEntries;
+			}	
+			
+			$attribute->value = $complicatedValue;
+			
+			$productDetail->attributes[$keyOne]->value = $complicatedValue;
+		}
+		
+		
+		//dd($productDetail->toArray());
+		
+			
+		$productDetail->simple_tags = explode(',', $productDetail->tags);
+		
+		
+		$complicatedTags = array();
+		foreach($productDetail->simple_tags as $key => $tag){
+			$complicatedTags[$key]['key'] = $key;
+			$complicatedTags[$key]['value'] = $tag;
+		}
+		
+		$productDetail->tags = $complicatedTags;
+			
+		
+		$response = array();
+		
+		$response['success'] = true;
+		$response['obj'] = $productDetail;
+		
+        return $response;
+	}
+	
+	public function ProductColors()
+	{
+		
+		$productColors = ProductColor::All();	
+		
+		$response = array();
+		
+		$response['success'] = true;
+		$response['obj'] = $productColors;
+		
+		return $response;
+		
+		//dd($netibleUsersMenu);
+	}
+	
+	public function ProductAttributes()
+	{
+		
+		$productAttributes = ProductAttribute::All();	
+		
+		$response = array();
+		
+		$response['success'] = true;
+		$response['obj'] = $productAttributes;
+		
+		return $response;
+		
+		//dd($netibleUsersMenu);
+	}
+	
+	public function productGallery($id)
+	{
+		$gallery = ProductGallery::where('product_id', $id)->orderBy('column_order')->get();
+		
+		$response = array();
+		
+		$response['success'] = true;
+		$response['obj'] = $gallery;
+		
+		return $response;
+		
+		//dd($netibleUsersMenu);
+	}
+	
+	public function products($showUnPublished = false)
+	{
+		if($showUnPublished == true){
+			$products = Product::All();	
+		}
+		else{
+			$products = Product::where('active', true)->get();	
+		}
+		
+		
+		
+		$response = array();
+		
+		$response['success'] = true;
+		$response['obj'] = $products;
+		
+		return $response;
+		
 	}
 }

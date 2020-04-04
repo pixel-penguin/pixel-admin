@@ -1,12 +1,12 @@
 <?php
 
-namespace PixelAdmin\Admin\Http\Controllers\Admin;
+namespace PixelPenguin\Admin\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use PixelAdmin\Admin\Models\Blog;
-use PixelAdmin\Admin\Models\BlogGallery;
+use PixelPenguin\Admin\Models\Blog;
+use PixelPenguin\Admin\Models\BlogGallery;
 
 use Auth;
 

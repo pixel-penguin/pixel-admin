@@ -1,6 +1,6 @@
 <?php
 
-namespace PixelAdmin\Admin\Http\Controllers\Admin;
+namespace PixelPenguin\Admin\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use PixelAdmin\Admin\Models\WebsiteDetail;
-use PixelAdmin\Admin\Models\HelperClasses\AdminFeatures;
+use PixelPenguin\Admin\Models\WebsiteDetail;
+use PixelPenguin\Admin\Models\HelperClasses\AdminFeatures;
 
 use Illuminate\Support\Facades\Route;
 

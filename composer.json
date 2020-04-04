@@ -19,7 +19,7 @@
 	"extra": {
 		"laravel": {
 			"providers": [
-				"PixelAdmin\\Admin\\PixelAdminServiceProvider"
+				"PixelPenguin\\Admin\\PixelAdminServiceProvider"
 			]
 		}
 	}

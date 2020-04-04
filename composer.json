@@ -13,7 +13,7 @@
     "require": {},
 	"autoload": {
         "psr-4": {
-            "PixelAdmin\\Admin\\": "src/"
+            "PixelPenguin\\Admin\\": "src/"
         }
     },
 	"extra": {

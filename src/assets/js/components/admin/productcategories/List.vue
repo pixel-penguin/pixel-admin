@@ -123,7 +123,7 @@ import SimpleModal from 'simple-modal-vue'
             getAllProductCategories(){
                 const self = this;
 
-                axios.get('/json/productcategories/Y')
+                axios.get('/json/productcategories/Y/1')
                 .then(response => {
                     //console.log(response);
 

@@ -13,7 +13,7 @@ class MceFileUploadController extends Controller
 		$input = $request->all();
 		
 		$this->validate($request,[
-           'file'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
+           'file'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 50000',
        	]);
 			
        	$file = $request->file('file')->getRealPath();

@@ -38,6 +38,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label>Url</label>
+                        <input class="form-control" type="text" v-model="special.url">
+                    </div>
+
+                    <div class="form-group">
                         <label>Time</label>
                         <input required class="form-control" type="text" v-model="special.time">
                     </div>
@@ -85,6 +90,7 @@
                     time: null,
                     detail:null,
                     active: false,
+                    url: null
                 },
                 successSound:new Audio('https://res.cloudinary.com/dhmwdhirs/video/upload/v1558165617/audio/admin-sounds/bigbox.mp3')
             }
@@ -180,7 +186,8 @@
                     price: self.special.price,
                     time: self.special.time,
                     active: self.special.active,
-                    detail: self.special.detail
+                    detail: self.special.detail,
+                    url: self.special.url
                 })
                 .then(response => {
                     

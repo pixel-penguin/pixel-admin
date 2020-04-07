@@ -97,7 +97,7 @@ class NavigationController extends Controller
 				
 				$currentPage = false;
 				
-				$menu .= view('navigation.'.$template, ['currentPage' => $currentPage, 'hasChildren' => $hasChildren, 'isMainParent' => $isMainParent, 'id' => $collectionEntry->id, 'name' => $collectionEntry->name, 'link' => $link, 'sub' => $sub]);
+				$menu .= view($template, ['navigation' => $collectionEntry, 'currentPage' => $currentPage, 'hasChildren' => $hasChildren, 'isMainParent' => $isMainParent, 'id' => $collectionEntry->id, 'name' => $collectionEntry->name, 'link' => $link, 'sub' => $sub]);
 				
 			}             
 

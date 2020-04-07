@@ -1,10 +1,10 @@
 /*
 Error: File to import not found or unreadable: node_modules/font-awesome/scss/font-awesome.scss.
        Load paths:
-         F:/Adobe Creative Suite/Adobe Dreamweaver CC 2019/Configuration/SassFrameworks/bourbon
-         F:/Adobe Creative Suite/Adobe Dreamweaver CC 2019/Configuration/SassFrameworks/neat
-         F:/Adobe Creative Suite/Adobe Dreamweaver CC 2019/Configuration/SassFrameworks/base
-        on line 11 of F:\workspace\pixel-penguin.com\pixel-admin\admin\src\assets\sass\admin.scss
+         C:/Program Files/Adobe/Adobe Dreamweaver 2020/Configuration/SassFrameworks/bourbon
+         C:/Program Files/Adobe/Adobe Dreamweaver 2020/Configuration/SassFrameworks/neat
+         C:/Program Files/Adobe/Adobe Dreamweaver 2020/Configuration/SassFrameworks/base
+        on line 11 of F:\workspace\demo.pixel-penguin.com\pixel-penguin\admin\src\assets\sass\admin.scss
 
 6: @import "variables";
 7: 
@@ -19,7 +19,7 @@ Error: File to import not found or unreadable: node_modules/font-awesome/scss/fo
 16: 
 
 Backtrace:
-F:\workspace\pixel-penguin.com\pixel-admin\admin\src\assets\sass\admin.scss:11
+F:\workspace\demo.pixel-penguin.com\pixel-penguin\admin\src\assets\sass\admin.scss:11
 C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.4.0/gems/sass-3.5.3/lib/sass/tree/import_node.rb:67:in `rescue in import'
 C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.4.0/gems/sass-3.5.3/lib/sass/tree/import_node.rb:45:in `import'
 C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/lib/ruby/gems/2.4.0/gems/sass-3.5.3/lib/sass/tree/import_node.rb:28:in `imported_file'
@@ -56,4 +56,4 @@ C:/Program Files/Adobe/Adobe Dreamweaver 2020/ruby/bin/sass:23:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: node_modules/font-awesome/scss/font-awesome.scss.\A        Load paths:\A          F:/Adobe Creative Suite/Adobe Dreamweaver CC 2019/Configuration/SassFrameworks/bourbon\A          F:/Adobe Creative Suite/Adobe Dreamweaver CC 2019/Configuration/SassFrameworks/neat\A          F:/Adobe Creative Suite/Adobe Dreamweaver CC 2019/Configuration/SassFrameworks/base\A         on line 11 of F:\workspace\pixel-penguin.com\pixel-admin\admin\src\assets\sass\admin.scss\A \A 6: @import \"variables\";\A 7: \A 8: // Bootstrap\A 9: //@import '~bootstrap/scss/bootstrap';\A 10: \A 11: @import \"node_modules/font-awesome/scss/font-awesome.scss\";\A 12: \A 13: @import '~pretty-checkbox/src/pretty-checkbox.scss';\A 14: \A 15: @import \"node_modules/@mdi/font/scss/materialdesignicons.scss\"; \A 16: "; }
+  content: "Error: File to import not found or unreadable: node_modules/font-awesome/scss/font-awesome.scss.\A        Load paths:\A          C:/Program Files/Adobe/Adobe Dreamweaver 2020/Configuration/SassFrameworks/bourbon\A          C:/Program Files/Adobe/Adobe Dreamweaver 2020/Configuration/SassFrameworks/neat\A          C:/Program Files/Adobe/Adobe Dreamweaver 2020/Configuration/SassFrameworks/base\A         on line 11 of F:\workspace\demo.pixel-penguin.com\pixel-penguin\admin\src\assets\sass\admin.scss\A \A 6: @import \"variables\";\A 7: \A 8: // Bootstrap\A 9: //@import '~bootstrap/scss/bootstrap';\A 10: \A 11: @import \"node_modules/font-awesome/scss/font-awesome.scss\";\A 12: \A 13: @import '~pretty-checkbox/src/pretty-checkbox.scss';\A 14: \A 15: @import \"node_modules/@mdi/font/scss/materialdesignicons.scss\"; \A 16: "; }

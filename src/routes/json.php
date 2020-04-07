@@ -66,9 +66,9 @@ Route::group([
 	Route::get('specials/{unpublished}',  'WebsiteJsonController@specials');	
 	Route::get('special/detail/{pageId}', 'WebsiteJsonController@getSpecialDetail');	
 	
+	Route::get('productcategories/detail/{pageId}', 'WebsiteJsonController@productCategoryDetail');								//Get Page Detail	
+	Route::get('productcategories/{unpublished?}/{createChildren?}', 'WebsiteJsonController@productCategories');				//Get list of pages published and unpublished ('Y' for parameter)
 	
-	Route::get('productcategories/{unpublished?}', 'WebsiteJsonController@productCategories');			//Get list of pages published and unpublished ('Y' for parameter)
-	Route::get('productcategories/detail/{pageId}', 'WebsiteJsonController@productCategoryDetail');		//Get Page Detail	
 
 	Route::get('products/{unpublished?}',  'WebsiteJsonController@products');													//Get list of products published and unpublished (Y for parameter)
 	Route::get('product/detail/{pageId}', 'WebsiteJsonController@getProductDetail');	 										//Get product detail

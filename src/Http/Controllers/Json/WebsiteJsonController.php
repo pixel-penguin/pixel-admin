@@ -102,7 +102,7 @@ class WebsiteJsonController extends Controller
 		
 		//dd($pages);
 		
-		$netibleUsersMenu = $this->createArrayOfNestible($pages->toArray());
+		$netibleUsersMenu = $this->createArrayOfNestible($pages->toArray(), true);
 		
 		foreach($netibleUsersMenu as $key => $menu)
 		{
@@ -152,7 +152,7 @@ class WebsiteJsonController extends Controller
 		
 		//dd($netibleUsersMenu);
 	}
-	private function createArrayOfNestible($tableArray)
+	private function createArrayOfNestible($tableArray, $showChildren = false)
 	{
 		$tree = array();
 		$childs = array();    
@@ -165,11 +165,14 @@ class WebsiteJsonController extends Controller
 			}
 			$childs[$item['parent_id']][] = &$item;
 			
-			/*
-			if(!isset($item['children'])){
-				 $item['children'] = array();
+			
+			if($showChildren){
+				if(!isset($item['children'])){
+					 $item['children'] = array();
+				}	
 			}
-			*/
+			
+			
 			
 			$item['label'] = $item['name'];
 		}
@@ -701,7 +704,7 @@ class WebsiteJsonController extends Controller
 	|
 	|--------------------------------------------------------------------------
 	*/
-    public function productCategories($showUnPublished = 'N')
+    public function productCategories($showUnPublished = 'N', $productChildrenShow = false)
 	{
 		if($showUnPublished == 'Y'){
 			$productCategories = ProductCategory::All();	
@@ -710,7 +713,7 @@ class WebsiteJsonController extends Controller
 			$productCategories = ProductCategory::All();	
 		}
 		
-		$netibleUsersMenu = $this->createArrayOfNestible($productCategories->toArray());
+		$netibleUsersMenu = $this->createArrayOfNestible($productCategories->toArray(), $productChildrenShow);
 		
 		foreach($netibleUsersMenu as $key => $menu)
 		{

@@ -125,7 +125,7 @@ class ProjectsController extends Controller
 		$input = $request->all();
 		
 		$this->validate($request,[
-           'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
+           'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 50000',
        	]);
 
        	$image_name = $request->file('image_name');
@@ -154,7 +154,7 @@ class ProjectsController extends Controller
 		$input = $request->all();
 		
 		$this->validate($request,[
-           'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
+           'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 50000',
        	]);
 
        	$image_name = $request->file('image_name');

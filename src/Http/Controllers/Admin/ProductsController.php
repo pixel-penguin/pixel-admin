@@ -72,6 +72,9 @@ class ProductsController extends Controller
 		$product->colors()->detach();
 		
 		if(isset($input['colors'])){
+			
+			sort($input['colors']);
+			
 			foreach($input['colors'] as $color){
 
 				$product->colors()->attach($color['id']);
@@ -83,6 +86,9 @@ class ProductsController extends Controller
 		$product->attributes()->detach();
 		
 		if(isset($input['attributes'])){
+			
+			sort($input['attributes']);
+			
 			foreach($input['attributes'] as $attribute){
 				//dd($attribute);
 				$cleanTags = array();
@@ -308,7 +314,7 @@ class ProductsController extends Controller
 		$input = $request->all();
 		
 		$this->validate($request,[
-           'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
+           'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 50000',
        	]);
 
        	$image_name = $request->file('image_name');
@@ -337,7 +343,7 @@ class ProductsController extends Controller
 		$input = $request->all();
 		
 		$this->validate($request,[
-           'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
+           'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 50000',
        	]);
 
        	$image_name = $request->file('image_name');

@@ -60,6 +60,7 @@ class SpecialsController extends Controller
 		$special->time = $input['time'];
 		$special->detail = $input['detail'];
 		$special->active = $input['active'];
+		$special->url = $input['url'];
 		$special->user_id = Auth::user()->id;
 		
 		$special->save();
@@ -100,7 +101,7 @@ class SpecialsController extends Controller
 		$input = $request->all();
 		
 		$this->validate($request,[
-           'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
+           'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 50000',
        	]);
 
        	$image_name = $request->file('image_name');

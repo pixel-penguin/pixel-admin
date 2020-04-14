@@ -49,7 +49,25 @@
 
                     <div class="form-group">
                         <label>Description</label>
-                        <textarea required class="form-control" type="text" v-model="special.detail"></textarea>
+                       
+                        <editor 
+                        v-model="special.detail"
+                        api-key="9tv5nzovtpredmv4b778na7pauhqz7n3rk4pviia6wla45v2" 
+                        :init="{
+                            browser_spellcheck: true,
+                            plugins: 'wordcount, image, media, link, table, lists, code', 
+                            //menubar: 'insert',
+                            toolbar: 'image, media, link, table, numlist bullist, code',
+                            file_picker_types: 'file image media',
+                            //extended_valid_elements: 'svg[*],defs[*],pattern[*],desc[*],metadata[*],g[*],mask[*],path[*],line[*],marker[*],rect[*],circle[*],ellipse[*],polygon[*],polyline[*],linearGradient[*],radialGradient[*],stop[*],image[*],view[*],text[*],textPath[*],title[*],tspan[*],glyph[*],symbol[*],switch[*],use[*]',
+                            file_browser_callback_types: 'file image media',
+                            automatic_uploads: true,
+                            images_upload_url: '/admin/mcefileupload',
+                            height: 300,        
+                            
+                        }">   <textarea></textarea>
+                        </editor>
+
                     </div>
 
                     <div class="form-group">
@@ -73,6 +91,8 @@
 
 <script>
 
+    import Editor from '@tinymce/tinymce-vue';
+
     export default {
         name: 'Edit-Special',
         data(){
@@ -94,6 +114,9 @@
                 },
                 successSound:new Audio('https://res.cloudinary.com/dhmwdhirs/video/upload/v1558165617/audio/admin-sounds/bigbox.mp3')
             }
+        },
+        components: {
+            'editor': Editor
         },
         props: ['special_id_link'],
         mounted() {

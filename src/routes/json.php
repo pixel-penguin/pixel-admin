@@ -71,7 +71,7 @@ Route::group([
 	
 
 	Route::get('products/{unpublished?}',  'WebsiteJsonController@products');													//Get list of products published and unpublished (Y for parameter)
-	Route::get('product/detail/{pageId}', 'WebsiteJsonController@getProductDetail');	 										//Get product detail
+	Route::get('product/detail/{productId}', 'WebsiteJsonController@getProductDetail');	 										//Get product detail
 	Route::get('product/gallery/{id}',  'WebsiteJsonController@productGallery');												//Get list of product galleries	
 	Route::get('productcategories/get',  'WebsiteJsonController@productCategories'); 											//Get list of product categories	
 	

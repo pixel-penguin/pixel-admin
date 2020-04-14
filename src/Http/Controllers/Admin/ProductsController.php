@@ -66,6 +66,7 @@ class ProductsController extends Controller
 		$product->link_name =  str_slug($product->name, '-').'-'.$product->id;
 		$product->brand = $input['brand'];
 		$product->product_category_id = $input['product_category_id'];
+		$product->detail_summary = $input['detail_summary'];
 		
 		//step 2
 		

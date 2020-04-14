@@ -762,9 +762,11 @@ class WebsiteJsonController extends Controller
 	public function getProductDetail($id)
 	{
 		//die('hi');
-		$productDetail = Product::whereId($id)->with('category')->with('colors')->with('attributes')->first();
-				
-		$productDetail->prices = $productDetail->prices()->where('active', true)->get();
+		$productDetail = Product::whereId($id)->with('category')->with('colors')->with('attributes')->with('gallery')->with('prices.keywords')->first();
+			
+		foreach($productDetail->prices as $price){
+			$price->keywordsArray = $price->keywordsArray();
+		}
 		
 		foreach($productDetail->attributes()->withPivot('value')->get() as $keyOne => $attribute ){
 			

@@ -140,7 +140,13 @@
             <div v-if="step == 3">
                 <form @submit="updateProduct">
                     
-                    
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Summary</label>
+                            <textarea required class="form-control" v-model="product.detail_summary"></textarea>
+                        </div>
+                    </div>
+
                     <div class="col-md-12">
 
                         <div class="form-group">
@@ -356,6 +362,7 @@
                     tags: [],
 
                     //step3
+                    detail_summary: '',
                     detail: 'Please add product detail',
 
                     //step 6
@@ -565,7 +572,8 @@
 
                     //step 6
                     featured: self.product.featured,
-                    active: self.product.active
+                    active: self.product.active,
+                    detail_summary: self.product.detail_summary
 
                 })
                 .then(response => {

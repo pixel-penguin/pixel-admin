@@ -8,7 +8,7 @@ class Product extends Model
 {
 	public function prices()
     {
-        return $this->hasMany('PixelPenguin\Admin\Models\ProductPrice');
+        return $this->hasMany('PixelPenguin\Admin\Models\ProductPrice')->where('active', true)->orderBy('price');
     }
 	
 	public function colors()
@@ -23,7 +23,7 @@ class Product extends Model
 	
     public function category()
     {
-        return $this->belongsTo('PixelPenguin\Admin\Models\ProductCategory');
+        return $this->belongsTo('PixelPenguin\Admin\Models\ProductCategory', 'product_category_id', 'id');
     }
 	
 	public function gallery()

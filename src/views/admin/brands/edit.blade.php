@@ -6,7 +6,7 @@
 			<h4 class="page-title">Edit Service Member</h4>
 		</div>
 	</div>
-	<admin-service-edit :service_id_link="{!! htmlspecialchars($serviceId, ENT_QUOTES, 'UTF-8') !!}"></admin-service-edit>
+	<admin-brand-edit :service_id_link="{!! htmlspecialchars($serviceId, ENT_QUOTES, 'UTF-8') !!}"></admin-brand-edit>
 </div>
   @stop
   @section('scripts')

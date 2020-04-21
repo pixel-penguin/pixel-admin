@@ -78,6 +78,14 @@ Route::group([
 	Route::get('productcolors/get',  'WebsiteJsonController@ProductColors'); 											//Get list of product categories	
 	Route::get('productattributes/get',  'WebsiteJsonController@ProductAttributes'); 											//Get list of product categories	
 	
+	
+	Route::get('services',  'WebsiteJsonController@services');							//Get list of services
+	Route::get('services/{unpublished}',  'WebsiteJsonController@services');			//Get list of tesimonials published and unpublished ('Y' for parameter)
+	Route::get('service/detail/{pageId}', 'WebsiteJsonController@getServiceDetail');	//Get get detail of service
+	
+	Route::get('brands',  'WebsiteJsonController@brands');							//Get list of brands
+	Route::get('brands/{unpublished}',  'WebsiteJsonController@brands');			//Get list of tesimonials published and unpublished ('Y' for parameter)
+	Route::get('brand/detail/{pageId}', 'WebsiteJsonController@getBrandDetail');	//Get get detail of brand
 });
 
 //Admin

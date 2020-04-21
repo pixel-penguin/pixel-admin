@@ -9,6 +9,8 @@ use PixelPenguin\Admin\Models\Page;
 use PixelPenguin\Admin\Models\PageGallery;
 use PixelPenguin\Admin\Models\Testimonial;
 use PixelPenguin\Admin\Models\Team;
+use PixelPenguin\Admin\Models\Service;
+use PixelPenguin\Admin\Models\Brand;
 use PixelPenguin\Admin\Models\Blog;
 use PixelPenguin\Admin\Models\BlogGallery;
 use PixelPenguin\Admin\Models\BlogCategory;
@@ -440,7 +442,89 @@ class WebsiteJsonController extends Controller
         return $response;
 	}
 	
+	/*
+	|--------------------------------------------------------------------------
+	| Services
+	|--------------------------------------------------------------------------
+	|
+	| Service JSON
+	|
+	|--------------------------------------------------------------------------
+	*/
+	public function services($showUnPublished = false)
+	{
+		if($showUnPublished == true){
+			$services = Service::All();	
+		}
+		else{
+			$services = Service::where('active', true)->get();	
+		}
+		
+		
+		
+		$response = array();
+		
+		$response['success'] = true;
+		$response['obj'] = $services;
+		
+		return $response;
+		
+	}
 	
+	public function getServiceDetail($serviceId)
+	{
+		//die('hi');
+		$serviceDetail = Service::whereId($serviceId)->first();
+		
+		$response = array();
+		
+		$response['success'] = true;
+		$response['obj'] = $serviceDetail;
+		
+        return $response;
+	}
+	
+	/*
+	|--------------------------------------------------------------------------
+	| Brands
+	|--------------------------------------------------------------------------
+	|
+	| Brand JSON
+	|
+	|--------------------------------------------------------------------------
+	*/
+	public function brands($showUnPublished = false)
+	{
+		if($showUnPublished == true){
+			$brands = Brand::All();	
+		}
+		else{
+			$brands = Brand::where('active', true)->get();	
+		}
+		
+		
+		
+		$response = array();
+		
+		$response['success'] = true;
+		$response['obj'] = $brands;
+		
+		return $response;
+		
+	}
+	
+	public function getBrandDetail($brandId)
+	{
+		//die('hi');
+		$brandDetail = Brand::whereId($brandId)->first();
+		
+		$response = array();
+		
+		$response['success'] = true;
+		$response['obj'] = $brandDetail;
+		
+        return $response;
+	}
 	/*
 	|--------------------------------------------------------------------------
 	| Calendars

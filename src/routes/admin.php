@@ -115,5 +115,11 @@ Route::group([
 	
 	Route::post('products/price/update', 'ProductsController@updatePrices'); 
 	
+	Route::resource('services', 'ServicesController');
+	Route::post('services/activate',  'ServicesController@activate');	
+	Route::post('services/updateimage', 'ServicesController@updateImage');
 	
+	Route::resource('brands', 'BrandsController');
+	Route::post('brands/activate',  'BrandsController@activate');	
+	Route::post('brands/updateimage', 'BrandsController@updateImage');
 });

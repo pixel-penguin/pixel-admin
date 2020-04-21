@@ -100,6 +100,12 @@ Vue.component('admin-products-list', require('./components/admin/products/List.v
 Vue.component('admin-products-edit', require('./components/admin/products/Edit.vue').default);
 
 
+Vue.component('admin-service-list', require('./components/admin/services/List.vue').default);
+Vue.component('admin-service-edit', require('./components/admin/services/Edit.vue').default);
+
+Vue.component('admin-brand-list', require('./components/admin/brands/List.vue').default);
+Vue.component('admin-brand-edit', require('./components/admin/brands/Edit.vue').default);
+
 const app = new Vue({
     el: '#app'
 });

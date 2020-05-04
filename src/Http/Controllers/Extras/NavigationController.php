@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 
 use PixelPenguin\Admin\Models\Page;
+use PixelPenguin\Admin\Models\ProductCategory;
 
 use Cloudder;
 
@@ -25,6 +26,25 @@ class NavigationController extends Controller
 		$websiteJsonController = new \PixelPenguin\Admin\Http\Controllers\Json\WebsiteJsonController();
 		
 		$pages = Page::where('active', true)->where('parent_id', 0)->with('children')->orderBy('column_order', 'ASC')->get();
+		
+		//dd($pages->toArray());
+		
+		$htmlLayout = self::buildMenu($pages, false, $template);
+		
+
+		return $htmlLayout;
+		
+		//dd($htmlLayout);
+		//die();
+		
+	}
+	
+	public static function initiateProductsMenu($template = 'navigation.website.layout1')
+	{
+		
+		$websiteJsonController = new \PixelPenguin\Admin\Http\Controllers\Json\WebsiteJsonController();
+		
+		$pages = ProductCategory::where('parent_id', 0)->with('children')->orderBy('name', 'ASC')->get();
 		
 		//dd($pages->toArray());
 		

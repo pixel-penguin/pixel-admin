@@ -45,4 +45,9 @@ class Page extends Model
 	{
 		return $this->hasMany('PixelPenguin\Admin\Models\Page', 'parent_id', 'id')->with('children');
 	}
+	
+	public function activeChildren()
+	{
+		return $this->hasMany('PixelPenguin\Admin\Models\Page', 'parent_id', 'id')->where('active', true)->with('children');
+	}
 }

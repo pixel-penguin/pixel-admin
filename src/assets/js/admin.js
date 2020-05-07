@@ -106,6 +106,9 @@ Vue.component('admin-service-edit', require('./components/admin/services/Edit.vu
 Vue.component('admin-brand-list', require('./components/admin/brands/List.vue').default);
 Vue.component('admin-brand-edit', require('./components/admin/brands/Edit.vue').default);
 
+Vue.component('admin-travel-package-list', require('./components/admin/travelpackages/List.vue').default);
+Vue.component('admin-travel-package-edit', require('./components/admin/travelpackages/Edit.vue').default);
+
 const app = new Vue({
     el: '#app'
 });

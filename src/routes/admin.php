@@ -122,4 +122,11 @@ Route::group([
 	Route::resource('brands', 'BrandsController');
 	Route::post('brands/activate',  'BrandsController@activate');	
 	Route::post('brands/updateimage', 'BrandsController@updateImage');
+	
+	Route::resource('travelpackages', 'TravelPackagesController');
+	Route::post('travelpackages/addtraveldate',  'TravelPackagesController@addTravelDate');	
+	Route::post('travelpackages/activate',  'TravelPackagesController@activate');	
+	Route::delete('travelpackages/gallery/delete/{galleryId}','TravelPackagesController@deleteGallery');
+	Route::post('travelpackages/gallery/upload', 'TravelPackagesController@uploadGallery');
+	Route::post('travelpackages/gallery/order/{id}', 'TravelPackagesController@galleryOrder'); 
 });

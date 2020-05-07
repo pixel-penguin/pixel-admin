@@ -8,16 +8,17 @@
 	</div>
 	<admin-travel-package-edit :travel_package_id_link="{!! htmlspecialchars($travelPackageId, ENT_QUOTES, 'UTF-8') !!}"></admin-travel-package-edit>
 </div>
-  @stop
-  @section('scripts')
+@endsection
+@section('scripts')
 
 
-  @stop
+@endsection
 
 @section('style')
 <style>
 
-.filterStatsProperty input{ padding: 10px 20px;  border: 1px solid #CCC; border-radius:5px; width: 100% }
+	.datePickerComponent input{ padding: 10px 20px;  border: 1px solid #CCC; border-radius:5px; width: 100% }
+	.vsm-modal{ overflow: visible !important}
 
 </style>
 @endsection

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use PixelPenguin\Admin\Models\TravelPackage;
+use PixelPenguin\Admin\Models\TravelPackageGallery;
+use PixelPenguin\Admin\Models\TravelPackageTravelDate;
 
 use Auth;
 
@@ -58,34 +60,44 @@ class TravelPackagesController extends Controller
 			$redirect = true;
 		}
 		
-		$travelPackage->name = $input['name'];
-		//$travelPackage->position = $input['position'];
-		$travelPackage->detail = $input['detail'];
-		$travelPackage->active = $input['active'];
-		$travelPackage->date_created = $input['date_created'];
-		$travelPackage->url = $input['url'];
+		$travelPackage->includes()->detach();
+		$travelPackage->excludes()->detach();
 		
-		if(isset($input['detail_summary'])){
-			$travelPackage->detail_summary = $input['detail_summary'];	
+		if(isset($input['data']['includes'])){
+			
+			foreach($input['data']['includes'] as $include){
+				$travelPackage->includes()->attach($include['id']);
+			}	
 		}
 		
+		if(isset($input['data']['excludes'])){
+			
+			foreach($input['data']['excludes'] as $include){
+				$travelPackage->excludes()->attach($include['id']);
+			}	
+		}
+		
+		
+		$travelPackage->name = $input['data']['name'];
+		$travelPackage->travel_package_type_id = $input['data']['travel_package_type_id'];
+		$travelPackage->description = $input['data']['description'];
+		$travelPackage->notes = $input['data']['notes'];
+		$travelPackage->expire_date = $input['data']['expire_date'];
+		$travelPackage->active = $input['data']['active'];
+		$travelPackage->is_featured = $input['data']['is_featured'];
+		
+				
 		$travelPackage->user_id = Auth::user()->id;
-		
-		$cleanTags = array();
-		
-		foreach($input['tags'] as $tag){
-			$cleanTags[] = $tag['value'];
-		}
-		
-		$travelPackage->tags = implode(',', $cleanTags);
 		
 		
 		$travelPackage->save();
 		
+		/*
 		$travelPackage->categories()->detach();
 		foreach($input['travel_package_category'] as $category){
 			$travelPackage->categories()->attach($category['id']);
 		}
+		*/
 		
 		$response = array();
 		
@@ -206,6 +218,26 @@ class TravelPackagesController extends Controller
 			$count++;
 			
 		}
+		
+		return [
+			'success' => true
+		];
+	}
+	
+	public function addTravelDate(Request $request){
+		$input = $request->all();
+		
+		$id = $input['id'];
+		$travelStartDate = $input['travelStartDate'];
+		$travelEndDate = $input['travelEndDate'];
+		
+		$travelPackageTravelDate = new TravelPackageTravelDate();
+				
+		$travelPackageTravelDate->travel_package_id = $id;
+		$travelPackageTravelDate->start_date = $travelStartDate;
+		$travelPackageTravelDate->end_date = $travelEndDate;
+		
+		$travelPackageTravelDate->save();
 		
 		return [
 			'success' => true

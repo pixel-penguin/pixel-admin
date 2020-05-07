@@ -25,7 +25,7 @@ class NavigationController extends Controller
 		
 		$websiteJsonController = new \PixelPenguin\Admin\Http\Controllers\Json\WebsiteJsonController();
 		
-		$pages = Page::where('active', true)->where('parent_id', 0)->with('children')->orderBy('column_order', 'ASC')->get();
+		$pages = Page::where('active', true)->where('parent_id', 0)->with('activeChildren')->orderBy('column_order', 'ASC')->get();
 		
 		//dd($pages->toArray());
 		

@@ -12,4 +12,11 @@
   @section('scripts')
 
 
+	<style>
+
+		.datePickerComponent input{ padding: 10px 20px;  border: 1px solid #CCC; border-radius:5px; width: 100% }
+		
+		.vsm-modal{ overflow: visible !important}
+
+	</style>
   @stop

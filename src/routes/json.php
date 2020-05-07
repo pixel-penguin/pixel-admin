@@ -86,6 +86,12 @@ Route::group([
 	Route::get('brands',  'WebsiteJsonController@brands');							//Get list of brands
 	Route::get('brands/{unpublished}',  'WebsiteJsonController@brands');			//Get list of tesimonials published and unpublished ('Y' for parameter)
 	Route::get('brand/detail/{pageId}', 'WebsiteJsonController@getBrandDetail');	//Get get detail of brand
+	
+	Route::get('travelpackages/{unpublished?}',  'TravelPackagesJsonController@travelPackages');													//Get list of projects published and unpublished (Y for parameter)
+	Route::get('travelpackage/detail/{pageId}', 'TravelPackagesJsonController@getTravelPackageDetail');	 										//Get project detail
+	Route::get('travelpackage/gallery/{id}',  'TravelPackagesJsonController@travelPackageGallery');												//Get list of project galleries	
+	Route::get('travelpackagecategories/get',  'TravelPackagesJsonController@travelPackageCategories'); 											//Get list of project categories	
+	
 });
 
 //Admin

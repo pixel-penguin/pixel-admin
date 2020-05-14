@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use PixelPenguin\Admin\Models\TravelPackage;
 use PixelPenguin\Admin\Models\TravelPackageGallery;
 use PixelPenguin\Admin\Models\TravelPackageTravelDate;
+use PixelPenguin\Admin\Models\TravelPackageTravelDatePrice;
+use PixelPenguin\Admin\Models\TravelPackageItinerary;
 
 use Auth;
 
@@ -243,4 +245,141 @@ class TravelPackagesController extends Controller
 			'success' => true
 		];
 	}
+	
+	public function addTravelDatePrice(Request $request){
+		$input = $request->all();
+		
+		//dd($input);
+		
+		$travelPackagePriceId = $input['travelPackagePriceId'];
+		$travelPackagePriceName = $input['travelPackagePriceName'];
+		$travelPackagePricePrice = $input['travelPackagePricePrice'];
+		$travelPackagePriceType = $input['travelPackagePriceType'];
+		
+		$travelPackageTravelDatePrice = new TravelPackageTravelDatePrice();
+				
+		$travelPackageTravelDatePrice->travel_package_travel_date_id = $travelPackagePriceId;
+		$travelPackageTravelDatePrice->name = $travelPackagePriceName;
+		$travelPackageTravelDatePrice->price = $travelPackagePricePrice;
+		$travelPackageTravelDatePrice->type = $travelPackagePriceType;
+		
+		$travelPackageTravelDatePrice->save();
+		
+		return [
+			'success' => true
+		];
+	}
+	
+	public function addItinerary(Request $request){
+		
+		$input = $request->all();
+		
+		$itinerary = new TravelPackageItinerary();
+		
+		$itinerary->user_id = Auth::user()->id;
+		$itinerary->travel_package_id = $input['travel_package_id'];
+		
+		$itinerary->save();
+		
+		return [
+			'success' => true
+		];
+		
+	}
+	
+	public function updateItinerary(Request $request){
+		
+		$input = $request->all();
+		
+		$itinerary = TravelPackageItinerary::whereId($input['id'])->first();;
+		
+		$itinerary->name =$input['name'];
+		$itinerary->day =$input['day'];
+		$itinerary->description =$input['description'];
+		$itinerary->location =$input['location'];
+		
+		$itinerary->save();
+		
+		return [
+			'success' => true
+		];
+		
+	}
+	
+	public function orderItineraries(Request $request){
+		
+		$input = $request->all();
+		
+		//dd($input);
+		
+		$count = 0;
+		foreach($input['content'] as $content){
+			$pageContent = TravelPackageItinerary::whereId($content['id'])->first();
+			$pageContent->column_order = $count;
+			$pageContent->save();
+			
+			$count++;
+		}
+		
+		$response = array();
+		
+		$response['success'] = true;
+		
+		return $response;
+		
+	}
+	
+	public function deleteTravelDate($id){
+		//dd($id);
+		
+		$gallery = TravelPackageTravelDate::whereId($id)->delete();
+		
+		$response = array();
+		
+		$response['success'] = true;
+		
+		return $response;
+	}
+	
+	public function deleteTravelDatePrice($id){
+		//dd($id);
+		
+		$gallery = TravelPackageTravelDatePrice::whereId($id)->delete();
+		
+		$response = array();
+		
+		$response['success'] = true;
+		
+		return $response;
+	}
+	
+	public function deleteItinerary($id){
+		//dd($id);
+		
+		$gallery = TravelPackageItinerary::whereId($id)->delete();
+		
+		$response = array();
+		
+		$response['success'] = true;
+		
+		return $response;
+	}
+	
+	public function updateImageName(Request $request){
+		
+		$input = $request->all();
+		
+		$travelPackageGallery = TravelPackageGallery::whereId($input['id'])->first();
+		
+		$travelPackageGallery->name = $input['name'];
+		
+		$travelPackageGallery->save();
+		
+		return [
+			'success' => true
+		];
+		
+		
+	}
+	
 }

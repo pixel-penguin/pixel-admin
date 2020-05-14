@@ -55,10 +55,18 @@ class TravelPackagesJsonController extends Controller
 	public function getTravelPackageDetail($id)
 	{
 		//die('hi');
-		$travelPackageDetail = TravelPackage::whereId($id)->with('includes')->with('excludes')->with('gallery')->with('travelDates.prices')->first();
+		
+		if($id != 0){
+			$travelPackageDetail = TravelPackage::whereId($id)->with('itineraries')->with('includes')->with('excludes')->with('gallery')->with('travelDates.prices')->first();	
+		}
+		else{
+			$travelPackageDetail = [];
+		}
+		
 		
 		$includes = TravelPackageInclude::All();
 		$excludes = TravelPackageExclude::All();
+		$types = TravelPackageType::All();
 		
 		$response = array();
 		
@@ -66,6 +74,7 @@ class TravelPackagesJsonController extends Controller
 		$response['obj'] = $travelPackageDetail;
 		$response['includes'] = $includes;
 		$response['excludes'] = $excludes;
+		$response['types'] = $types;
 		
         return $response;
 	}
@@ -84,6 +93,14 @@ class TravelPackagesJsonController extends Controller
 		return $response;
 		
 		//dd($netibleUsersMenu);
+	}
+	
+	
+	
+	
+	
+	public function updateItineraryEntry(){
+		
 	}
 	
 }

@@ -18,14 +18,14 @@ class CreateTravelPackageItinerariesTable extends Migration
 			
 			$table->integer('user_id');			
 			$table->integer('travel_package_id');
-			$table->integer('column_order');
+			$table->integer('column_order')->default(999);
 			
-			$table->string('name', 255);
-			$table->string('day', 255);
-			$table->string('location', 255);
+			$table->string('name', 255)->nullable();
+			$table->string('day', 255)->nullable();
+			$table->string('location', 255)->nullable();
 						
-			$table->string('latitude', 255);
-			$table->string('longitude', 255);
+			$table->string('latitude', 255)->nullable();
+			$table->string('longitude', 255)->nullable();
 			
 			$table->boolean('has_map')->default(0);
 			

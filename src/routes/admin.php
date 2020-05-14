@@ -124,9 +124,22 @@ Route::group([
 	Route::post('brands/updateimage', 'BrandsController@updateImage');
 	
 	Route::resource('travelpackages', 'TravelPackagesController');
+	Route::post('travelpackages/image/name/update',  'TravelPackagesController@updateImageName');	
 	Route::post('travelpackages/addtraveldate',  'TravelPackagesController@addTravelDate');	
+	Route::post('travelpackages/addtraveldateprice',  'TravelPackagesController@addTravelDatePrice');	
+	Route::post('travelpackages/additinerary',  'TravelPackagesController@addItinerary');	
+	Route::post('travelpackages/updateitinerary',  'TravelPackagesController@updateItinerary');	
+	Route::post('travelpackages/itinerary/order', 'TravelPackagesController@orderItineraries');
+	
 	Route::post('travelpackages/activate',  'TravelPackagesController@activate');	
 	Route::delete('travelpackages/gallery/delete/{galleryId}','TravelPackagesController@deleteGallery');
 	Route::post('travelpackages/gallery/upload', 'TravelPackagesController@uploadGallery');
-	Route::post('travelpackages/gallery/order/{id}', 'TravelPackagesController@galleryOrder'); 
+	Route::post('travelpackages/gallery/order/{id}', 'TravelPackagesController@galleryOrder');
+	
+	Route::delete('travelpackages/traveldates/delete/{id}', 'TravelPackagesController@deleteTravelDate');
+	Route::delete('travelpackages/traveldates/price/delete/{id}', 'TravelPackagesController@deleteTravelDatePrice');
+	Route::delete('travelpackages/itinerary/delete/{id}', 'TravelPackagesController@deleteItinerary');
+	
+	
+	
 });

@@ -24,10 +24,14 @@
 
                         <div slot="actions" slot-scope="props">
                             <a :href="'/admin/specials/'+props.row.id+'/edit'" data-original-title="null" class=" has-tooltip">
-                                <i v-tooltip.top-center="'Edit this Calendar'" aria-hidden="true" class="fa fa-pencil-square-o" style="color: rgb(45, 150, 60);"></i>
+                                <i v-tooltip.top-center="'Edit this Special'" aria-hidden="true" class="fa fa-pencil-square-o" style="color: rgb(45, 150, 60);"></i>
                             </a> 
                             
-                            <i @click="destroyBlog(props.row.id)" v-tooltip.top-center="'Delete this Calendar'" style="color:#CB2225; cursor:pointer" class="fa fa-trash-o" aria-hidden="true"></i>
+                            <i @click="activate(props.row.id)" v-tooltip="'Published'" v-if="props.row.active == true" style="color:#2FC937; cursor:pointer" class="fa fa-check-square-o" aria-hidden="true"></i>
+                            <i @click="activate(props.row.id)" v-tooltip="'Not Published'" v-if="props.row.active == false" style="color: #C51515; cursor:pointer" class="fa fa-square-o" aria-hidden="true"></i>
+                        
+
+                            <i @click="destroyBlog(props.row.id)" v-tooltip.top-center="'Delete this Special'" style="color:#CB2225; cursor:pointer" class="fa fa-trash-o" aria-hidden="true"></i>
                         </div>
 
                         

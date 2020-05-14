@@ -25,4 +25,11 @@ class TravelPackage extends Model
     {
         return $this->hasMany('PixelPenguin\Admin\Models\TravelPackageTravelDate');
     }
+	
+	public function itineraries()
+    {
+        return $this->hasMany('PixelPenguin\Admin\Models\TravelPackageItinerary')->orderBy('column_order');
+    }
+	
+	
 }

@@ -1,7 +1,7 @@
 <template>
     <div>
 		<div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-12">
 
                 <ul class="list-group" v-sortable="{ handle: '.handle', onUpdate: onUpdate }">
                     
@@ -63,6 +63,135 @@
                                 <i @click="destroyPageContent(pageContent.id)" v-tooltip="'Delete Content Section'" class="fa fa-trash" aria-hidden="true"  style="color: #C51515"></i>
                             </div>
                         </div>
+
+                        <div class="row" v-if="pageContent.page_content_type_id == 7">
+                            
+                            <div class="col-xs-10 col-sm-10 col-md-10">     
+                                
+                                <div class="row">
+
+                                    
+                                    <div class="col-xs-4 col-sm-4 col-md-4"> 
+
+                                        <div v-if="pageContent.edit">
+                                            <div v-if="previewImageUrl != null" class="form-group">
+                                                <img :src="previewImageUrl" width="100%" />
+                                            </div>
+                                            
+                                            <div v-if="previewImageUrl == null && pageContent.image_name != null" class="form-group">
+                                                <img :src="'https://res.cloudinary.com/'+cloudinaryCloudName+'/image/upload/c_limit,h_1000,w_1000/v1/'+pageContent.image_name+'.jpg'" width="100%" />
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label>Image</label>
+                                                <input accept="image/x-png,image/gif,image/jpeg" v-on:change="changeImage" type="file" class="form-control">
+                                                <div style="margin-top:10px">
+                                                    <div v-if="previewImageUrl != null && loading == false" @click="updateImage(pageContent.id)" class="btn btn-primary">Update Image</div>
+                                                    <div v-if="previewImageUrl != null && loading" class="btn btn-primary"><i class='fa fa-circle-o-notch fa-spin'></i> Processing</div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div v-if="pageContent.edit == false" @click="pageContent.edit = true">
+                                            <img :src="'https://res.cloudinary.com/'+cloudinaryCloudName+'/image/upload/c_limit,h_1000,w_1000/v1/'+pageContent.image_name+'.jpg'" width="100%" />
+                                        </div>
+                                    </div>    
+
+                                    <div class="col-xs-8 col-sm-8 col-md-8"> 
+                                         <editor v-if="pageContent.edit"
+                                            v-model="pageContent.detail"
+                                            api-key="9tv5nzovtpredmv4b778na7pauhqz7n3rk4pviia6wla45v2" 
+                                            :init="{
+                                                browser_spellcheck: true,
+                                                plugins: 'wordcount, image, media, link, table, lists, code, autoresize', 
+                                                //menubar: 'insert',
+                                                toolbar: 'image, media, link, table, numlist bullist, code',
+                                                file_picker_types: 'file image media',
+                                                //extended_valid_elements: 'svg[*],defs[*],pattern[*],desc[*],metadata[*],g[*],mask[*],path[*],line[*],marker[*],rect[*],circle[*],ellipse[*],polygon[*],polyline[*],linearGradient[*],radialGradient[*],stop[*],image[*],view[*],text[*],textPath[*],title[*],tspan[*],glyph[*],symbol[*],switch[*],use[*]',
+                                                file_browser_callback_types: 'file image media',
+                                                automatic_uploads: true,
+                                                images_upload_url: '/admin/mcefileupload',
+                                                
+                                                link_assume_external_targets: true,               
+                                            }"></editor>
+
+                                        <div style="margin-top:10px" @click="pageContent.edit = false; saveContent(pageContent.id, pageContent.detail)" v-if="pageContent.edit" class="btn btn-primary">Save</div>                        
+                                        <div @click="pageContent.edit = true" v-if="pageContent.edit == false" v-html="pageContent.detail"></div>
+                                        <small v-if="pageContent.edit" style="float:right; margin-top:15px">If you wish to upload a file and attach it to the page <a target="_blank" href="/admin/cloudfiles">click here</a> to upload the file and link it here</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-2 col-sm-2 col-md-2">
+                                <i class="fa fa-arrows handle" aria-hidden="true"></i>
+                                <i @click="destroyPageContent(pageContent.id)" v-tooltip="'Delete Content Section'" class="fa fa-trash" aria-hidden="true"  style="color: #C51515"></i>
+                            </div>
+                        </div>
+
+                        <div class="row" v-if="pageContent.page_content_type_id == 8">
+                            
+                            <div class="col-xs-10 col-sm-10 col-md-10">     
+                                
+                                <div class="row">
+
+                                    <div class="col-xs-8 col-sm-8 col-md-8"> 
+                                         <editor v-if="pageContent.edit"
+                                            v-model="pageContent.detail"
+                                            api-key="9tv5nzovtpredmv4b778na7pauhqz7n3rk4pviia6wla45v2" 
+                                            :init="{
+                                                browser_spellcheck: true,
+                                                plugins: 'wordcount, image, media, link, table, lists, code, autoresize', 
+                                                //menubar: 'insert',
+                                                toolbar: 'image, media, link, table, numlist bullist, code',
+                                                file_picker_types: 'file image media',
+                                                //extended_valid_elements: 'svg[*],defs[*],pattern[*],desc[*],metadata[*],g[*],mask[*],path[*],line[*],marker[*],rect[*],circle[*],ellipse[*],polygon[*],polyline[*],linearGradient[*],radialGradient[*],stop[*],image[*],view[*],text[*],textPath[*],title[*],tspan[*],glyph[*],symbol[*],switch[*],use[*]',
+                                                file_browser_callback_types: 'file image media',
+                                                automatic_uploads: true,
+                                                images_upload_url: '/admin/mcefileupload',
+                                                
+                                                link_assume_external_targets: true,               
+                                            }"></editor>
+
+                                        <div style="margin-top:10px" @click="pageContent.edit = false; saveContent(pageContent.id, pageContent.detail)" v-if="pageContent.edit" class="btn btn-primary">Save</div>                        
+                                        <div @click="pageContent.edit = true" v-if="pageContent.edit == false" v-html="pageContent.detail"></div>
+                                        <small v-if="pageContent.edit" style="float:right; margin-top:15px">If you wish to upload a file and attach it to the page <a target="_blank" href="/admin/cloudfiles">click here</a> to upload the file and link it here</small>
+                                    </div>
+
+                                    <div class="col-xs-4 col-sm-4 col-md-4"> 
+
+                                        <div v-if="pageContent.edit">
+                                            <div v-if="previewImageUrl != null" class="form-group">
+                                                <img :src="previewImageUrl" width="100%" />
+                                            </div>
+                                            
+                                            <div v-if="previewImageUrl == null && pageContent.image_name != null" class="form-group">
+                                                <img :src="'https://res.cloudinary.com/'+cloudinaryCloudName+'/image/upload/c_limit,h_1000,w_1000/v1/'+pageContent.image_name+'.jpg'" width="100%" />
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label>Image</label>
+                                                <input accept="image/x-png,image/gif,image/jpeg" v-on:change="changeImage" type="file" class="form-control">
+                                                <div style="margin-top:10px">
+                                                    <div v-if="previewImageUrl != null && loading == false" @click="updateImage(pageContent.id)" class="btn btn-primary">Update Image</div>
+                                                    <div v-if="previewImageUrl != null && loading" class="btn btn-primary"><i class='fa fa-circle-o-notch fa-spin'></i> Processing</div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div v-if="pageContent.edit == false" @click="pageContent.edit = true">
+                                            <img :src="'https://res.cloudinary.com/'+cloudinaryCloudName+'/image/upload/c_limit,h_1000,w_1000/v1/'+pageContent.image_name+'.jpg'" width="100%" />
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+
+                            <div class="col-xs-2 col-sm-2 col-md-2">
+                                <i class="fa fa-arrows handle" aria-hidden="true"></i>
+                                <i @click="destroyPageContent(pageContent.id)" v-tooltip="'Delete Content Section'" class="fa fa-trash" aria-hidden="true"  style="color: #C51515"></i>
+                            </div>
+                        </div>
                         
                     </li>
                     
@@ -99,6 +228,11 @@
         name: 'Edit-Page',
         data(){
             return{
+                
+                loading: false,
+
+                previewImageUrl: null,
+
                 cloudinaryCloudName:null,
                 
                 addSection:false,
@@ -373,7 +507,58 @@
 							})
                         }
                     })
-			},
+            },
+            changeImage(e){
+                const self = this;
+
+                var files = e.target.files || e.dataTransfer.files;
+                if (!files.length){
+                    return;
+                }
+                    
+                self.image_name = files[0];
+                self.previewImageUrl =  URL.createObjectURL(self.image_name);
+                //console.log(self.image_name);
+            },
+
+            updateImage(id){
+                const self = this;
+                
+                self.loading = true;
+
+                var formData = new FormData();
+                formData.append('image_name', self.image_name); 
+                formData.append('page_content_id', id); 
+
+                axios.post('/admin/pages/builder/image/update', 
+                formData,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                
+                })
+                .then(response => {
+                    self.loading = false;
+
+                    //self.websiteDetail.image_name = null;
+                    self.previewImageUrl =  null;
+
+                    self.getContents();
+                })
+                .catch(error => {
+                    self.$swal.showValidationMessage(
+                        `Request failed: ${error}`
+                    )
+
+                    console.log(error);
+                    alert('Something went wrong with uploads');
+                    
+                    self.loading = false;
+                })
+                
+                //console.log(self.galleryFiles);
+            },
             
         }
 

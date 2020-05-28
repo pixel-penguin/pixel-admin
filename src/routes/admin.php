@@ -55,6 +55,8 @@ Route::group([
 	Route::post('pages/order',  array('as' => 'admin.pages.order', 'uses' => 'PagesController@orderPages'));	
 	Route::post('pages/builder/order', 'PagesController@orderBuilderContent');
 	Route::post('pages/gallery/order/{pageId}', 'PagesController@galleryOrder'); 
+	Route::post('pages/gallery/name/update', 'PagesController@updateGalleryName'); 
+	Route::post('pages/builder/image/update', 'PagesController@updateContentBuilderImage'); 
 	
 	Route::post('pages/builder/updateinfo', 'PagesController@updateInfo');
 	Route::post('pages/builder/uploadgallery', 'PagesController@uploadContentGallery');
@@ -140,6 +142,9 @@ Route::group([
 	Route::delete('travelpackages/traveldates/price/delete/{id}', 'TravelPackagesController@deleteTravelDatePrice');
 	Route::delete('travelpackages/itinerary/delete/{id}', 'TravelPackagesController@deleteItinerary');
 	
-	
+	Route::get('websitedetail', 'WebsiteDetailsController@index');
+	Route::post('websitedetail/update', 'WebsiteDetailsController@update');
+	Route::post('websitedetail/updatepageimage1', 'WebsiteDetailsController@updateImage1');
+	Route::post('websitedetail/updatepageimage2', 'WebsiteDetailsController@updateImage2');
 	
 });

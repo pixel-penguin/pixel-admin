@@ -479,4 +479,54 @@ class PagesController extends Controller
 			'success' => true
 		];
 	}
+	
+	public function updateContentBuilderImage(Request $request){
+		
+		$input = $request->all();
+		
+		$this->validate($request,[
+           'image_name'=>'required|mimes:jpeg,bmp,jpg,png,svg|between:1, 50000',
+       	]);
+
+       	$image_name = $request->file('image_name');
+
+       	$cloudder = Cloudder::upload($image_name->getRealPath(), env('CLOUDINARY_BASE_FOLDER_PATH').'page_content_app/'.str_slug($image_name->getClientOriginalName()).time() );
+		
+		$uploadedResult = $cloudder->getResult();
+		
+		//dd($uploadedResult);
+		
+		//Cloudder::rename($result['public_id'], $toPublicId);
+		
+		$pageContent = PageContent::whereId($input['page_content_id'])->first();
+		$pageContent->image_name = $uploadedResult['public_id'];
+		$pageContent->save();
+		
+		$response = array();
+		
+		$response['success'] = true;
+		
+		return $response;
+	}
+	
+	public function updateGalleryName(Request $request){
+		$input = $request->all();
+		
+		$page = PageGallery::whereId($input['id'])->first();
+		
+		//dd($input);
+		
+		$page->name = $input['name'];
+		$page->description = $input['description'];
+		$page->button_text = $input['button_text'];
+		$page->button_link = $input['button_link'];
+		
+		$page->save();
+		
+		
+		
+		return [
+			'success' => true
+		];
+	}
 }

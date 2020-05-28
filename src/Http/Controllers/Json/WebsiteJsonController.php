@@ -35,6 +35,8 @@ use PixelPenguin\Admin\Models\ProductColor;
 use PixelPenguin\Admin\Models\ProductAttribute;
 use PixelPenguin\Admin\Models\ProductGallery;
 
+use PixelPenguin\Admin\Models\WebsiteDetail;
+
 use App\Mail\Contact;
 use Illuminate\Support\Facades\Mail;
 
@@ -955,5 +957,22 @@ class WebsiteJsonController extends Controller
 		
 		return $response;
 		
+	}
+	
+	public function getWebsiteDetail(){
+		
+		$websiteDetail = WebsiteDetail::first();
+		
+		if($websiteDetail == null){
+			$websiteDetail = new WebsiteDetail();
+			$websiteDetail->save();
+			
+			$websiteDetail = WebsiteDetail::first();
+		}
+		
+		return [
+			'success' => true,
+			'obj' => $websiteDetail
+		];
 	}
 }

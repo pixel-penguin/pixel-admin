@@ -2,7 +2,7 @@
 @section('content')
 <div class="content container-fluid">
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-12">
 			<h4 class="page-title">Content Editor</h4>
 		</div>
 	</div>

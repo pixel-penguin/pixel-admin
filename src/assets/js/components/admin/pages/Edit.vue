@@ -43,8 +43,8 @@
                     </div>
                     
                     
-                    <div class="form-group" style="margin-bottom:20px">
-                        <a v-if="page_type_id == 3 || page_type_id == 5" :href="'/admin/pages/builder/'+page_id" class="btn btn-primary">Page Builder</a>
+                    <div v-if="page_type_id == 3 || page_type_id == 5 || page_type_id == 7" class="form-group" style="margin-bottom:20px">
+                        <a :href="'/admin/pages/builder/'+page_id" class="btn btn-primary">Page Builder</a>
                     </div>
                     
                     
@@ -126,7 +126,7 @@
                         <div @click="updatePage" class="btn btn-primary btn-lg">Save Changes</div>
                     </div>
 
-                    <div class="form-group" v-if="page_type_id == 1 || page_type_id == 2">
+                    <div class="form-group" v-if="page_type_id == 1 || page_type_id == 2 || page_type_id == 7">
                         <label>Gallery</label>
                         <div>
                             <input class="form-control" type="file" v-on:change="onGalleryChange" multiple>
@@ -140,10 +140,24 @@
                         <div class="row">
                             
                             <ul class="list-group"  v-sortable="{ onUpdate: onOrder }">
-                                <li class="col-md-4 col-sm-2 col-xs-4 col-lg-2 list-group-item" v-for="item in pageGallery" :key="item.id" >
+                                <li class="col-md-4 col-sm-2 col-xs-4 col-lg-4 list-group-item" v-for="item in pageGallery" :key="item.id" >
                                     <div class="thumbnail product-thumbnail">
                                         <div class="thumb">
-                                            <img :src="'https://res.cloudinary.com/'+cloudinaryCloudName+'/image/upload/c_fill,h_100,w_150/v1548624788/'+item.image_name+'.jpg'" class="img-responsive" alt="">
+                                            <img style="width:100%" :src="'https://res.cloudinary.com/'+cloudinaryCloudName+'/image/upload/c_fill,h_150,w_230/v1548624788/'+item.image_name+'.jpg'" class="img-responsive" alt="">
+                                        </div>
+                                        <span @click="destroyGalleryFile(item.id)" class="product-remove" title="remove"><i class="fa fa-close"></i></span>
+
+                                        <div v-if="page_type_id == 7">
+                                            <label>Name</label>
+                                            <input class="form-control" type="text" v-model="item.name">
+                                            <label>Description</label>
+                                            <textarea class="form-control" type="text" v-model="item.description"></textarea>
+                                            <label>Button Text</label>
+                                            <input class="form-control" type="text" v-model="item.button_text">
+                                            <label>Button Link</label>
+                                            <input class="form-control" type="text" v-model="item.button_link">
+
+                                            <div @click="updateImageName(item.id, item.name, item.description, item.button_text, item.button_link)" style="width:100%" class="btn btn-primary">Update</div>
                                         </div>
                                         <span @click="destroyGalleryFile(item.id)" class="product-remove" title="remove"><i class="fa fa-close"></i></span>
                                     </div>
@@ -550,7 +564,51 @@
 							})
                         }
                     })
-			},
+            },
+            updateImageName(id, name, description, button_text, button_link){
+                const self = this;
+
+               
+        
+                axios.post('/admin/pages/gallery/name/update',{
+
+                    id: id,
+                    name: name,
+                    description: description,
+                    button_text: button_text,
+                    button_link: button_link
+
+                    
+                })
+                .then(response => {
+                    
+                    var data = response.data;
+
+                    //self.travel_package_id = data.obj.id;
+
+                    self.travelPackageDetail();
+                    this.$swal({
+                        toast: true,
+                        position: 'bottom-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        type: 'success',
+                        title: 'Updated Image Name Successfully',
+                        onOpen: function() {
+                            var zippi = new Audio('https://res.cloudinary.com/dhmwdhirs/video/upload/v1558165617/audio/admin-sounds/bigbox.mp3')
+                            zippi.play();
+                        }
+                    });
+                    //self.successSound.play();
+                    //self.getGalleryFiles();
+                })
+                .catch(error => {
+                    Swal.showValidationMessage(
+                    `Request failed: ${error}`
+                    )
+                })
+
+            },  
             
         }
 

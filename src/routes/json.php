@@ -92,6 +92,7 @@ Route::group([
 	Route::get('travelpackage/gallery/{id}',  'TravelPackagesJsonController@travelPackageGallery');												//Get list of project galleries	
 	Route::get('travelpackagecategories/get',  'TravelPackagesJsonController@travelPackageCategories'); 											//Get list of project categories	
 	
+	Route::get('websitedetail/get', 'WebsiteJsonController@getWebsiteDetail');
 });
 
 //Admin

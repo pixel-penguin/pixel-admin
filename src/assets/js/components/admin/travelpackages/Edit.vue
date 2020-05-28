@@ -79,8 +79,10 @@
                             <multiselect
                                 v-model="travelPackage.includes"
                                 :options="travelPackageIncludeOptions"
+                                :taggable="true"
                                 label="name" 
                                 track-by="name"
+                                @tag="addIncludeTag"
                                 multiple >
                             </multiselect>
                         </div>
@@ -95,6 +97,8 @@
                             <multiselect
                                 v-model="travelPackage.excludes"
                                 :options="travelPackageExcludeOptions"
+                                :taggable="true"
+                                @tag="addExcludeTag"
                                 label="name" 
                                 track-by="name"
                                 multiple >
@@ -1154,6 +1158,22 @@
                 })
 
             },  
+            addIncludeTag (newTag) {
+                const tag = {
+                    name: newTag,
+                    id: 0
+                }
+                this.travelPackageIncludeOptions.push(tag)
+                this.travelPackage.includes.push(tag);
+            },
+            addExcludeTag (newTag) {
+                const tag = {
+                    name: newTag,
+                    id: 0
+                }
+                this.travelPackageExcludeOptions.push(tag)
+                this.travelPackage.excludes.push(tag);
+            }
             
         }
 

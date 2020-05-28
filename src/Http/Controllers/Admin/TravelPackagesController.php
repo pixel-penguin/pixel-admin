@@ -10,6 +10,8 @@ use PixelPenguin\Admin\Models\TravelPackageGallery;
 use PixelPenguin\Admin\Models\TravelPackageTravelDate;
 use PixelPenguin\Admin\Models\TravelPackageTravelDatePrice;
 use PixelPenguin\Admin\Models\TravelPackageItinerary;
+use PixelPenguin\Admin\Models\TravelPackageInclude;
+use PixelPenguin\Admin\Models\TravelPackageExclude;
 
 use Auth;
 
@@ -68,14 +70,40 @@ class TravelPackagesController extends Controller
 		if(isset($input['data']['includes'])){
 			
 			foreach($input['data']['includes'] as $include){
-				$travelPackage->includes()->attach($include['id']);
+				
+				if($include['id'] == 0){
+					$includeCollection = new TravelPackageInclude();
+					$includeCollection->user_id = Auth::user()->id;
+					$includeCollection->name = $include['name'];
+					$includeCollection->save();
+					
+					$travelPackage->includes()->attach($includeCollection->id);	
+					
+				}
+				else{
+					$travelPackage->includes()->attach($include['id']);	
+				}
+				
 			}	
 		}
 		
 		if(isset($input['data']['excludes'])){
 			
-			foreach($input['data']['excludes'] as $include){
-				$travelPackage->excludes()->attach($include['id']);
+			foreach($input['data']['excludes'] as $exclude){
+				
+				if($exclude['id'] == 0){
+					$excludeCollection = new TravelPackageExclude();
+					$excludeCollection->user_id = Auth::user()->id;
+					$excludeCollection->name = $exclude['name'];
+					$excludeCollection->save();
+					
+					$travelPackage->excludes()->attach($excludeCollection->id);	
+					
+				}
+				else{
+					$travelPackage->excludes()->attach($exclude['id']);
+				}
+				
 			}	
 		}
 		

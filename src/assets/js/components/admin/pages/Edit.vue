@@ -586,7 +586,7 @@
 
                     //self.travel_package_id = data.obj.id;
 
-                    self.travelPackageDetail();
+                    self.getGalleryFiles();
                     this.$swal({
                         toast: true,
                         position: 'bottom-end',

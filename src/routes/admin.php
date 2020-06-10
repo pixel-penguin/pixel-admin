@@ -147,4 +147,11 @@ Route::group([
 	Route::post('websitedetail/updatepageimage1', 'WebsiteDetailsController@updateImage1');
 	Route::post('websitedetail/updatepageimage2', 'WebsiteDetailsController@updateImage2');
 	
+	
+	Route::get('orders', 'OrdersController@index');
+	Route::post('orders/changestatus', 'OrdersController@changeOrderStatus');
+	Route::get('orders/get/{type}', 'OrdersController@getOrders');
+	Route::post('orders/updatedelivery', 'OrdersController@updateDelivery');
+	Route::post('orders/updatepayment', 'OrdersController@updatePayments');
+	
 });

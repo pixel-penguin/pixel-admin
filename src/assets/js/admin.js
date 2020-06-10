@@ -112,6 +112,9 @@ Vue.component('admin-travel-package-edit', require('./components/admin/travelpac
 
 Vue.component('admin-website-details-edit', require('./components/admin/websitedetails/Index.vue').default);
 
+
+Vue.component('admin-orders', require('./components/admin/orders/List.vue').default);
+
 const app = new Vue({
     el: '#app'
 });

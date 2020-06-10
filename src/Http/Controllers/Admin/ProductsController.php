@@ -197,7 +197,8 @@ class ProductsController extends Controller
 			foreach($variations as $variation){
 			
 				$name = implode(' ', $variation).' '.$product->name;
-				$code = str_slug($name.'-'.$productId);
+				$code = implode(' ', $variation).' '.$product->id;
+				$code = str_slug($code.'-'.$productId);
 
 				$productPrice = ProductPrice::where('code', $code)->first();
 
@@ -299,6 +300,7 @@ class ProductsController extends Controller
 			$priceEntry = ProductPrice::whereId($price['id'])->first();
 			
 			$priceEntry->price = $price['price'];
+			$priceEntry->product_code = $price['product_code'];
 			$priceEntry->discounted_price = $price['discounted_price'];
 			$priceEntry->is_discount = $price['is_discount'];
 			

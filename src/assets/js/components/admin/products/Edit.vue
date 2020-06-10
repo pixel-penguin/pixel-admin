@@ -175,32 +175,38 @@
                     <div class="col-md-12">
 
                         <div class="row" style="margin-bottom:30px">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <label>Product Name</label>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
+                                <label>Product Code</label>
+                            </div>
+                            <div class="col-md-2">
                                 <label>Price</label>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <label>Discounted Price</label>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <label>Has Discount</label>
                             </div>
                         </div>
                         
                         <div v-for="price in product.prices" :key="price.id" class="form-group">                            
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <label>{{price.name}}</label>
                                 </div>
-                                <div class="col-md-3">
-                                    <input required class="form-control" type="number" v-model="price.price">
+                                <div class="col-md-2">
+                                    <input class="form-control" type="text" v-model="price.product_code">
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
+                                    <input required class="form-control" type="number" step=".01" v-model="price.price">
+                                </div>
+                                <div class="col-md-2">
                                     <input v-if="price.is_discount" required class="form-control" type="number" v-model="price.discounted_price">
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <p-check class="p-switch" name="check" color="success" v-model="price.is_discount"></p-check>
                                 </div>
                         

@@ -93,6 +93,16 @@ Route::group([
 	Route::get('travelpackagecategories/get',  'TravelPackagesJsonController@travelPackageCategories'); 											//Get list of project categories	
 	
 	Route::get('websitedetail/get', 'WebsiteJsonController@getWebsiteDetail');
+	
+											//Get list of project galleries	
+	Route::get('user/detail/currentuser',  'UsersJsonController@getCurrentUserDetail'); 
+	Route::get('countries/getall',  'CountryJsonController@getAllCountries'); 
+	Route::get('cities/getbycountry/{countryId}',  'CountryJsonController@getAllCitiesByCountry'); 
+	
+	Route::get('shipping/getinfo/{cityId}/{countryId}/{shoppingMethodId}',  'CartJsonController@getDeliverOptionsWithValue'); 
+	
+	Route::post('shipping/placeorder',  'CartJsonController@createNewOrder'); 
+	
 });
 
 //Admin

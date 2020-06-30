@@ -204,7 +204,7 @@
                                     <input required class="form-control" type="number" step=".01" v-model="price.price">
                                 </div>
                                 <div class="col-md-2">
-                                    <input v-if="price.is_discount" required class="form-control" type="number" v-model="price.discounted_price">
+                                    <input v-if="price.is_discount" required class="form-control" type="number" step=".01" v-model="price.discounted_price">
                                 </div>
                                 <div class="col-md-2">
                                     <p-check class="p-switch" name="check" color="success" v-model="price.is_discount"></p-check>

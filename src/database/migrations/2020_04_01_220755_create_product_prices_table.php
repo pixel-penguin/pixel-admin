@@ -21,8 +21,8 @@ class CreateProductPricesTable extends Migration
 			
 			$table->integer('product_id');
 			$table->integer('code');
-			$table->integer('price');
-			$table->integer('discounted_price')->default(0);
+            $table->double('price', 10, 2)->default(0);
+            $table->double('discounted_price', 10, 2)->default(0);
 			
 			$table->boolean('is_discount')->default(false);
 						

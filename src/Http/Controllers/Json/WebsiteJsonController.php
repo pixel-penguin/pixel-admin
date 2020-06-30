@@ -42,6 +42,21 @@ use Illuminate\Support\Facades\Mail;
 
 class WebsiteJsonController extends Controller
 {
+	
+	public function searchProduct(Request $request){
+		
+		$input = $request->all();
+		
+		$search = $input['search'];
+				
+		$products = Product::where('name', 'LIKE', "%$search%")->orWhere('tags', 'LIKE', "%$search%")->get();
+		
+		return [
+			'success' => true,
+			'data' => $products
+		];
+	}
+	
     public function submitContactForm(Request $request){
 		
 		$input = $request->all();

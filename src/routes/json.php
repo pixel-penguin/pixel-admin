@@ -27,6 +27,8 @@ Route::group([
 	], function () {
 
 	
+	Route::post('search/products', 'WebsiteJsonController@searchProduct');							//Get list of pages
+	
 	Route::get('pages', 'WebsiteJsonController@pages');							//Get list of pages
 	Route::get('pages/{unpublished}', 'WebsiteJsonController@pages');			//Get list of pages published and unpublished ('Y' for parameter)
 	Route::get('page/detail/{pageId}', 'WebsiteJsonController@pageDetail');		//Get Page Detail

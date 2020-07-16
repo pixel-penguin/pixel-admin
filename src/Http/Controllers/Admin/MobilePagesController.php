@@ -323,10 +323,12 @@ class MobilePagesController extends Controller
 		$pageContentId = $input['page_content_id'];
 		$description = $input['description'];
 		$link = $input['link'];
+		$extra = $input['extra'];
 		
 		$pageContent = MobilePageContent::whereId($pageContentId)->first();
 		$pageContent->description = $description;
 		$pageContent->link = $link;
+		$pageContent->extra = $extra;
 		
 		$pageContent->save();
 		

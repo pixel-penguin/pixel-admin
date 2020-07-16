@@ -73,7 +73,7 @@
                                     
                                     <div class="col-xs-4 col-sm-4 col-md-4"> 
                                         <h4>Sample link</h4>
-                                        <a target="blank" :href="pageContent.link" class="btn btn-primary">
+                                        <a :title="pageContent.extra" target="blank" :href="pageContent.link" class="btn btn-primary">
                                             {{pageContent.description}}
                                         </a>
                                         <div v-if="pageContent.link == null || pageContent.link.length == 0" class="btn btn-danger">No link added</div>
@@ -90,7 +90,12 @@
                                             <input class="form-control" v-model="pageContent.link" />
                                         </div>
 
-                                        <div style="margin-top:10px" @click="pageContent.edit = false; saveContent(pageContent.id, pageContent.description, pageContent.link)" v-if="pageContent.edit" class="btn btn-primary">Save</div>                        
+                                        <div v-if="pageContent.edit" class="form-group">
+                                            <label>Information of Link</label>
+                                            <textarea class="form-control" v-model="pageContent.extra"></textarea>
+                                        </div>
+
+                                        <div style="margin-top:10px" @click="pageContent.edit = false; saveContent(pageContent.id, pageContent.description, pageContent.link, pageContent.extra)" v-if="pageContent.edit" class="btn btn-primary">Save</div>                        
                                         
                                         <div @click="pageContent.edit = true" v-if="pageContent.edit == false" >
                                             <div class="btn btn-primary"> click here to edit the button</div>
@@ -308,13 +313,14 @@
         },
         methods:{
 
-            saveContent(pageContentId, description, link = null){
+            saveContent(pageContentId, description, link = null, extra = null){
                 const self = this;
 
                 axios.post('/admin/mobilepages/builder/updateinfo',{
                     page_content_id: pageContentId,
                     description:description,
-                    link: link
+                    link: link,
+                    extra: extra
                 })
                 .then(response => {
                     //console.log(response);

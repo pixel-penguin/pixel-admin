@@ -105,6 +105,12 @@ Route::group([
 	
 	Route::post('shipping/placeorder',  'CartJsonController@createNewOrder'); 
 	
+	
+	Route::get('mobilepages', 'MobilePagesJsonController@pages');							//Get list of pages
+	Route::get('mobilepages/{unpublished}', 'MobilePagesJsonController@pages');			//Get list of pages published and unpublished ('Y' for parameter)
+	Route::get('mobilepage/detail/{pageId}', 'MobilePagesJsonController@pageDetail');		//Get Page Detail
+	Route::get('mobilepage/gallery/{pageId}', 'MobilePagesJsonController@pageGallery');	//Get Page Gallery
+
 });
 
 //Admin
@@ -126,6 +132,11 @@ Route::group([
 	Route::get('getpagecontenttypes',  'AdminJsonController@getPageContentTypes');	
 	
 	//Route::get('gettestimonialdetail',  'AdminJsonController@getTestimonialDetail');	
+	
+	Route::get('getpagecontentsmobile/{pageid}',  'MobilePagesController@getPageContent');	
+	Route::post('addcontentsectionmobile',  'MobilePagesController@addContentSection');	
+	Route::delete('removecontentsectionmobile/{pagecontentid}',  'MobilePagesController@removeContentSection');		
+	Route::get('getpagecontenttypesmobile',  'MobilePagesController@getPageContentTypes');	
 	
 	
 	

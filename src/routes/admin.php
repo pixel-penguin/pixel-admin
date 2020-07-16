@@ -154,4 +154,20 @@ Route::group([
 	Route::post('orders/updatedelivery', 'OrdersController@updateDelivery');
 	Route::post('orders/updatepayment', 'OrdersController@updatePayments');
 	
+	Route::resource('mobilepages', 'MobilePagesController');
+	Route::delete('mobilepages/builder/gallery/delete/{galleryId}', 'MobilePagesController@deleteBuilderGallery');
+	Route::delete('mobilepages/gallery/delete/{galleryId}', 'MobilePagesController@deleteGallery');
+	Route::post('pages/uploadgallery','MobilePagesController@uploadGallery');
+	Route::post('mobilepages/activate', 'MobilePagesController@activate');
+	Route::post('mobilepages/order', 'MobilePagesController@orderPages');	
+	Route::post('mobilepages/builder/order', 'MobilePagesController@orderBuilderContent');
+	Route::post('mobilepages/gallery/order/{pageId}', 'MobilePagesController@galleryOrder'); 
+	Route::post('mobilepages/gallery/name/update', 'MobilePagesController@updateGalleryName'); 
+	Route::post('mobilepages/builder/image/update', 'MobilePagesController@updateContentBuilderImage');
+	
+	
+	Route::post('mobilepages/builder/updateinfo', 'MobilePagesController@updateInfo');
+	Route::post('mobilepages/builder/uploadgallery', 'MobilePagesController@uploadContentGallery');
+	
+	Route::get('mobilepages/builder/{pageId}', 'MobilePagesController@pageBuilder');	
 });

@@ -109,8 +109,11 @@ Vue.component('admin-brand-edit', require('./components/admin/brands/Edit.vue').
 Vue.component('admin-travel-package-list', require('./components/admin/travelpackages/List.vue').default);
 Vue.component('admin-travel-package-edit', require('./components/admin/travelpackages/Edit.vue').default);
 
-
 Vue.component('admin-website-details-edit', require('./components/admin/websitedetails/Index.vue').default);
+
+Vue.component('admin-mobile-pages-list', require('./components/admin/mobilepages/List.vue').default);
+Vue.component('admin-mobile-page-edit', require('./components/admin/mobilepages/Edit.vue').default);
+Vue.component('admin-mobile-page-builder', require('./components/admin/mobilepages/PageBuilder.vue').default);
 
 
 Vue.component('admin-orders', require('./components/admin/orders/List.vue').default);

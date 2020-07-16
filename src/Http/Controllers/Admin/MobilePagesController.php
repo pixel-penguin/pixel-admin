@@ -43,7 +43,7 @@ class MobilePagesController extends Controller
      */
 	
 	
-    public function orderMobilePages(Request $request)
+    public function orderPages(Request $request)
     {
 		$input = $request->all();
 		

@@ -665,9 +665,18 @@ class WebsiteJsonController extends Controller
 		$urlToFile = 'https://res.cloudinary.com/'.env('CLOUDINARY_CLOUD_NAME').'/raw/upload/'.$cloudFile->file_name;
 		//echo $cloudFile->name.'.'.$cloudFile->file_extension;
 		
-		return response()->streamDownload(function() use ($urlToFile){
-			readfile($urlToFile);
-		}, $cloudFile->name.'.'.$cloudFile->file_extension);
+		
+		if($cloudFile->file_extension){
+			return response()->withHeaders([
+                'Content-Type' => 'application/pdf'
+            ])->file($urlToFile);
+		}
+		else{
+			return response()->streamDownload(function() use ($urlToFile){
+				readfile($urlToFile);
+			}, $cloudFile->name.'.'.$cloudFile->file_extension);	
+		}
+		
 		
 		
 	}

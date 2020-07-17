@@ -25,7 +25,17 @@ class CloudFilesController extends Controller
 		
 		$fileName = $request->file('file_name');
 
-       	$cloudder = Cloudder::upload($fileName->getRealPath(), env('CLOUDINARY_BASE_FOLDER_PATH').'cloud-files/'.str_slug($fileName->getClientOriginalName()).time(), ['resource_type' => 'raw'] );
+		
+		//echo $request->file('file_name')->extension();
+		//die();
+		
+		if($request->file('file_name')->extension() == 'pdf'){
+			$cloudder = Cloudder::upload($fileName->getRealPath(), env('CLOUDINARY_BASE_FOLDER_PATH').'cloud-files/'.str_slug($fileName->getClientOriginalName()).time(), ['resource_type' => 'image']);
+		}
+		else{
+			$cloudder = Cloudder::upload($fileName->getRealPath(), env('CLOUDINARY_BASE_FOLDER_PATH').'cloud-files/'.str_slug($fileName->getClientOriginalName()).time(), ['resource_type' => 'raw'] );	
+		}
+       	
 		
 		$uploadedResult = $cloudder->getResult();
 		

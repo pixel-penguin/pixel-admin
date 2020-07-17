@@ -30,7 +30,10 @@
                                 <i class="fa fa-check" aria-hidden="true"></i>
                                 <p style="overflow:hidden">{{cloudFile.name}}.{{cloudFile.file_extension}}</p>
                                 
-                                <div class="btn btn-default" v-clipboard:copy="appUrl+'/cloudfiles/download/'+cloudFile.id">
+                                <div v-if="cloudFile.file_extension == 'pdf'" class="btn btn-default" v-clipboard:copy="'https://res.cloudinary.com/pixel-penguin/image/upload/v1/'+cloudFile.file_name+'.pdf'">
+                                    <i style="font-size:12px; color:#333" class="fa fa-link" aria-hidden="true"></i> Copy url
+                                </div>
+                                <div v-else class="btn btn-default" v-clipboard:copy="appUrl+'/cloudfiles/download/'+cloudFile.id">
                                     <i style="font-size:12px; color:#333" class="fa fa-link" aria-hidden="true"></i> Copy url
                                 </div>
                                 

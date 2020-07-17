@@ -401,7 +401,7 @@ class MobilePagesController extends Controller
 		
 		$gallery = new MobilePageContentGallery();
 		$gallery->user_id = Auth::user()->id;
-		$gallery->page_content_id = $input['page_content_id'];
+		$gallery->mobile_page_content_id = $input['page_content_id'];
 		$gallery->image_name = $result['public_id'];
 		$gallery->save();
 		

@@ -1,10 +1,10 @@
 <template>
     <div>
 		<div class="row">
-			<div class="col-xs-4">
+			<div class="col-md-12">
 				<h4 class="page-title">Calendars</h4>
 			</div>
-			<div class="col-xs-8 text-right m-b-30">
+			<div class="col-md-12 text-right m-b-30">
 				<a href="/admin/calendars/create" class="btn btn-primary rounded"><i class="fa fa-plus"></i> Add Calendar</a>
 			</div>
 		</div>

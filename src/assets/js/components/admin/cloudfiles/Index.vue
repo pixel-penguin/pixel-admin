@@ -1,12 +1,12 @@
 <template>
     <div>
 		<div class="row">
-			<div class="col-xs-4">
+			<div class="col-md-12">
 				<h4 class="page-title">Cloud Files</h4>
 			</div>
             
             
-			<div class="col-xs-8 text-right m-b-30">
+			<div class="col-md-12 text-right m-b-30">
 				<a  @click="uploadFileModal = true" href="#" class="btn btn-primary rounded"><i class="fa fa-plus"></i> Upload</a>
 			</div>
             

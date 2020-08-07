@@ -30,7 +30,16 @@
 	   .submenu ul i{display: none}
 		
 		.content ul{margin-left: 0 !important; margin-top: 0 !important}
-
+		
+		.sidebar{background: #FFF; border-right: #CFCFCF}
+		#sidebar-menu ul ul{ background-color: #FFF}
+		
+		.sidebar-menu li a{ background: #E8E8E8; margin:0 5px 5px 5px}
+		.sidebar-menu li a:hover{ background-color: #ff5200; color:#FFF}
+		.sidebar-menu li .active{ background: #ff5200; color: #FFF}
+		
+		.sidebar-menu ul ul a.active{color: #FFF}
+		
 	</style>
 	
 	@yield('style')
@@ -67,7 +76,7 @@
 						<div class="sidebar-inner slimscroll">
 							<div id="sidebar-menu" class="sidebar-menu">
 								<ul>
-									<li class="menu-title">Main</li>
+									<li style="color: #333" class="menu-title">Main</li>
 									
 									{!! PixelPenguin\Admin\Http\Controllers\Extras\AdminNavigationController::initiate() !!}
 

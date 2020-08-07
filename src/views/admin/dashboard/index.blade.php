@@ -17,5 +17,9 @@
 @section('style')
 <style>
 	.filterStatsProperty input{ padding: 10px 20px;  border: 1px solid #CCC; border-radius:5px; }
+	
+
+	.vdp-datepicker input{width:100%}
+
 </style>
 @stop

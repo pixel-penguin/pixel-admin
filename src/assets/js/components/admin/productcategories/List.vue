@@ -1,19 +1,15 @@
 <template>
     <div>
 		<div class="row">
-			<div class="col-xs-4">
+			<div class="col-md-12">
 				<h4 class="page-title">Product Categories </h4>
                 
-                <div class="row">
-
-                    <div class="col-md-12" style="margin-bottom:20px">
+                
+			</div>
+             <div class="col-md-6" style="margin-bottom:20px">
                         <div @click="tutorialVideoModal = true" class="btn btn-small btn-primary rounded" data-toggle="modal" data-target="#add_user"><i class="fa fa-video-camera" aria-hidden="true"></i> Tutorial</div>
                     </div>
-                
-                </div>
-			</div>
-            
-			<div class="col-xs-8 text-right m-b-30">
+			<div class="col-md-6 text-right m-b-30">
 				
                 <div @click="addProductCategory" class="btn btn-primary rounded" data-toggle="modal" data-target="#add_user"><i class="fa fa-plus"></i> Add Category</div>
 			</div>

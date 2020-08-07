@@ -11,6 +11,8 @@ use PixelPenguin\Admin\Models\AdminNavigation;
 
 use Cloudder;
 
+use URL;
+
 class AdminNavigationController extends Controller
 {
 	/*
@@ -87,9 +89,19 @@ class AdminNavigationController extends Controller
 					$hasChildren = true;
 				}
 				
+				$link = parse_url(URL::current());
+				//print_r($link);
+				//die();
+				
+				$active = false;
+				
+				if('/'.$collectionEntry->url == $link['path']){
+					$active = true;
+				}
+				
 				$currentPage = false;
 				
-				$menu .= view($template, ['navigation' => $collectionEntry, 'currentPage' => $currentPage, 'hasChildren' => $hasChildren, 'isMainParent' => $isMainParent, 'id' => $collectionEntry->id, 'name' => $collectionEntry->name, 'link' => $link, 'sub' => $sub]);
+				$menu .= view($template, ['navigation' => $collectionEntry, 'currentPage' => $currentPage, 'hasChildren' => $hasChildren, 'isMainParent' => $isMainParent, 'id' => $collectionEntry->id, 'name' => $collectionEntry->name, 'link' => $link, 'sub' => $sub, 'active' => $active]);
 				
 			}             
 

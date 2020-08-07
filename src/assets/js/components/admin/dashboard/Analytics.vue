@@ -1,58 +1,75 @@
 <template>
-    <div>
+    <div style="width:100%">
 
-        <div v-if="loading" class="col-md-12" style="height:300px; background:url(https://res.cloudinary.com/dhmwdhirs/image/upload/v1563733239/loading/loading-1.gif) center no-repeat; ">
-
+        <div v-if="loading" class="row">
+            <div class="col-12" style="height:300px; width:100%; background:url(https://res.cloudinary.com/dhmwdhirs/image/upload/v1563733239/loading/loading-1.gif) center no-repeat; "></div>
         </div>
 
         <div v-if="loading == false">
             <div class="col-md-12">
-                <h2>Filter by dates</h2>
-                <div class="form-group col-lg-3 col-sm-3">
-                    <label class="text-white">Start Date</label><br>
-                    <!--<input type="text" name="date1" class="date start form-control" placeholder="MM/DD/YYYY">-->
-                    <datepicker :format="format" class="filterStatsProperty" v-model="start_date"></datepicker>
+                <div class="row" style="background:#ff5200" >
+
+                    <div class="form-group col-md-12">
+                        <h2 style="text-align:center; color:#FFF; margin-top:20px">Filter by dates</h2>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="text-white">Start Date</label><br>
+                        <!--<input type="text" name="date1" class="date start form-control" placeholder="MM/DD/YYYY">-->
+                        <datepicker :format="format" class="filterStatsProperty" v-model="start_date"></datepicker>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="text-white">End Date</label><br>
+                        <!--<input type="text" name="date2" class="date end form-control" placeholder="MM/DD/YYYY">-->
+                        <datepicker :format="format" class="filterStatsProperty" v-model="end_date"></datepicker>
+                    </div>
                 </div>
-                <div class="form-group col-lg-3 col-sm-3">
-                    <label class="text-white">End Date</label><br>
-                    <!--<input type="text" name="date2" class="date end form-control" placeholder="MM/DD/YYYY">-->
-                    <datepicker :format="format" class="filterStatsProperty" v-model="end_date"></datepicker>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <h2>Visitors and Page Views</h2>
-                <apexchart type=line height=350 :options="chartOptions" :series="series" />
             </div>
 
-            <div class="col-md-12">
-                <h2>Browsers</h2>
-                <apexchart type=pie width=600 :options="browserChart" :series="browserSeries" />
+            <div class="card card-body bg-light">
+                <div class="col-md-12">
+                    <h2>Visitors and Page Views</h2>
+                    <apexchart type=line height=350 :options="chartOptions" :series="series" />
+                </div>
             </div>
-            <div class="col-md-6">
-                <h2>Top Referrers</h2>
-                <table>
-                    <tr>
-                        <th>URL</th>
-                        <th>Amount</th>
-                    </tr>
-                    <tr v-for="referrer in topReferrers" v-bind:key="referrer.url">
-                        <td><a target="_blank" :href="'http://'+referrer.url">{{referrer.url}}</a></td>
-                        <td style="text-align:right">{{referrer.pageViews}}</td>
-                    </tr>
-                </table>
+            
+            
+            <div class="card card-body bg-light">
+                <div class="col-md-12">
+                    <h2>Browsers</h2>
+                    <apexchart type=pie width=600 :options="browserChart" :series="browserSeries" />
+                </div>
             </div>
-            <div class="col-md-6">
-                <h2>Most Visited Pages</h2>
-                <table>
-                    <tr>
-                        <th>URL</th>
-                        <th>Amount</th>
-                    </tr>
-                    <tr v-for="visitedPage in topVisitedPages" v-bind:key="visitedPage.url">
-                        <td><a target="_blank" :href="visitedPage.url">{{visitedPage.url}}</a></td>
-                        <td style="text-align:right">{{visitedPage.pageViews}}</td>
-                    </tr>
-                </table>
+
+            <div class="card card-body bg-light">
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Top Referrers</h2>
+                        <table>
+                            <tr>
+                                <th>URL</th>
+                                <th>Amount</th>
+                            </tr>
+                            <tr v-for="referrer in topReferrers" v-bind:key="referrer.url">
+                                <td><a target="_blank" :href="'http://'+referrer.url">{{referrer.url}}</a></td>
+                                <td style="text-align:right">{{referrer.pageViews}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h2>Most Visited Pages</h2>
+                        <table>
+                            <tr>
+                                <th>URL</th>
+                                <th>Amount</th>
+                            </tr>
+                            <tr v-for="visitedPage in topVisitedPages" v-bind:key="visitedPage.url">
+                                <td><a target="_blank" :href="visitedPage.url">{{visitedPage.url}}</a></td>
+                                <td style="text-align:right">{{visitedPage.pageViews}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -2,7 +2,7 @@
 
 ## This is a whole admin
 
-###Add
+Add
 ```
 use Illuminate\Support\Facades\Schema;
 
@@ -11,21 +11,21 @@ public function boot()
     Schema::defaultStringLength(191);
 }
 ```
-###In AppServiceProvider.php
+In AppServiceProvider.php
 
-###Then in cmd prompt
+Then in cmd prompt
 ```
 composer require laravel/ui
 php artisan ui vue --auth
 ```
 
-###Remember to do
+Remember to do
 
 ```
 npm install
 ```
 
-###For npm installs:
+For npm installs:
 
 ```
 npm install @mdi/font --save
@@ -54,7 +54,7 @@ npm install hooper --save
 npm install --save vue-swatches
 ```
 
-###For composer includes do:
+For composer includes do:
 
 ```
 composer require pixel-penguin/pixel-admin

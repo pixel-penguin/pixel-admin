@@ -64,7 +64,7 @@ composer require spatie/laravel-analytics
 composer require laravel/helpers
 ```
 
-In you  weppack.mix.js insert:
+In you  wepback.mix.js insert:
 
 ```
 mix.js('vendor/pixel-penguin/pixel-admin/src/assets/js/admin.js', 'public/js')

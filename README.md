@@ -64,5 +64,21 @@ composer require spatie/laravel-analytics
 composer require laravel/helpers
 ```
 
+In you  weppack.mix.js insert:
 
+```
+mix.js('vendor/pixel-penguin/pixel-admin/src/assets/js/admin.js', 'public/js')
+   .sass('vendor/pixel-penguin/pixel-admin/src/assets/sass/admin.scss', 'public/css');
+
+mix.styles([
+        'vendor/pixel-penguin/pixel-admin/src/assets/themeincludes/style.css',
+    ], 'public/css/admin-main.css');
+
+mix.scripts([
+        // vendor
+        'vendor/pixel-penguin/pixel-admin/src/assets/themeincludes/jquery.slimscroll.js',
+        'vendor/pixel-penguin/pixel-admin/src/assets/themeincludes/app.js'
+
+    ], 'public/js/admin-main.js');
+```
 

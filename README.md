@@ -64,6 +64,10 @@ composer require doctrine/dbal
 composer require spatie/laravel-analytics
 composer require laravel/helpers
 ```
+After this: remember to run:
+```
+php artisan migrate
+```
 
 In you  wepback.mix.js insert:
 

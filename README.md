@@ -1,6 +1,6 @@
 # Pixel Admin Form Pacakge
 
-## This is a whole admin
+## This is the admin for you to use if you do the course at https://www.udemy.com/course/crash-course-for-laravel-7-and-vuejs-basics/?referralCode=F7C3DE21AB2B71FBD59F
 
 Add
 ```

@@ -3,7 +3,7 @@
 ## If you have difficulty using this package, please follow the tutorial at: 
 https://www.udemy.com/course/crash-course-for-laravel-7-and-vuejs-basics/?referralCode=F7C3DE21AB2B71FBD59F
 
-Add
+### Add
 ```
 use Illuminate\Support\Facades\Schema;
 
@@ -12,21 +12,21 @@ public function boot()
     Schema::defaultStringLength(191);
 }
 ```
-In AppServiceProvider.php
+### In AppServiceProvider.php
 
-Then in cmd prompt
+### Then in cmd prompt
 ```
 composer require laravel/ui
 php artisan ui vue --auth
 ```
 
-Remember to do
+### Remember to do
 
 ```
 npm install
 ```
 
-For npm installs:
+### For npm installs:
 
 ```
 npm install @mdi/font --save
@@ -55,7 +55,7 @@ npm install hooper --save
 npm install --save vue-swatches
 ```
 
-For composer includes do:
+### For composer includes do:
 
 ```
 composer require pixel-penguin/pixel-admin
@@ -64,12 +64,12 @@ composer require doctrine/dbal
 composer require spatie/laravel-analytics
 composer require laravel/helpers
 ```
-After this: remember to run:
+### After this: remember to run:
 ```
 php artisan migrate
 ```
 
-In you  wepback.mix.js insert:
+### In you  wepback.mix.js insert:
 
 ```
 mix.js('vendor/pixel-penguin/pixel-admin/src/assets/js/admin.js', 'public/js')
@@ -134,15 +134,15 @@ EMAIL_ADDRESS_ORDER_2=
 EMAIL_SEND_USER_EMAIL=1
 ```
 
-#Routes:
+# Routes:
 
-##Search Products
+## Search Products
 ```
 Method: Post
 Params: search
 Path: /search/products
 ```
-##Get list of Pages  in tree form
+## Get list of Pages  in tree form
 ```
 Method: Get
 Params: unpublished ['Y, 'N', or blank for N]

@@ -133,3 +133,19 @@ EMAIL_ADDRESS_ORDER_1=
 EMAIL_ADDRESS_ORDER_2=
 EMAIL_SEND_USER_EMAIL=1
 ```
+
+#Routes:
+
+##Search Products
+```
+Method: Post
+Params: search
+Path: /search/products
+```
+##Get list of Pages  in tree form
+```
+Method: Get
+Params: unpublished ['Y, 'N', or blank for N]
+Path: /pages/{unpublished?}
+```
+

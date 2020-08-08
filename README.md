@@ -134,7 +134,7 @@ EMAIL_ADDRESS_ORDER_2=
 EMAIL_SEND_USER_EMAIL=1
 ```
 
-## Routes:
+## JSON requests:
 
 ### Pages Routes
 
@@ -155,4 +155,11 @@ Path: /pages/{unpublished?}
 Method: Get
 Params: pageId
 Path: page/detail/{pageId}
+```
+
+#### Get page gallery
+```
+Method: Get
+Params: pageId
+Path: page/gallery/{pageId}
 ```

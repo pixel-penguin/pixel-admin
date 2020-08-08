@@ -134,7 +134,9 @@ EMAIL_ADDRESS_ORDER_2=
 EMAIL_SEND_USER_EMAIL=1
 ```
 
-### Routes:
+## Routes:
+
+### Pages Routes
 
 #### Search Products
 ```
@@ -148,4 +150,9 @@ Method: Get
 Params: unpublished ['Y, 'N', or blank for N]
 Path: /pages/{unpublished?}
 ```
-
+#### Get page detail
+```
+Method: Get
+Params: pageId
+Path: page/detail/{pageId}
+```

@@ -1,4 +1,4 @@
-# Pixel Admin Form Pacakge
+# PixelPenguin Admin Package
 
 ## If you have difficulty using this package, please follow the tutorial at: 
 https://www.udemy.com/course/crash-course-for-laravel-7-and-vuejs-basics/?referralCode=F7C3DE21AB2B71FBD59F

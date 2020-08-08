@@ -163,3 +163,12 @@ Method: Get
 Params: pageId
 Path: page/gallery/{pageId}
 ```
+
+## Using Facade
+### insert wherever you need to use facade
+```
+use PixelPenguinAdmin;
+```
+#### Get all pages
+````
+PixelPenguinAdmin::getAllPages()

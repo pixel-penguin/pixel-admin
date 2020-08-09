@@ -109,6 +109,20 @@ EMAIL_ADDRESS_ORDER_2=
 EMAIL_SEND_USER_EMAIL=1
 ```
 
+Extract the contents of this zip file
+```
+vendor\pixel-penguin\pixel-admin\src\database\seeds\seeds.zip
+```
+to
+```
+database\seeds\
+```
+
+Then run the following command in the terminal:
+```
+php artisan db:seed
+```
+
 ## JSON requests:
 
 ### Pages Routes

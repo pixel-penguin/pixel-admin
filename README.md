@@ -180,7 +180,7 @@ PixelPenguinAdmin::pageDetail($pageId)
 ```
 
 #### Get all pages
-````
+```
 PixelPenguinAdmin::pageGallery()
 ```
 

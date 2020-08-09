@@ -118,6 +118,11 @@ to
 database\seeds\
 ```
 
+Then run the following command in the terminal:
+```
+php artisan db:seed
+```
+
 ## JSON requests:
 
 ### Pages Routes

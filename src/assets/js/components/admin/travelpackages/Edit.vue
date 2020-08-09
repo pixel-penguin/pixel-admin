@@ -1,16 +1,16 @@
 <template>
     <div>
-		<div class="row">
+		<div class="row card" style="padding:10px" >
 
             <div class="col-md-12" style="margin-bottom:20px">
                 <ul class="nav nav-tabs">
-                    <li @click="step=1" v-bind:class="{ active: step == 1 }"><a href="#">Basic Detail</a></li>
-                    <li v-if="travelPackage.id != 0" @click="step=2" v-bind:class="{ active: step == 2 }"><a href="#">Includes</a></li>
-                    <li v-if="travelPackage.id != 0" @click="step=3" v-bind:class="{ active: step == 3 }"><a href="#">Detail</a></li>
-                    <li v-if="travelPackage.id != 0" @click="step=4" v-bind:class="{ active: step == 4 }"><a href="#">Pricing</a></li>
-                    <li v-if="travelPackage.id != 0" @click="step=5" v-bind:class="{ active: step == 5 }"><a href="#">Images</a></li>
-                    <li v-if="travelPackage.id != 0" @click="step=6" v-bind:class="{ active: step == 6 }"><a href="#">Extra</a></li>
-                    <li v-if="travelPackage.id != 0" @click="step=7" v-bind:class="{ active: step == 7 }"><a href="#">Itineraries</a></li>
+                    <li class="nav-item" @click="step=1"><a class="nav-link" v-bind:class="{ active: step == 1 }" href="#">Basic Detail</a></li>
+                    <li class="nav-item" v-if="travelPackage.id != 0" @click="step=2"><a class="nav-link" v-bind:class="{ active: step == 2 }" href="#">Includes</a></li>
+                    <li class="nav-item" v-if="travelPackage.id != 0" @click="step=3"><a class="nav-link" v-bind:class="{ active: step == 3 }" href="#">Detail</a></li>
+                    <li class="nav-item" v-if="travelPackage.id != 0" @click="step=4"><a class="nav-link" v-bind:class="{ active: step == 4 }" href="#">Pricing</a></li>
+                    <li class="nav-item" v-if="travelPackage.id != 0" @click="step=5"><a class="nav-link" v-bind:class="{ active: step == 5 }" href="#">Images</a></li>
+                    <li class="nav-item" v-if="travelPackage.id != 0" @click="step=6"><a class="nav-link" v-bind:class="{ active: step == 6 }" href="#">Extra</a></li>
+                    <li class="nav-item" v-if="travelPackage.id != 0" @click="step=7"><a class="nav-link" v-bind:class="{ active: step == 7 }" href="#">Itineraries</a></li>
                 </ul>
             </div>
 

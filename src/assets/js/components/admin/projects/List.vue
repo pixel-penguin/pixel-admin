@@ -9,8 +9,8 @@
 			</div>
 		</div>
 		
-		<div>
-            <div class="ui container">
+		<div class="card">
+            <div style="padding: 10px">
                 <section>
                     <!--<input style="border:1px solid #CCC; padding:3px 10px; border-radius:10px; margin-bottom:10px" type="text" v-model="searchKey" placeholder="Filter Grab Voucher Here" />-->
                     <v-client-table :columns="columns" v-model="projects" :options="options">

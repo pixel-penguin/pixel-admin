@@ -1,15 +1,26 @@
 <template>
     <div>
-		<div class="row">
+         <div class="row" style="margin-bottom:10px">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4" style="padding-left:0">
+                        <a href="/admin/products" class="btn btn-white"><i class="fa fa-chevron-left" aria-hidden="true"></i> Go Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+		<div class="row card" style="padding:10px">
 
             <div class="col-md-12" style="margin-bottom:20px">
-                <ul class="nav nav-tabs">
-                    <li @click="step=1" v-bind:class="{ active: step == 1 }"><a href="#">Basic Detail</a></li>
-                    <li v-if="product.id != 0" @click="step=2" v-bind:class="{ active: step == 2 }"><a href="#">Item Types</a></li>
-                    <li v-if="product.id != 0" @click="step=3" v-bind:class="{ active: step == 3 }"><a href="#">Detail</a></li>
-                    <li v-if="product.id != 0" @click="step=4" v-bind:class="{ active: step == 4 }"><a href="#">Pricing</a></li>
-                    <li v-if="product.id != 0" @click="step=5" v-bind:class="{ active: step == 5 }"><a href="#">Images</a></li>
-                    <li v-if="product.id != 0" @click="step=6" v-bind:class="{ active: step == 6 }"><a href="#">Extra</a></li>
+                <ul class="nav  nav-tabs">
+                    <li class="nav-item" @click="step=1"><a class="nav-link" v-bind:class="{ active: step == 1 }" href="#">Basic Detail</a></li>
+                    <li class="nav-item" v-if="product.id != 0" @click="step=2"><a v-bind:class="{ active: step == 2 }" class="nav-link" href="#">Item Types</a></li>
+                    <li class="nav-item" v-if="product.id != 0" @click="step=3"><a v-bind:class="{ active: step == 3 }" class="nav-link" href="#">Detail</a></li>
+                    <li class="nav-item" v-if="product.id != 0" @click="step=4"><a v-bind:class="{ active: step == 4 }" class="nav-link" href="#">Pricing</a></li>
+                    <li class="nav-item" v-if="product.id != 0" @click="step=5"><a v-bind:class="{ active: step == 5 }" class="nav-link" href="#">Images</a></li>
+                    <li class="nav-item" v-if="product.id != 0" @click="step=6"><a v-bind:class="{ active: step == 6 }" class="nav-link" href="#">Extra</a></li>
                 </ul>
             </div>
 

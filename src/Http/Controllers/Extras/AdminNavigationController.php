@@ -95,7 +95,17 @@ class AdminNavigationController extends Controller
 				
 				$active = false;
 				
-				if('/'.$collectionEntry->url == $link['path']){
+				$currentLink = $link['path'];
+				$currentLink = explode("/", $currentLink);
+				$currentLink = '/'.$currentLink[1].'/'.$currentLink[2];
+				
+				//echo $currentLink;
+				//die();
+				
+				
+				
+				
+				if('/'.$collectionEntry->url == $currentLink){
 					$active = true;
 				}
 				

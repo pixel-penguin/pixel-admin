@@ -40,6 +40,10 @@
 		
 		.sidebar-menu ul ul a.active{color: #FFF}
 		
+		.filterStatsProperty input{ width: 100%; border:1px solid #ced4da; height: 40px; padding: 0 20px}
+		
+		
+		.list-group{width: 100%; display: contents}
 	</style>
 	
 	@yield('style')

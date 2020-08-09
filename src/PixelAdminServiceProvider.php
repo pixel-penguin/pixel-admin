@@ -3,7 +3,8 @@
 namespace PixelPenguin\Admin;
 
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Foundation\AliasLoader;
+use PixelPenguin\Admin\Facade;
 
 class PixelAdminServiceProvider extends ServiceProvider{
 	
@@ -23,6 +24,9 @@ class PixelAdminServiceProvider extends ServiceProvider{
 	
 	
 	public function register(){
-		
+		$this->app->booting(function() {
+            $loader = AliasLoader::getInstance();
+            $loader->alias('PixelPenguinAdmin', Facade::class);
+        });
 	}
 }

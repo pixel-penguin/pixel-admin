@@ -1,7 +1,16 @@
 <template>
     <div>
+         <div class="row" style="margin-bottom:10px">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4" style="padding-left:0">
+                        <a href="/admin/teams" class="btn btn-white"><i class="fa fa-chevron-left" aria-hidden="true"></i> Go Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 		<div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-12 card" style="padding:10px">
                 <form @submit="updateService">
                     
                     

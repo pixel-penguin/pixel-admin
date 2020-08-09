@@ -56,7 +56,7 @@
 				<div class="header">
 					<div class="header-left">
 						<a href="/admin" class="logo">
-							<img style="max-height: 50px" src="https://res.cloudinary.com/dhmwdhirs/image/upload/c_scale,h_100/v1548860524/logos/pixel-penguin/pixel_penguin_without_creative_solutions_dark-01.png" height="40" alt="">
+							<img style="max-height: 50px" src="https://res.cloudinary.com/pixel-penguin/image/upload/c_scale,h_100/v1596973751/pixel_penguin_logos/pixel-admin_sjxmom.png" height="40" alt="">
 						</a>
 					</div>
 					<div class="page-title-box pull-left">
@@ -64,14 +64,19 @@
 					</div>
 					<a id="mobile_btn" class="mobile_btn pull-left" href="#sidebar"><i class="fa fa-bars" aria-hidden="true"></i></a>
 					
-					<div class="dropdown mobile-user-menu pull-right">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-						<ul class="dropdown-menu pull-right">
-							<li><a href="profile.html">My Profile</a></li>
-							<li><a href="edit-profile.html">Edit Profile</a></li>
-							<li><a href="settings.html">Settings</a></li>
-							<li><a href="login.html">Logout</a></li>
-						</ul>
+					<div class="dropdown pull-right" style="margin: 12px">
+						<div class="dropdown">
+						  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Welcome {{ Auth::user()->name }}
+						  </button>
+						  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						  	<form id="logout" style="display: none" method="POST" action="{{ route('logout') }}">
+							  @csrf							  
+							</form>
+							<a class="dropdown-item" href="/admin/websitedetail">Website Details</a>
+							<a onClick="document.getElementById('logout').submit()" class="dropdown-item" href="#">Logout</a>
+						  </div>
+						</div>
 					</div>
 				</div>
 

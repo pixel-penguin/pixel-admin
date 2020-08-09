@@ -170,7 +170,7 @@ Path: page/gallery/{pageId}
 use PixelPenguinAdmin;
 ```
 #### Get all pages
-````
+```
 PixelPenguinAdmin::getAllPages() //Param: leave blank for all published pages and 'Y' for unpublished pages
 ```
 

@@ -171,4 +171,16 @@ use PixelPenguinAdmin;
 ```
 #### Get all pages
 ````
-PixelPenguinAdmin::getAllPages()
+PixelPenguinAdmin::getAllPages() //Param: leave blank for all published pages and 'Y' for unpublished pages
+```
+
+#### Get all pages
+````
+PixelPenguinAdmin::pageDetail($pageId)
+```
+
+#### Get all pages
+````
+PixelPenguinAdmin::pageGallery()
+```
+

@@ -175,7 +175,7 @@ PixelPenguinAdmin::getAllPages() //Param: leave blank for all published pages an
 ```
 
 #### Get all pages
-````
+```
 PixelPenguinAdmin::pageDetail($pageId)
 ```
 

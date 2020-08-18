@@ -170,4 +170,10 @@ Route::group([
 	Route::post('mobilepages/builder/uploadgallery', 'MobilePagesController@uploadContentGallery');
 	
 	Route::get('mobilepages/builder/{pageId}', 'MobilePagesController@pageBuilder');	
+	
+	
+	Route::get('mobileappdetail', 'MobileAppDetailsController@index');
+	Route::post('mobileappdetail/update', 'MobileAppDetailsController@update');
+	Route::post('mobileappdetail/updatepageimage1', 'MobileAppDetailsController@updateImage1');
+	Route::post('mobileappdetail/updatepageimage2', 'MobileAppDetailsController@updateImage2');
 });

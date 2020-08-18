@@ -203,6 +203,7 @@ class MobilePagesController extends Controller
 		//$page->website_link = $input['website_link'];
 		//$page->link_name = $input['link_name'];
 		$page->title = $input['title'];
+		$page->mobile_page_type_id = $input['mobile_page_type_id'];
 		//$page->meta_description = $input['meta_description'];
 		//$page->description = $input['description'];
 		

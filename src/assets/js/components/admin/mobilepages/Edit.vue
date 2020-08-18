@@ -38,6 +38,17 @@
                         <input class="form-control" type="text" v-model="name">
                     </div>
 
+                    <div class="form-group">
+                        <label>Mobile Page Type</label>
+                        <select class="form-control" v-model="mobile_page_type_id">
+                            <option value="1">Sub Pages</option>
+                            <option value="2">Page Content</option>
+                            <option value="3">Contact us</option>
+                            <option value="4">Blogs</option>
+                            <option value="5">Products</option>
+                        </select>
+                    </div>
+
                                         
                     <div  class="form-group" style="margin-bottom:20px">
                         <a :href="'/admin/mobilepages/builder/'+page_id" class="btn btn-primary">Page Builder</a>
@@ -105,6 +116,7 @@
                 loading:false,
 
                 name: null,
+                mobile_page_type_id:1,
                 page_type_id: 0,
                 website_link: null,
                 link_name: null,
@@ -205,6 +217,7 @@
                     self.hidden = data.obj.hidden;
                     self.page_type_id = data.obj.page_type_id;
                     self.image_name = data.obj.image_name;
+                    self.mobile_page_type_id = data.obj.mobile_page_type_id;
 
                 })
                 .catch(error => {
@@ -281,6 +294,7 @@
                     price: self.price,
                     no_link: self.no_link,
                     active: self.active,
+                    mobile_page_type_id: self.mobile_page_type_id,
                     hidden: self.hidden,
                 })
                 .then(response => {

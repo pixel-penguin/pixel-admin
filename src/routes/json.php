@@ -106,8 +106,7 @@ Route::group([
 	Route::post('shipping/placeorder',  'CartJsonController@createNewOrder'); 
 	
 	
-	Route::get('mobilepages', 'MobilePagesJsonController@pages');							//Get list of pages
-	Route::get('mobilepages/{unpublished}', 'MobilePagesJsonController@pages');			//Get list of pages published and unpublished ('Y' for parameter)
+	Route::get('mobilepages/{unpublished?}', 'MobilePagesJsonController@pages');			//Get list of pages published and unpublished ('Y' for parameter)
 	Route::get('mobilepage/detail/{pageId}', 'MobilePagesJsonController@pageDetail');		//Get Page Detail
 	Route::get('mobilepage/gallery/{pageId}', 'MobilePagesJsonController@pageGallery');	//Get Page Gallery
 

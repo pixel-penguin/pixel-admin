@@ -116,6 +116,7 @@ Vue.component('admin-mobile-pages-list', require('./components/admin/mobilepages
 Vue.component('admin-mobile-page-edit', require('./components/admin/mobilepages/Edit.vue').default);
 Vue.component('admin-mobile-page-builder', require('./components/admin/mobilepages/PageBuilder.vue').default);
 
+Vue.component('admin-mobile-app-details-edit', require('./components/admin/mobileappdetails/Index.vue').default);
 
 Vue.component('admin-orders', require('./components/admin/orders/List.vue').default);
 

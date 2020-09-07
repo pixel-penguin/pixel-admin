@@ -18,8 +18,8 @@
                         <img :src="previewImageUrl" width="100%" />
                     </div>
                     
-                    <div v-if="previewImageUrl == null && image_name != null" class="form-group">
-                        <img :src="'https://res.cloudinary.com/'+cloudinaryCloudName+'/image/upload/c_limit,h_1000,w_1000/v1/'+image_name+'.jpg'" width="100%" />
+                    <div v-if="previewImageUrl == null && icon_image_name != null" class="form-group">
+                        <img :src="'https://res.cloudinary.com/'+cloudinaryCloudName+'/image/upload/c_limit,h_1000,w_1000/v1/'+icon_image_name+'.jpg'" width="100%" />
                     </div>
 
 
@@ -140,7 +140,7 @@
 
                 pageTypesList:[],
 
-                image_name: null,
+                icon_image_name: null,
                 previewImageUrl: null,
                 
                 successSound:new Audio('https://res.cloudinary.com/dhmwdhirs/video/upload/v1558165617/audio/admin-sounds/bigbox.mp3')
@@ -191,9 +191,9 @@
                     return;
                 }
                     
-                self.image_name = files[0];
-                self.previewImageUrl =  URL.createObjectURL(self.image_name);
-                //console.log(self.image_name);
+                self.icon_image_name = files[0];
+                self.previewImageUrl =  URL.createObjectURL(self.icon_image_name);
+                //console.log(self.icon_image_name);
             },
             pageDetail(){
                 const self = this;
@@ -216,7 +216,7 @@
                     self.active = data.obj.active;
                     self.hidden = data.obj.hidden;
                     self.page_type_id = data.obj.page_type_id;
-                    self.image_name = data.obj.image_name;
+                    self.icon_image_name = data.obj.icon_image_name;
                     self.mobile_page_type_id = data.obj.mobile_page_type_id;
 
                 })
@@ -248,7 +248,7 @@
 
                 var formData = new FormData();
                 formData.append('page_id', self.page_id);
-                formData.append('image_name', self.image_name); 
+                formData.append('icon_image_name', self.icon_image_name); 
 
                 axios.post('/admin/mobilepages/updatepageimage', 
                 formData,
@@ -261,7 +261,7 @@
                 .then(response => {
                     self.loading = false;
 
-                    self.image_name = null;
+                    self.icon_image_name = null;
                     self.previewImageUrl =  null;
 
                     self.pageDetail();
@@ -365,7 +365,7 @@
 
                     var formData = new FormData();
                     formData.append('page_id', self.page_id);
-                    formData.append('image_name', self.galleryFiles[count]); 
+                    formData.append('icon_image_name', self.galleryFiles[count]); 
 
                     axios.post('/admin/mobilepages/uploadgallery', formData,formData,
                     formData,

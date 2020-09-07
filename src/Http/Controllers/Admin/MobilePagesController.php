@@ -72,7 +72,7 @@ class MobilePagesController extends Controller
            'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 50000',
        	]);
 
-       	$image_name = $request->file('image_name');
+       	$image_name = $request->file('icon_image_name');
 
        	$cloudder = Cloudder::upload($image_name->getRealPath(), env('CLOUDINARY_BASE_FOLDER_PATH').'app_page_images/'.str_slug($image_name->getClientOriginalName()).time() );
 		
@@ -83,7 +83,7 @@ class MobilePagesController extends Controller
 		//Cloudder::rename($result['public_id'], $toPublicId);
 		
 		$page = MobilePage::whereId($input['page_id'])->first();
-		$page->image_name = $uploadedResult['public_id'];
+		$page->icon_image_name = $uploadedResult['public_id'];
 		$page->save();
 		
 		$response = array();

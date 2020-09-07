@@ -39,14 +39,12 @@ class MobilePagesJsonController extends Controller
 		
 		foreach($netibleUsersMenu as $key => $menu)
 		{
-			//$netibleUsersMenu[$key]['has_children'] = false;
+			$netibleUsersMenu[$key]['has_children'] = false;
 			
 			if(isset($menu['children'][0]))
 			{
-				//$netibleUsersMenu[$key]['has_children'] = true;
+				$netibleUsersMenu[$key]['has_children'] = true;
 			}
-			
-			
 		}
 		
 		$response = array();

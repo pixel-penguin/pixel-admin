@@ -154,7 +154,12 @@ Route::group([
 	Route::post('orders/updatedelivery', 'OrdersController@updateDelivery');
 	Route::post('orders/updatepayment', 'OrdersController@updatePayments');
 	
+	
+	
 	Route::resource('mobilepages', 'MobilePagesController');
+	
+	Route::post('mobilepages/updatepageimage', 'MobilePagesController@updateMobilePageImage');
+	
 	Route::delete('mobilepages/builder/gallery/delete/{galleryId}', 'MobilePagesController@deleteBuilderGallery');
 	Route::delete('mobilepages/gallery/delete/{galleryId}', 'MobilePagesController@deleteGallery');
 	Route::post('pages/uploadgallery','MobilePagesController@uploadGallery');

@@ -25,7 +25,7 @@ php artisan ui vue --auth
 ```
 composer require laravel/jetstream
 
-php artisan jetstream:install livewire
+php artisan jetstream:install inertia
 
 composer require laravel/ui
 

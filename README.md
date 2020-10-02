@@ -14,10 +14,22 @@ public function boot()
 ```
 ### In AppServiceProvider.php
 
-### Then in cmd prompt
+### Then in cmd prompt in laravel 7 or lower
 ```
 composer require laravel/ui
 php artisan ui vue --auth
+```
+
+
+### Or Laravel 8
+```
+composer require laravel/jetstream
+
+php artisan jetstream:install inertia
+
+composer require laravel/ui
+
+php artisan ui vue
 ```
 
 ### Remember to do

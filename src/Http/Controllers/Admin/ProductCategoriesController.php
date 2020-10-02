@@ -71,7 +71,7 @@ class ProductCategoriesController extends Controller
         $productCategory = ProductCategory::findOrFail($array['id']);
 		
 		$productCategory->parent_id = $id;
-		//$productCategory->column_order = $this->orderNumber;
+		$productCategory->column_order = $this->orderNumber;
 		
 		$productCategory->save();
 		
@@ -83,21 +83,7 @@ class ProductCategoriesController extends Controller
             {
                 $this->updateFields($child, $array['id']);
             }
-        }
-		
-		/*
-        $aData = array(
-        'product_category_id' => $id,
-        'column_order' => $this->orderNumber
-        );
-		
-
-        $this->orderNumber += 1;
-        
-        $oMainShared->tableUpdateOnID('u_product_category',$aData, $array['id']); 
-		*/
-
-        
+        }        
     } 
 	
     public function store(Request $request)
@@ -161,24 +147,16 @@ class ProductCategoriesController extends Controller
 		
 		$productCategory = ProductCategory::whereId($id)->first();
 		
-		
-		
-		
 		$productCategory->name = $input['name'];
 		
 		$productCategory->link_name = $input['link_name'];
 		$productCategory->title = $input['title'];
 		
 		$productCategory->detail = $input['detail'];
-		
-		
 			
 		$linkName = str_slug($productCategory->name, '-');
 		$productCategory->link_name = $linkName.'-'.$productCategory->id;
-		
-		
-		//d($input);
-		
+				
 		if(strlen($input['title']) < 1){
 			
 			$productCategory->title = $productCategory->name;

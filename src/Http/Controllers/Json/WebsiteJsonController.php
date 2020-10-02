@@ -817,10 +817,10 @@ class WebsiteJsonController extends Controller
     public function productCategories($showUnPublished = 'N', $productChildrenShow = false)
 	{
 		if($showUnPublished == 'Y'){
-			$productCategories = ProductCategory::All();	
+			$productCategories = ProductCategory::orderBy('column_order')->get();	
 		}
 		else{
-			$productCategories = ProductCategory::All();	
+			$productCategories = ProductCategory::orderBy('column_order')->get();	
 		}
 		
 		$netibleUsersMenu = $this->createArrayOfNestible($productCategories->toArray(), $productChildrenShow);

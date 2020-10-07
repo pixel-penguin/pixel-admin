@@ -27,9 +27,8 @@ composer require laravel/jetstream
 
 php artisan jetstream:install inertia
 
-composer require laravel/ui
-
-php artisan ui vue
+npm install bootstrap -save
+npm install jquery -save
 ```
 
 ### Remember to do

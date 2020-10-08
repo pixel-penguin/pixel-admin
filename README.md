@@ -58,7 +58,7 @@ npm install v-tooltip --save
 npm install @tinymce/tinymce-vue --save
 npm install font-awesome --save
 npm install vue-nestable --save
-npm install font-awesome--save
+npm install font-awesome --save
 npm install pretty-checkbox --save
 npm install vue-axios --save
 npm install pretty-checkbox-vue --save

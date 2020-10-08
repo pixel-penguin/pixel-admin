@@ -60,7 +60,7 @@ npm install font-awesome --save
 npm install vue-nestable --save
 npm install font-awesome --save
 npm install pretty-checkbox --save
-npm install vue-axios --save
+npm install vue-axios@2 --save
 npm install pretty-checkbox-vue --save
 npm install hooper --save
 npm install --save vue-swatches

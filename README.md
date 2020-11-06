@@ -55,7 +55,7 @@ npm install @riophae/vue-treeselect --save
 npm install vuejs-datepicker --save
 npm install vue-sweetalert2 --save
 npm install v-tooltip --save
-npm install @tinymce/tinymce-vue --save
+npm install @tinymce/tinymce-vue@3 --save
 npm install font-awesome --save
 npm install vue-nestable --save
 npm install font-awesome --save

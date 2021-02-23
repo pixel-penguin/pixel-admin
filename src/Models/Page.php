@@ -48,6 +48,6 @@ class Page extends Model
 	
 	public function activeChildren()
 	{
-		return $this->hasMany('PixelPenguin\Admin\Models\Page', 'parent_id', 'id')->where('active', true)->with('children');
+		return $this->hasMany('PixelPenguin\Admin\Models\Page', 'parent_id', 'id')->where('active', true)->with('children')->orderBy('column_order');
 	}
 }

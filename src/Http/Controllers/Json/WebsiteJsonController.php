@@ -292,7 +292,7 @@ class WebsiteJsonController extends Controller
 	public function blogs($showUnPublished = false)
 	{
 		if($showUnPublished == true){
-			$blogs = Blog::All();	
+			$blogs = Blog::orderBy('created_at', 'DESC')->get();	
 		}
 		else{
 			$blogs = Blog::orderBy('created_at', 'DESC')->where('active', true)->get();	

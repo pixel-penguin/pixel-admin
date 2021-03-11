@@ -275,7 +275,7 @@ class WebsiteJsonController extends Controller
 	public function blogCategories()
 	{
 		
-		$blogCategories = BlogCategory::All();	
+		$blogCategories = BlogCategory::orderBy('created_at', "DESC")->get();	
 		
 		
 		

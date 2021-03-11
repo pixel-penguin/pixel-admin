@@ -17,7 +17,9 @@
                     <v-client-table :columns="columns" v-model="blogs" :options="options">
                         
                         <!--<a slot="name" slot-scope="props" target="_blank" :href="props.row.name" class="glyphicon glyphicon-eye-open"></a>-->
-
+                        <div slot="date" slot-scope="props">
+                            <p>{{ props.row.created_at | moment("dddd, MMMM Do YYYY") }}</p>
+                        </div>
                         <div slot="name" slot-scope="props">
                             <p>{{props.row.name}}</p>
                         </div>
@@ -52,9 +54,10 @@
                 cloudinaryCloudName: null,
 
                 //table
-                columns:['name', 'actions'],
+                columns:['date', 'name', 'actions'],
                 options: {
                     headings: {
+                        date:'Date',
                         name: 'Name',
                         actions: 'Actions'
                     },

@@ -295,7 +295,7 @@ class WebsiteJsonController extends Controller
 			$blogs = Blog::All();	
 		}
 		else{
-			$blogs = Blog::where('active', true)->get();	
+			$blogs = Blog::orderBy('created_at', 'DESC')->where('active', true)->get();	
 		}
 		
 		

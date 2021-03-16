@@ -162,7 +162,7 @@ Route::group([
 	
 	Route::delete('mobilepages/builder/gallery/delete/{galleryId}', 'MobilePagesController@deleteBuilderGallery');
 	Route::delete('mobilepages/gallery/delete/{galleryId}', 'MobilePagesController@deleteGallery');
-	Route::post('pages/uploadgallery','MobilePagesController@uploadGallery');
+	Route::post('mobilepages/uploadgallery','MobilePagesController@uploadGallery');
 	Route::post('mobilepages/activate', 'MobilePagesController@activate');
 	Route::post('mobilepages/order', 'MobilePagesController@orderPages');	
 	Route::post('mobilepages/builder/order', 'MobilePagesController@orderBuilderContent');

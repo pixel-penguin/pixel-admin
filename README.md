@@ -16,7 +16,7 @@ public function boot()
 
 ### Then in cmd prompt in laravel 7 or lower
 ```
-composer require laravel/ui
+composer require laravel/ui:^2.4
 php artisan ui vue --auth
 ```
 

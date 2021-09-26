@@ -12,6 +12,13 @@ public function boot()
     Schema::defaultStringLength(191);
 }
 ```
+or
+
+```
+SET GLOBAL default_storage_engine = 'InnoDB';
+```
+
+
 ### In AppServiceProvider.php
 
 ### Then in cmd prompt in laravel 7 or lower

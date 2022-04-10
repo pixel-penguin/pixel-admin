@@ -44,6 +44,8 @@
 		
 		
 		.list-group{width: 100%; display: contents}
+
+		.nestable-handle { display: inline-table !important;}
 	</style>
 	
 	@yield('style')

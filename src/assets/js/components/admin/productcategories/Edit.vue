@@ -3,7 +3,26 @@
 		<div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <form>
+
+
+                    <div v-if="previewImageUrl != null" class="form-group">
+                        <img :src="previewImageUrl" width="100%" />
+                    </div>
                     
+                    <div v-if="previewImageUrl == null && image_name != null" class="form-group">
+                        <img :src="'https://res.cloudinary.com/'+cloudinaryCloudName+'/image/upload/c_limit,h_1000,w_1000/v1/'+image_name+'.jpg'" width="100%" />
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Image</label>
+                        <input accept="image/x-png,image/gif,image/jpeg" v-on:change="changeImage" type="file" class="form-control" required>
+                        <div style="margin-top:10px">
+                            <div v-if="previewImageUrl != null && loading == false" @click="updatePageImage" class="btn btn-primary">Update Image</div>
+                            <div v-if="previewImageUrl != null && loading" class="btn btn-primary"><i class='fa fa-circle-o-notch fa-spin'></i> Processing</div>
+                        </div>
+
+                    </div>
 
                     <div class="form-group">
 
@@ -19,6 +38,12 @@
                     
                     </div>  
 
+                    <div class="form-group">
+
+                        <label>Link Url</label>
+                        <input class="form-control" type="text" v-model="link_url">
+                    
+                    </div>  
                     
                      <div class="form-group">
 
@@ -109,6 +134,7 @@
                 galleryLoading: false,
 
                 image_name: null,
+                link_url: null,
                 previewImageUrl: null,
                 
                 successSound:new Audio('https://res.cloudinary.com/dhmwdhirs/video/upload/v1558165617/audio/admin-sounds/bigbox.mp3')
@@ -125,13 +151,59 @@
 
             self.cloudinaryCloudName = process.env.MIX_CLOUDINARY_CLOUD_NAME;
 
-            self.productCategoryDetail();
-            self.productCategoryTypes();
-
-            self.getGalleryFiles();
+            self.productCategoryDetail();            
 
         },
         methods:{
+            changeImage(e){
+                const self = this;
+
+                var files = e.target.files || e.dataTransfer.files;
+                if (!files.length){
+                    return;
+                }
+                    
+                self.image_name = files[0];
+                self.previewImageUrl =  URL.createObjectURL(self.image_name);
+                //console.log(self.image_name);
+            },
+            updatePageImage(){
+                const self = this;
+                
+                self.loading = true;
+
+                var formData = new FormData();
+                formData.append('product_category_id', self.product_category_id);
+                formData.append('image_name', self.image_name); 
+
+                axios.post('/admin/productcategories/updateimage', 
+                formData,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                
+                })
+                .then(response => {
+                    self.loading = false;
+
+                    self.image_name = null;
+                    self.previewImageUrl =  null;
+
+                    self.productCategoryDetail();
+                })
+                .catch(error => {
+                    self.$swal.showValidationMessage(
+                        `Request failed: ${error}`
+                    )
+
+                    alert('Something went wrong with uploads');
+                    
+                    self.loading = false;
+                })
+                
+                //console.log(self.galleryFiles);
+            },
             openEditor(){
                 const self = this;
 
@@ -176,6 +248,8 @@
                     self.title = data.obj.title;
                     self.detail = data.obj.detail;
                     self.active = data.obj.active;
+                    self.image_name = data.obj.image_name;
+                    self.link_url = data.obj.link_url;
 
                 })
                 .catch(error => {
@@ -193,6 +267,7 @@
                     title: self.title,
                     detail: self.detail,
                     active: self.active,
+                    link_url: self.link_url
                 })
                 .then(response => {
                     self.productCategoryDetail();

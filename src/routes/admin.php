@@ -108,6 +108,7 @@ Route::group([
 	Route::resource('productcategories', 'ProductCategoriesController');
 	Route::post('productcategories/activate',  'ProductCategoriesController@activate');	
 	Route::post('productcategories/order', 'ProductCategoriesController@orderProductCategories');
+	Route::post('productcategories/updateimage', 'ProductCategoriesController@updateImage');
 	
 	Route::resource('products', 'ProductsController');
 	Route::post('products/activate',  'ProductsController@activate');	

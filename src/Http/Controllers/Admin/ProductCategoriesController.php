@@ -40,6 +40,34 @@ class ProductCategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function updateImage(Request $request){
+        $input = $request->all();
+		
+		$this->validate($request,[
+           'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 50000',
+       	]);
+
+       	$image_name = $request->file('image_name');
+
+       	$cloudder = Cloudder::upload($image_name->getRealPath(), env('CLOUDINARY_BASE_FOLDER_PATH').'app_page_images/'.str_slug($image_name->getClientOriginalName()).time() );
+		
+		$uploadedResult = $cloudder->getResult();
+		
+		//dd($result);
+		
+		//Cloudder::rename($result['public_id'], $toPublicId);
+		
+		$page = ProductCategory::whereId($input['product_category_id'])->first();
+		$page->image_name = $uploadedResult['public_id'];
+		$page->save();
+		
+		$response = array();
+		
+		$response['success'] = true;
+		
+		return $response;
+    }
 	
 	
     public function orderProductCategories(Request $request)
@@ -151,6 +179,7 @@ class ProductCategoriesController extends Controller
 		
 		$productCategory->link_name = $input['link_name'];
 		$productCategory->title = $input['title'];
+		$productCategory->link_url = $input['link_url'];
 		
 		$productCategory->detail = $input['detail'];
 			

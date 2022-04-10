@@ -12,11 +12,18 @@ public function boot()
     Schema::defaultStringLength(191);
 }
 ```
+or
+
+```
+SET GLOBAL default_storage_engine = 'InnoDB';
+```
+
+
 ### In AppServiceProvider.php
 
 ### Then in cmd prompt in laravel 7 or lower
 ```
-composer require laravel/ui
+composer require laravel/ui:^2.4
 php artisan ui vue --auth
 ```
 
@@ -74,9 +81,11 @@ composer require jrm2k6/cloudder
 composer require doctrine/dbal
 composer require spatie/laravel-analytics
 composer require laravel/helpers
+composer require doctrine/dbal:2.*
 ```
 ### After this: remember to run:
 ```
+
 php artisan migrate
 ```
 

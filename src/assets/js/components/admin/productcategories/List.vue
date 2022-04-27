@@ -79,24 +79,7 @@ import SimpleModal from 'simple-modal-vue'
                 categoryMaxLevel:0,
 
                 request_source : '',
-
-                nestableItems: [
-                    {
-                        id: 0,
-                        name: 'Andy'
-                    }, {
-                        id: 1,
-                        name: 'Harry',
-                        children: [{
-                            id: 2,
-                            name: 'David'
-                        }]
-                    }, {
-                        id: 3,
-                        name: 'Lisa'
-                    }
-                    
-                ],
+                
                 productCategories:[],
 
                 tutorialVideoModal: false

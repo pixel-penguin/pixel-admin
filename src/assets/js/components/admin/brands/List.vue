@@ -5,7 +5,7 @@
 				<h4 class="page-title">Brands</h4>
 			</div>
 			<div class="col-md-12 text-right m-b-30">
-				<a href="/admin/brands/create" class="btn btn-primary rounded"><i class="fa fa-plus"></i> Add Brand Member</a>
+				<a href="/admin/brands/create" class="btn btn-primary rounded"><i class="fa fa-plus"></i> Add Brand</a>
 			</div>
 		</div>
 		
@@ -23,10 +23,10 @@
 
                         <div slot="actions" slot-scope="props">
                             <a :href="'/admin/brands/'+props.row.id+'/edit'" data-original-title="null" class=" has-tooltip">
-                                <i v-tooltip.top-center="'Edit this Calendar'" aria-hidden="true" class="fa fa-pencil-square-o" style="color: rgb(45, 150, 60);"></i>
+                                <i v-tooltip.top-center="'Edit this Brand'" aria-hidden="true" class="fa fa-pencil-square-o" style="color: rgb(45, 150, 60);"></i>
                             </a> 
                             
-                            <i @click="destroyBlog(props.row.id)" v-tooltip.top-center="'Delete this Calendar'" style="color:#CB2225; cursor:pointer" class="fa fa-trash-o" aria-hidden="true"></i>
+                            <i @click="destroyBrand(props.row.id)" v-tooltip.top-center="'Delete this Brand'" style="color:#CB2225; cursor:pointer" class="fa fa-trash-o" aria-hidden="true"></i>
                         </div>
 
                         

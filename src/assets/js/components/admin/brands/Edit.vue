@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-4" style="padding-left:0">
-                        <a href="/admin/teams" class="btn btn-white"><i class="fa fa-chevron-left" aria-hidden="true"></i> Go Back</a>
+                        <a href="/admin/brands" class="btn btn-white"><i class="fa fa-chevron-left" aria-hidden="true"></i> Go Back</a>
                     </div>
                 </div>
             </div>

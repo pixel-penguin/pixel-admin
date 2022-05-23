@@ -123,6 +123,10 @@ class ProductCategoriesController extends Controller
 		$productCategory = new ProductCategory();
 		$productCategory->user_id = Auth::user()->id;
 		$productCategory->name = $input['name'];
+
+        if(isset($input['productCategoryId'])){
+            $productCategory->parent_id = $input['productCategoryId'];
+        }
 		
 		$linkName = str_slug($productCategory->name, '-') ;
 		

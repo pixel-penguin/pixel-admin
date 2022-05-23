@@ -41,12 +41,15 @@
 
                     <strong class="nestAction">
                     
+                        <i @click="addSubCategory(item.id)" v-tooltip="'Add a Subcategory'" style="color: #2FC937" class="fa fa-plus" aria-hidden="true"></i>
+
                         <a v-tooltip="'Edit Product Category'" :href="'/admin/productcategories/'+item.id+'/edit/'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         
                         <i @click="activate(item.id)" v-tooltip="'Published'" v-if="item.active == true" style="color:#2FC937" class="fa fa-check-square-o" aria-hidden="true"></i>
                         <i @click="activate(item.id)" v-tooltip="'Not Published'" v-if="item.active == false" style="color: #C51515" class="fa fa-square-o" aria-hidden="true"></i>
                         
                         <i @click="destroyProductCategory(item.id)" v-tooltip="'Delete Product Category'" class="fa fa-trash" aria-hidden="true" style="color: #C51515"></i>
+                        
                     </strong>
                     </vue-nestable-handle>
                 </vue-nestable>
@@ -135,6 +138,48 @@ import SimpleModal from 'simple-modal-vue'
 
                         axios.post('/admin/productcategories',{
                             name:name,
+                        })
+                        .then(response => {
+                            this.$swal({
+                                toast: true,
+                                position: 'bottom-end',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                type: 'success',
+                                title: 'Product Category Added Successfully'
+                            });
+
+                            self.getAllProductCategories();                       
+
+                        })
+                        .catch(error => {
+                            Swal.showValidationMessage(
+                            `Request failed: ${error}`
+                            )
+                        })
+
+
+                    },
+                    allowOutsideClick: () => !Swal.isLoading()
+                    })
+            },
+            addSubCategory(productId){
+                const self = this;
+
+                self.$swal.fire({
+                    title: 'Enter Product Category Name',
+                    input: 'text',
+                    inputAttributes: {
+                        autocapitalize: 'off'
+                    },
+                    showCancelButton: true,
+                    confirmButtonText: 'Add',
+                    showLoaderOnConfirm: true,
+                    preConfirm: (name) => {
+
+                        axios.post('/admin/productcategories',{
+                            name:name,
+                            productCategoryId: productId
                         })
                         .then(response => {
                             this.$swal({

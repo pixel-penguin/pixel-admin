@@ -151,7 +151,7 @@ class BlogsController extends Controller
            'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 50000',
        	]);
 
-       	$image_name = $request->file('image_name')->getRealPath();
+       	$image_name = $request->file('image_name');
 
        	Cloudder::upload($image_name,  env('CLOUDINARY_BASE_FOLDER_PATH').'app_blog_images/'.str_slug($image_name->getClientOriginalName()).time());
 		
